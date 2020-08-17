@@ -20,6 +20,15 @@ static_resources:
                         - match: { prefix: "/" }
                           route: { cluster: service }
                 http_filters:
+                  - name: envoy.filters.http.ext_authz
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.ExtAuthz
+                      failure_mode_allow: false
+                      grpc_service:
+                        google_grpc:
+                          target_uri: opa:9191
+                          stat_prefix: ext_authz
+                        timeout: 0.5s
                   - name: envoy.router
                     typed_config: {}
   clusters:
