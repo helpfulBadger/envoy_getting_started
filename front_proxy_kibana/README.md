@@ -7,3 +7,5 @@ This example simply proxies requests from the host machine to an HTTPBIN contain
 Run `docker-compose up -d` to start services.
 
 Environment variables `SERVICE_NAME` and `SERVICE_PORT` refers to the service Envoy is proxying. These env variables will replace the variables in `envoy.yaml`. See `./compose/envoy/entrypoint.sh` for more details.
+
+The environment variable `DEBUG_LEVEL` refers to the envoy debug level to use.
