@@ -1,0 +1,10 @@
+{
+    "iss": "workforceIdentity.example.com",
+    "sub": "workforceIdentity:406319",
+    "aud": [ "apigateway.example.com", "protected-stuff.example.com"],
+    "azp": "app_123456",
+    "exp": 2735689600,
+    "iat": 1597676718,
+    "auth_time": 1597676718,
+    "jti": "mPPdwJ7Jrr2MQzS"
+}
