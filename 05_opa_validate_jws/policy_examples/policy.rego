@@ -1,8 +1,11 @@
 package istio.authz
 
-import input.input.attributes.request.http as http_request
+import input.attributes.request.http as http_request
+import input.attributes.request.http.headers["subject-token"] as subject
+import input.attributes.request.http.headers["actor-token"] as actor
+import input.attributes.request.http.headers["app-token"] as app
 
-default allow = false
+default allow = true
 
 jwks = `{
   "keys": [
@@ -32,46 +35,76 @@ jwks = `{
       "alg": "ES256",
       "x": "_Vg3wsKsY9XH5E5aPn2SLUTUljgum2TXnDY7m73p2Ek",
       "y": "rSbvTXUdPnFpJq5zqgRLMMAQP8bJ7UcggP1ERkEibGI"
+    },
+    {
+      "use": "sig",
+      "kty": "RSA",
+      "kid": "APIGW-RS256",
+      "alg": "RS256",
+      "n": "thiAsWa8crD-RhGbAewoYjyWpgZpaFKHWqzqAM2iCJ94eQnSwFJJcFayOklSfKK8tUUYulG7FQijpdBLVzbilPtpYK8HjHoLZBLrvNPbEvwlMCVMDX5ttyn1lJV-6momFwuV6EJFnPMXJQU3KTX_QeFejiamxmYQsakyWxxDtTWJ1XAlvtIX3k0osQbFrLbF5SGIwAk9UBFlm2B_3M0lbqu6w8eOxgSc3z-Owd6maYu2Q43MZv-opjObHNfcc60o90iOO9pY5_qSkJt7Slf2cuKU6eOUjsoSCOgValKngogup_itt7LJkrt-ugFiwUITEt6V6MY1MHEw1RgM75N_iQ",
+      "e": "AQAB"
+    },
+    {
+      "use": "sig",
+      "kty": "RSA",
+      "kid": "custIDP-RS256",
+      "alg": "RS256",
+      "n": "z6AtZ3MpSZ1dd-AFyfxk5stjIrbLa8GLSq0GPqZ5RciZIkv-ad-phosgPSDvG1Nx4pcZcENrXAdMA6v6FjRvdGT0EH9CU2vXTu5kCmGP1vV1WfzFdL3K-mswnEaT6-9bO4-m6SEmR3J3YV5QwFVvxIVJqFSmLIggl1PVCM0pXCYb6vkcacg24E-vh6J28LdZmQFqmWHrF7mOL59oz1Gx8ePOr4WnqhP991DeIpzgiofGAS7QQSiNQoKvtizITk3-kcpjWmdw0Zh32xmhsUCu4NKn8DjY2dJ2-WwcL3KK__E0WBJt3I97Nr-m88BSEVl3-P--fsRiEgIP1Co2ulGMbQ",
+      "e": "AQAB"
+    },
+    {
+      "use": "sig",
+      "kty": "RSA",
+      "kid": "workforceIDP-RS256",
+      "alg": "RS256",
+      "n": "ucjZ1pagZuXL4GkFXzG7llZbhPUkl1GzG2vyE0YC3NCvgf2WS67KRH6ck_iMHsWraaPdEcbB8t6ftr0qEXC1ciwVc656Q4V4L_-pxWcD1XMfdiZoViaKyMlq1QzB55XgzM1g7cvgg6_rCmTEmTo3-LUvFd7HxpdHdkYz0U_EUmEB8amz3NxR3LaB-STyxnlsRDrIKmYqDNaPqArdn44INwkGeuJUir0ojw5gdbbazT1NIsuJb2y0zHXuu9ESnyKB8N40ydYe2ECxkdynOQaHt8tCKWhh3F32VwOOuZx34RuVSA_bQraGrduVBd05fEdsPUxq38f1-Z7I5YuokqE_Dw",
+      "e": "AQAB"
     }
   ]
 }`
 
+verify_subject {
+    io.jwt.verify_es256(subject, jwks)
+}
 
-allow = response {
-  decode_verify_subject.isValid
-  decode_verify_actor.isValid
-  decode_verify_app.isValid
-  response := {
+verify_subject {
+    io.jwt.verify_rs256(subject, jwks)
+}
+
+verify_actor {
+    io.jwt.verify_es256(actor, jwks)
+}
+
+verify_actor {
+    io.jwt.verify_rs256(actor, jwks)
+}
+
+verify_app {
+    io.jwt.verify_rs256(app, jwks)
+}
+
+verify_app {
+    io.jwt.verify_es256(app, jwks)
+}
+
+successMsg = {
       "allowed": true,
       "headers": {
-        "X-Customer-Is-Authenticated": decode_verify_subject.isValid,
-        "X-Agent-Is-Authenticated": decode_verify_actor.isValid,
-        "X-App-Is-Authenticated": decode_verify_app.isValid
+        "X-Customer-Is-Authenticated": verify_subject,
+        "X-Agent-Is-Authenticated": verify_actor,
+        "X-App-Is-Authenticated": verify_app
       }
-  }
 }
 
-decode_verify_subject = { "isValid": isValid, "header": header, "payload": payload } {
-     [isValid, header, payload] := io.jwt.decode_verify( http_request.headers["subject-token"], 
-        { 
-            "cert": jwks,
-            "aud": "apigateway.example.com"  # <-- Required since the token contains an `aud` claim in the payload
-        })
+debugMsg = {
+      "allowed": true,
+      "headers": {
+        "X-token-validation": "unknown failure"
+      }
 }
 
-decode_verify_actor = { "isValid": isValid, "header": header, "payload": payload } {
-     [isValid, header, payload] := io.jwt.decode_verify( http_request.headers["actor-token"], 
-        { 
-            "cert": jwks,
-            "aud": "apigateway.example.com"  # <-- Required since the token contains an `aud` claim in the payload
-        })
-
-}
-
-decode_verify_app = { "isValid": isValid, "header": header, "payload": payload } {
-     [isValid, header, payload] := io.jwt.decode_verify( http_request.headers["app-token"], 
-        { 
-            "cert": jwks,
-            "aud": "apigateway.example.com"  # <-- Required since the token contains an `aud` claim in the payload
-        })
-}
+allow = successMsg {
+  verify_subject
+  verify_actor
+  verify_app
+} else = debugMsg 

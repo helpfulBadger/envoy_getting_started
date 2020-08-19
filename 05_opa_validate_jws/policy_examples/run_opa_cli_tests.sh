@@ -21,9 +21,9 @@ opa eval -d jws_examples_v1.rego 'data.jws.examples.v1.result'
 printf "    This next example shows extraction of 3 different JWS tokens for http headers and all of them are valid. \n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 
-opa eval -i allowed_input.json -d jws_examples_v2.rego 'data.jws.examples.v2.result'
+opa eval -i allowed/allowed_input.json -d jws_examples_v2.rego 'data.jws.examples.v2.result'
 
 printf "    This next example shows what happens when the JWS token headers are missing. \n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 
-opa eval -i blocked_input.json -d jws_examples_v2.rego 'data.jws.examples.v2.result'
+opa eval -i blocked/blocked_input.json -d jws_examples_v2.rego 'data.jws.examples.v2.result'

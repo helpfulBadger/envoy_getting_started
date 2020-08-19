@@ -1,9 +1,11 @@
-package jws.examples.v2
+package istio.authz.v1
 
 import input.attributes.request.http as http_request
 import input.attributes.request.http.headers["subject-token"] as subject
 import input.attributes.request.http.headers["actor-token"] as actor
 import input.attributes.request.http.headers["app-token"] as app
+
+default allow = true
 
 jwks = `{
   "keys": [
@@ -88,14 +90,26 @@ decode_verify_app = { "isValid": isValid, "header": header, "payload": payload }
         })
 }
 
-result = {
-    "decode_verify_subject": decode_verify_subject,
-    "decode_verify_actor": decode_verify_actor,
-    "decode_verify_app": decode_verify_app
+successMsg = {
+      "allowed": true,
+      "headers": {
+        "X-Customer-Is-Authenticated": decode_verify_subject.isValid,
+        "X-Agent-Is-Authenticated": decode_verify_actor.isValid,
+        "X-App-Is-Authenticated": decode_verify_app.isValid
+      }
 }
 
-allow {
-    decode_verify_subject.isValid
-    decode_verify_actor.isValid
-    decode_verify_app.isValid
+debugMsg = {
+      "allowed": true,
+      "headers": {
+        "X-Customer-Is-Authenticated": "unknown",
+        "X-Agent-Is-Authenticated": "unknown",
+        "X-App-Is-Authenticated": "unknown"
+      }
 }
+
+allow = successMsg {
+  decode_verify_subject.isValid
+  decode_verify_actor.isValid
+  decode_verify_app.isValid
+} else = debugMsg

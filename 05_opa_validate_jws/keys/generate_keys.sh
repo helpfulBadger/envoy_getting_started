@@ -10,10 +10,12 @@ read -n 1 -r -s -p $'Press enter to continue...\n'
 
 printf "    Generating customer identity provider encryption key. \n\n"
 jose-util generate-key --use sig --alg ES256 --kid custIDP-ES256
+jose-util generate-key --use sig --alg RS256 --kid custIDP-RS256
 
 printf "    Generating workforce identity provider encryption key. \n\n"
 jose-util generate-key --use sig --alg ES256 --kid workforceIDP-ES256
+jose-util generate-key --use sig --alg RS256 --kid workforceIDP-RS256
 
 printf "    Generating system account identity provider encryption key. \n\n"
 jose-util generate-key --use sig --alg ES256 --kid APIGW-ES256
-
+jose-util generate-key --use sig --alg RS256 --kid APIGW-RS256
