@@ -8,7 +8,7 @@ services:
     volumes:
       - ./envoy.yaml:/config/envoy.yaml
     environment:
-      - DEBUG_LEVEL=debug
+      - DEBUG_LEVEL=trace
       - SERVICE_NAME=app
       - SERVICE_PORT=80
 

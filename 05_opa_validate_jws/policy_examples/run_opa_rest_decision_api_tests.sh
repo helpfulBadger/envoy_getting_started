@@ -20,9 +20,9 @@ export corrupt_RS256_tokens='{ "input": {"attributes":{"destination":{"address":
 
 printf "******* Test valid RS256 jws Tokens (SHOULD SUCCEED) ******* \n\n"
 
-#curl -v --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?pretty=true&explain=full' \
+#curl -v --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true&explain=full' \
 
-curl --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?pretty=true' \
+curl --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'Content-Type: text/plain' \
@@ -31,9 +31,9 @@ curl --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?
 read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "******* Test valid ES256 jws Tokens (SHOULD SUCCEED) ******* \n\n"
 
-#curl -v --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?pretty=true&explain=full' \
+#curl -v --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true&explain=full' \
 
-curl --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?pretty=true' \
+curl --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'Content-Type: text/plain' \
@@ -42,8 +42,8 @@ curl --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?
 read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "******* Test missing jws Tokens (SHOULD FAIL)******* \n\n"
 
-#curl -v --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?pretty=true&explain=full' \
-curl --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?pretty=true' \
+#curl -v --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true&explain=full' \
+curl --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'Content-Type: text/plain' \
@@ -52,8 +52,8 @@ curl --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?
 read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "******* Test corrupt ES256 jws Tokens (SHOULD FAIL)******* \n\n"
 
-#curl -v --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?pretty=true&explain=full' \
-curl --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?pretty=true' \
+#curl -v --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true&explain=full' \
+curl --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'Content-Type: text/plain' \
@@ -62,8 +62,8 @@ curl --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?
 read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "******* Test corrupt RS256 jws Tokens (SHOULD FAIL)******* \n\n"
 
-#curl -v --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?pretty=true&explain=full' \
-curl --location --request POST 'http://localhost:8181/v1/data/istio/authz/allow?pretty=true' \
+#curl -v --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true&explain=full' \
+curl --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'Content-Type: text/plain' \

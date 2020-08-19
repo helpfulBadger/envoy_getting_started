@@ -30,7 +30,7 @@ curl -v --location --request GET 'http://localhost:8080/anything' \
 --header "Actor-Token: ${agent_ES256_token}"
 
 read -n 1 -r -s -p $'Press enter to continue...\n'
-printf "**************    Call envoy with valid corrupt jws tokens    **************\n\n"
+printf "**************    Call envoy with corrupt jws tokens    **************\n\n"
 
 curl -v --location --request GET 'http://localhost:8080/anything' \
 --header "App-Token: www" \

@@ -1,11 +1,17 @@
-package istio.authz
+package envoy.authz
 
 import input.attributes.request.http as http_request
 import input.attributes.request.http.headers["subject-token"] as subject
 import input.attributes.request.http.headers["actor-token"] as actor
 import input.attributes.request.http.headers["app-token"] as app
 
-default allow = true
+default allow = {
+      "allowed": true,
+      "headers": {
+        "X-token-validation": "unknown failure",
+        "set-by":"Global Default"
+      }
+}
 
 jwks = `{
   "keys": [
@@ -99,7 +105,8 @@ successMsg = {
 debugMsg = {
       "allowed": true,
       "headers": {
-        "X-token-validation": "unknown failure"
+        "X-token-validation": "unknown failure",
+        "set-by":"jws check fall through logic"
       }
 }
 

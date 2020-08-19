@@ -1,4 +1,4 @@
-package istio.authz.v1
+package envoy.authz.v1
 
 import input.attributes.request.http as http_request
 import input.attributes.request.http.headers["subject-token"] as subject
