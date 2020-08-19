@@ -11,3 +11,4 @@ printf "    To run OPA tests just create a rego test file and run opa test . -v 
 read -n 1 -r -s -p $'Press enter to continue...\n'
 
 opa test . -v
+opa test . -v > ../bug_report/rego_test_results.txt
