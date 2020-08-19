@@ -6,11 +6,10 @@ import input.attributes.request.http.headers["actor-token"] as actor
 import input.attributes.request.http.headers["app-token"] as app
 
 default allow = {
-      "allowed": true,
-      "headers": {
-        "X-token-validation": "unknown failure",
-        "set-by":"Global Default"
-      }
+  "allowed": true,
+  "headers": { "validation": "unknown failure", "set-by":"Global_Default" },
+  "body": "OPA Logic failure to reach here",
+  "http_status": 200
 }
 
 jwks = `{
@@ -94,20 +93,21 @@ verify_app {
 }
 
 successMsg = {
-      "allowed": true,
-      "headers": {
-        "X-Customer-Is-Authenticated": verify_subject,
-        "X-Agent-Is-Authenticated": verify_actor,
-        "X-App-Is-Authenticated": verify_app
-      }
+  "allowed": true,
+  "headers": {
+    "Customer-Authenticated": verify_subject,
+    "Agent-Authenticated": verify_actor,
+    "App-Authenticated": verify_app
+  },
+  "body": "success body",
+  "http_status": 200
 }
 
 debugMsg = {
-      "allowed": true,
-      "headers": {
-        "X-token-validation": "unknown failure",
-        "set-by":"jws check fall through logic"
-      }
+  "allowed": true,
+  "headers": { "validation": "unknown failure", "set-by":"Fall through" },
+  "body": "debug body",
+  "http_status": 200
 }
 
 allow = successMsg {

@@ -1,60 +1,59 @@
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:255] initializing epoch 0 (hot restart version=11.104)
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:257] statically linked extensions:
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.clusters: envoy.cluster.eds, envoy.cluster.logical_dns, envoy.cluster.original_dst, envoy.cluster.static, envoy.cluster.strict_dns, envoy.clusters.aggregate, envoy.clusters.dynamic_forward_proxy, envoy.clusters.redis
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.transport_sockets.upstream: envoy.transport_sockets.alts, envoy.transport_sockets.raw_buffer, envoy.transport_sockets.tap, envoy.transport_sockets.tls, raw_buffer, tls
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.resource_monitors: envoy.resource_monitors.fixed_heap, envoy.resource_monitors.injected_resource
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.udp_listeners: raw_udp_listener
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.thrift_proxy.protocols: auto, binary, binary/non-strict, compact, twitter
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   http_cache_factory: envoy.extensions.http.cache.simple
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.filters.udp_listener: envoy.filters.udp.dns_filter, envoy.filters.udp_listener.udp_proxy
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.grpc_credentials: envoy.grpc_credentials.aws_iam, envoy.grpc_credentials.default, envoy.grpc_credentials.file_based_metadata
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.filters.http: envoy.buffer, envoy.cors, envoy.csrf, envoy.ext_authz, envoy.fault, envoy.filters.http.adaptive_concurrency, envoy.filters.http.aws_lambda, envoy.filters.http.aws_request_signing, envoy.filters.http.buffer, envoy.filters.http.cache, envoy.filters.http.cors, envoy.filters.http.csrf, envoy.filters.http.dynamic_forward_proxy, envoy.filters.http.dynamo, envoy.filters.http.ext_authz, envoy.filters.http.fault, envoy.filters.http.grpc_http1_bridge, envoy.filters.http.grpc_http1_reverse_bridge, envoy.filters.http.grpc_json_transcoder, envoy.filters.http.grpc_stats, envoy.filters.http.grpc_web, envoy.filters.http.gzip, envoy.filters.http.header_to_metadata, envoy.filters.http.health_check, envoy.filters.http.ip_tagging, envoy.filters.http.jwt_authn, envoy.filters.http.lua, envoy.filters.http.on_demand, envoy.filters.http.original_src, envoy.filters.http.ratelimit, envoy.filters.http.rbac, envoy.filters.http.router, envoy.filters.http.squash, envoy.filters.http.tap, envoy.grpc_http1_bridge, envoy.grpc_json_transcoder, envoy.grpc_web, envoy.gzip, envoy.health_check, envoy.http_dynamo_filter, envoy.ip_tagging, envoy.lua, envoy.rate_limit, envoy.router, envoy.squash
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.filters.listener: envoy.filters.listener.http_inspector, envoy.filters.listener.original_dst, envoy.filters.listener.original_src, envoy.filters.listener.proxy_protocol, envoy.filters.listener.tls_inspector, envoy.listener.http_inspector, envoy.listener.original_dst, envoy.listener.original_src, envoy.listener.proxy_protocol, envoy.listener.tls_inspector
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.resolvers: envoy.ip
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.dubbo_proxy.route_matchers: default
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.filters.network: envoy.client_ssl_auth, envoy.echo, envoy.ext_authz, envoy.filters.network.client_ssl_auth, envoy.filters.network.direct_response, envoy.filters.network.dubbo_proxy, envoy.filters.network.echo, envoy.filters.network.ext_authz, envoy.filters.network.http_connection_manager, envoy.filters.network.kafka_broker, envoy.filters.network.local_ratelimit, envoy.filters.network.mongo_proxy, envoy.filters.network.mysql_proxy, envoy.filters.network.ratelimit, envoy.filters.network.rbac, envoy.filters.network.redis_proxy, envoy.filters.network.sni_cluster, envoy.filters.network.tcp_proxy, envoy.filters.network.thrift_proxy, envoy.filters.network.zookeeper_proxy, envoy.http_connection_manager, envoy.mongo_proxy, envoy.ratelimit, envoy.redis_proxy, envoy.tcp_proxy
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.health_checkers: envoy.health_checkers.redis
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.access_loggers: envoy.access_loggers.file, envoy.access_loggers.http_grpc, envoy.access_loggers.tcp_grpc, envoy.file_access_log, envoy.http_grpc_access_log, envoy.tcp_grpc_access_log
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.tracers: envoy.dynamic.ot, envoy.lightstep, envoy.tracers.datadog, envoy.tracers.dynamic_ot, envoy.tracers.lightstep, envoy.tracers.opencensus, envoy.tracers.xray, envoy.tracers.zipkin, envoy.zipkin
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.thrift_proxy.filters: envoy.filters.thrift.rate_limit, envoy.filters.thrift.router
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.stats_sinks: envoy.dog_statsd, envoy.metrics_service, envoy.stat_sinks.dog_statsd, envoy.stat_sinks.hystrix, envoy.stat_sinks.metrics_service, envoy.stat_sinks.statsd, envoy.statsd
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.dubbo_proxy.serializers: dubbo.hessian2
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.dubbo_proxy.filters: envoy.filters.dubbo.router
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.retry_host_predicates: envoy.retry_host_predicates.omit_canary_hosts, envoy.retry_host_predicates.omit_host_metadata, envoy.retry_host_predicates.previous_hosts
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.retry_priorities: envoy.retry_priorities.previous_priorities
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.transport_sockets.downstream: envoy.transport_sockets.alts, envoy.transport_sockets.raw_buffer, envoy.transport_sockets.tap, envoy.transport_sockets.tls, raw_buffer, tls
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.dubbo_proxy.protocols: dubbo
-[2020-08-19 12:24:25.940][7][info][main] [source/server/server.cc:259]   envoy.thrift_proxy.transports: auto, framed, header, unframed
-[2020-08-19 12:24:25.949][7][warning][misc] [source/common/protobuf/utility.cc:198] Using deprecated option 'envoy.api.v2.Cluster.hosts' from file cluster.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/intro/deprecated for details.
-[2020-08-19 12:24:25.950][7][info][main] [source/server/server.cc:340] admin address: 0.0.0.0:8001
-[2020-08-19 12:24:25.951][7][debug][main] [source/server/overload_manager_impl.cc:184] No overload action is configured for envoy.overload_actions.shrink_heap.
-[2020-08-19 12:24:25.951][7][debug][main] [source/server/overload_manager_impl.cc:184] No overload action is configured for envoy.overload_actions.stop_accepting_connections.
-[2020-08-19 12:24:25.951][7][debug][main] [source/server/overload_manager_impl.cc:184] No overload action is configured for envoy.overload_actions.stop_accepting_connections.
-[2020-08-19 12:24:25.951][7][debug][main] [source/server/overload_manager_impl.cc:184] No overload action is configured for envoy.overload_actions.stop_accepting_connections.
-[2020-08-19 12:24:25.951][7][debug][main] [source/server/overload_manager_impl.cc:184] No overload action is configured for envoy.overload_actions.stop_accepting_connections.
-[2020-08-19 12:24:25.952][7][info][main] [source/server/server.cc:459] runtime: layers:
+[2020-08-19 13:35:42.157][8][info][main] [source/server/server.cc:255] initializing epoch 0 (hot restart version=11.104)
+[2020-08-19 13:35:42.157][8][info][main] [source/server/server.cc:257] statically linked extensions:
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.transport_sockets.upstream: envoy.transport_sockets.alts, envoy.transport_sockets.raw_buffer, envoy.transport_sockets.tap, envoy.transport_sockets.tls, raw_buffer, tls
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.access_loggers: envoy.access_loggers.file, envoy.access_loggers.http_grpc, envoy.access_loggers.tcp_grpc, envoy.file_access_log, envoy.http_grpc_access_log, envoy.tcp_grpc_access_log
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.transport_sockets.downstream: envoy.transport_sockets.alts, envoy.transport_sockets.raw_buffer, envoy.transport_sockets.tap, envoy.transport_sockets.tls, raw_buffer, tls
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.dubbo_proxy.filters: envoy.filters.dubbo.router
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.thrift_proxy.transports: auto, framed, header, unframed
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.grpc_credentials: envoy.grpc_credentials.aws_iam, envoy.grpc_credentials.default, envoy.grpc_credentials.file_based_metadata
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.filters.listener: envoy.filters.listener.http_inspector, envoy.filters.listener.original_dst, envoy.filters.listener.original_src, envoy.filters.listener.proxy_protocol, envoy.filters.listener.tls_inspector, envoy.listener.http_inspector, envoy.listener.original_dst, envoy.listener.original_src, envoy.listener.proxy_protocol, envoy.listener.tls_inspector
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.filters.http: envoy.buffer, envoy.cors, envoy.csrf, envoy.ext_authz, envoy.fault, envoy.filters.http.adaptive_concurrency, envoy.filters.http.aws_lambda, envoy.filters.http.aws_request_signing, envoy.filters.http.buffer, envoy.filters.http.cache, envoy.filters.http.cors, envoy.filters.http.csrf, envoy.filters.http.dynamic_forward_proxy, envoy.filters.http.dynamo, envoy.filters.http.ext_authz, envoy.filters.http.fault, envoy.filters.http.grpc_http1_bridge, envoy.filters.http.grpc_http1_reverse_bridge, envoy.filters.http.grpc_json_transcoder, envoy.filters.http.grpc_stats, envoy.filters.http.grpc_web, envoy.filters.http.gzip, envoy.filters.http.header_to_metadata, envoy.filters.http.health_check, envoy.filters.http.ip_tagging, envoy.filters.http.jwt_authn, envoy.filters.http.lua, envoy.filters.http.on_demand, envoy.filters.http.original_src, envoy.filters.http.ratelimit, envoy.filters.http.rbac, envoy.filters.http.router, envoy.filters.http.squash, envoy.filters.http.tap, envoy.grpc_http1_bridge, envoy.grpc_json_transcoder, envoy.grpc_web, envoy.gzip, envoy.health_check, envoy.http_dynamo_filter, envoy.ip_tagging, envoy.lua, envoy.rate_limit, envoy.router, envoy.squash
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.dubbo_proxy.protocols: dubbo
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.dubbo_proxy.route_matchers: default
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.clusters: envoy.cluster.eds, envoy.cluster.logical_dns, envoy.cluster.original_dst, envoy.cluster.static, envoy.cluster.strict_dns, envoy.clusters.aggregate, envoy.clusters.dynamic_forward_proxy, envoy.clusters.redis
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.dubbo_proxy.serializers: dubbo.hessian2
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.health_checkers: envoy.health_checkers.redis
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.filters.udp_listener: envoy.filters.udp.dns_filter, envoy.filters.udp_listener.udp_proxy
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.stats_sinks: envoy.dog_statsd, envoy.metrics_service, envoy.stat_sinks.dog_statsd, envoy.stat_sinks.hystrix, envoy.stat_sinks.metrics_service, envoy.stat_sinks.statsd, envoy.statsd
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.tracers: envoy.dynamic.ot, envoy.lightstep, envoy.tracers.datadog, envoy.tracers.dynamic_ot, envoy.tracers.lightstep, envoy.tracers.opencensus, envoy.tracers.xray, envoy.tracers.zipkin, envoy.zipkin
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.resource_monitors: envoy.resource_monitors.fixed_heap, envoy.resource_monitors.injected_resource
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.thrift_proxy.filters: envoy.filters.thrift.rate_limit, envoy.filters.thrift.router
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.retry_host_predicates: envoy.retry_host_predicates.omit_canary_hosts, envoy.retry_host_predicates.omit_host_metadata, envoy.retry_host_predicates.previous_hosts
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.thrift_proxy.protocols: auto, binary, binary/non-strict, compact, twitter
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.retry_priorities: envoy.retry_priorities.previous_priorities
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   http_cache_factory: envoy.extensions.http.cache.simple
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.udp_listeners: raw_udp_listener
+[2020-08-19 13:35:42.158][8][info][main] [source/server/server.cc:259]   envoy.resolvers: envoy.ip
+[2020-08-19 13:35:42.159][8][info][main] [source/server/server.cc:259]   envoy.filters.network: envoy.client_ssl_auth, envoy.echo, envoy.ext_authz, envoy.filters.network.client_ssl_auth, envoy.filters.network.direct_response, envoy.filters.network.dubbo_proxy, envoy.filters.network.echo, envoy.filters.network.ext_authz, envoy.filters.network.http_connection_manager, envoy.filters.network.kafka_broker, envoy.filters.network.local_ratelimit, envoy.filters.network.mongo_proxy, envoy.filters.network.mysql_proxy, envoy.filters.network.ratelimit, envoy.filters.network.rbac, envoy.filters.network.redis_proxy, envoy.filters.network.sni_cluster, envoy.filters.network.tcp_proxy, envoy.filters.network.thrift_proxy, envoy.filters.network.zookeeper_proxy, envoy.http_connection_manager, envoy.mongo_proxy, envoy.ratelimit, envoy.redis_proxy, envoy.tcp_proxy
+[2020-08-19 13:35:42.174][8][warning][misc] [source/common/protobuf/utility.cc:198] Using deprecated option 'envoy.api.v2.Cluster.hosts' from file cluster.proto. This configuration will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/intro/deprecated for details.
+[2020-08-19 13:35:42.176][8][info][main] [source/server/server.cc:340] admin address: 0.0.0.0:8001
+[2020-08-19 13:35:42.177][8][debug][main] [source/server/overload_manager_impl.cc:184] No overload action is configured for envoy.overload_actions.shrink_heap.
+[2020-08-19 13:35:42.177][8][debug][main] [source/server/overload_manager_impl.cc:184] No overload action is configured for envoy.overload_actions.stop_accepting_connections.
+[2020-08-19 13:35:42.177][8][debug][main] [source/server/overload_manager_impl.cc:184] No overload action is configured for envoy.overload_actions.stop_accepting_connections.
+[2020-08-19 13:35:42.177][8][debug][main] [source/server/overload_manager_impl.cc:184] No overload action is configured for envoy.overload_actions.stop_accepting_connections.
+[2020-08-19 13:35:42.178][8][debug][main] [source/server/overload_manager_impl.cc:184] No overload action is configured for envoy.overload_actions.stop_accepting_connections.
+[2020-08-19 13:35:42.178][8][info][main] [source/server/server.cc:459] runtime: layers:
   - name: base
     static_layer:
       {}
   - name: admin
     admin_layer:
       {}
-[2020-08-19 12:24:25.952][7][info][config] [source/server/configuration_impl.cc:103] loading tracing configuration
-[2020-08-19 12:24:25.952][7][info][config] [source/server/configuration_impl.cc:69] loading 0 static secret(s)
-[2020-08-19 12:24:25.952][7][info][config] [source/server/configuration_impl.cc:75] loading 1 cluster(s)
-[2020-08-19 12:24:25.952][11][debug][grpc] [source/common/grpc/google_async_client_impl.cc:45] completionThread running
-[2020-08-19 12:24:25.953][7][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:930] adding TLS initial cluster service
-[2020-08-19 12:24:25.953][7][trace][upstream] [source/common/upstream/strict_dns_cluster.cc:101] starting async DNS resolution for app
-[2020-08-19 12:24:25.953][7][trace][upstream] [source/common/network/dns_impl.cc:196] Setting DNS resolution timer for 5000 milliseconds
-[2020-08-19 12:24:25.953][7][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:78] cm init: adding: cluster=service primary=1 secondary=0
-[2020-08-19 12:24:25.953][7][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:126] maybe finish initialize state: 1
-[2020-08-19 12:24:25.953][7][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:134] maybe finish initialize primary init clusters empty: false
-[2020-08-19 12:24:25.953][7][info][config] [source/server/configuration_impl.cc:79] loading 1 listener(s)
-[2020-08-19 12:24:25.953][7][debug][config] [source/server/configuration_impl.cc:81] listener #0:
-[2020-08-19 12:24:25.954][7][debug][config] [source/server/listener_manager_impl.cc:386] begin add/update listener: name=b2bcccfe-29ba-456f-ab84-7095d0f89366 hash=14058426123106024034
-[2020-08-19 12:24:25.954][7][debug][config] [source/server/listener_manager_impl.cc:95]   filter #0:
-[2020-08-19 12:24:25.954][7][debug][config] [source/server/listener_manager_impl.cc:96]     name: envoy.filters.network.http_connection_manager
-[2020-08-19 12:24:25.955][7][debug][config] [source/server/listener_manager_impl.cc:103]   config: {
+[2020-08-19 13:35:42.178][8][info][config] [source/server/configuration_impl.cc:103] loading tracing configuration
+[2020-08-19 13:35:42.178][8][info][config] [source/server/configuration_impl.cc:69] loading 0 static secret(s)
+[2020-08-19 13:35:42.179][8][info][config] [source/server/configuration_impl.cc:75] loading 1 cluster(s)
+[2020-08-19 13:35:42.180][8][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:930] adding TLS initial cluster service
+[2020-08-19 13:35:42.181][8][trace][upstream] [source/common/upstream/strict_dns_cluster.cc:101] starting async DNS resolution for app
+[2020-08-19 13:35:42.181][8][trace][upstream] [source/common/network/dns_impl.cc:196] Setting DNS resolution timer for 5000 milliseconds
+[2020-08-19 13:35:42.181][8][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:78] cm init: adding: cluster=service primary=1 secondary=0
+[2020-08-19 13:35:42.181][8][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:126] maybe finish initialize state: 1
+[2020-08-19 13:35:42.181][8][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:134] maybe finish initialize primary init clusters empty: false
+[2020-08-19 13:35:42.181][8][info][config] [source/server/configuration_impl.cc:79] loading 1 listener(s)
+[2020-08-19 13:35:42.181][8][debug][config] [source/server/configuration_impl.cc:81] listener #0:
+[2020-08-19 13:35:42.182][8][debug][config] [source/server/listener_manager_impl.cc:386] begin add/update listener: name=faf307d8-ec82-440f-9125-187c04161dda hash=14058426123106024034
+[2020-08-19 13:35:42.183][8][debug][config] [source/server/listener_manager_impl.cc:95]   filter #0:
+[2020-08-19 13:35:42.183][8][debug][config] [source/server/listener_manager_impl.cc:96]     name: envoy.filters.network.http_connection_manager
+[2020-08-19 13:35:42.183][8][debug][config] [source/server/listener_manager_impl.cc:103]   config: {
  "@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager",
  "route_config": {
   "name": "local_route",
@@ -62,11 +61,11 @@
    {
     "routes": [
      {
-      "route": {
-       "cluster": "service"
-      },
       "match": {
        "prefix": "/"
+      },
+      "route": {
+       "cluster": "service"
       }
      }
     ],
@@ -80,18 +79,18 @@
  "codec_type": "AUTO",
  "http_filters": [
   {
-   "name": "envoy.filters.http.ext_authz",
    "typed_config": {
     "@type": "type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.ExtAuthz",
-    "failure_mode_allow": false,
     "grpc_service": {
      "timeout": "0.500s",
      "google_grpc": {
-      "stat_prefix": "ext_authz",
-      "target_uri": "opa:9191"
+      "target_uri": "opa:9191",
+      "stat_prefix": "ext_authz"
      }
-    }
-   }
+    },
+    "failure_mode_allow": false
+   },
+   "name": "envoy.filters.http.ext_authz"
   },
   {
    "typed_config": {},
@@ -101,104 +100,96 @@
  "stat_prefix": "ingress_http"
 }
 
-[2020-08-19 12:24:25.958][7][debug][config] [source/extensions/filters/network/http_connection_manager/config.cc:446]     http filter #0
-[2020-08-19 12:24:25.958][7][debug][config] [source/extensions/filters/network/http_connection_manager/config.cc:447]       name: envoy.filters.http.ext_authz
-[2020-08-19 12:24:25.958][7][debug][config] [source/extensions/filters/network/http_connection_manager/config.cc:454]     config: {
+[2020-08-19 13:35:42.185][12][debug][grpc] [source/common/grpc/google_async_client_impl.cc:45] completionThread running
+[2020-08-19 13:35:42.187][8][debug][config] [source/extensions/filters/network/http_connection_manager/config.cc:446]     http filter #0
+[2020-08-19 13:35:42.187][8][debug][config] [source/extensions/filters/network/http_connection_manager/config.cc:447]       name: envoy.filters.http.ext_authz
+[2020-08-19 13:35:42.187][8][debug][config] [source/extensions/filters/network/http_connection_manager/config.cc:454]     config: {
  "@type": "type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.ExtAuthz",
- "failure_mode_allow": false,
  "grpc_service": {
   "timeout": "0.500s",
   "google_grpc": {
-   "stat_prefix": "ext_authz",
-   "target_uri": "opa:9191"
+   "target_uri": "opa:9191",
+   "stat_prefix": "ext_authz"
   }
- }
+ },
+ "failure_mode_allow": false
 }
 
-[2020-08-19 12:24:25.960][7][debug][config] [source/extensions/filters/network/http_connection_manager/config.cc:446]     http filter #1
-[2020-08-19 12:24:25.960][7][debug][config] [source/extensions/filters/network/http_connection_manager/config.cc:447]       name: envoy.router
-[2020-08-19 12:24:25.960][7][debug][config] [source/extensions/filters/network/http_connection_manager/config.cc:454]     config: {}
+[2020-08-19 13:35:42.190][8][debug][config] [source/extensions/filters/network/http_connection_manager/config.cc:446]     http filter #1
+[2020-08-19 13:35:42.190][8][debug][config] [source/extensions/filters/network/http_connection_manager/config.cc:447]       name: envoy.router
+[2020-08-19 13:35:42.190][8][debug][config] [source/extensions/filters/network/http_connection_manager/config.cc:454]     config: {}
 
-[2020-08-19 12:24:25.960][7][warning][misc] [bazel-out/k8-opt/bin/source/extensions/common/_virtual_includes/utility_lib/extensions/common/utility.h:65] Using deprecated extension name 'envoy.router' for 'envoy.filters.http.router'. This name will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/intro/deprecated for details.
-[2020-08-19 12:24:25.960][7][debug][config] [source/server/filter_chain_manager_impl.cc:214] new fc_contexts has 1 filter chains, including 1 newly built
-[2020-08-19 12:24:25.960][7][debug][init] [source/common/init/manager_impl.cc:20] added target Listener-init-target b2bcccfe-29ba-456f-ab84-7095d0f89366 to init manager Server
-[2020-08-19 12:24:25.960][7][debug][config] [source/server/listener_impl.cc:80] Create listen socket for listener b2bcccfe-29ba-456f-ab84-7095d0f89366 on address 0.0.0.0:80
-[2020-08-19 12:24:25.960][7][debug][config] [source/server/listener_impl.cc:70] Set listener b2bcccfe-29ba-456f-ab84-7095d0f89366 socket factory local address to 0.0.0.0:80
-[2020-08-19 12:24:25.960][7][debug][config] [source/server/listener_impl.cc:508] add active listener: name=b2bcccfe-29ba-456f-ab84-7095d0f89366, hash=14058426123106024034, address=0.0.0.0:80
-[2020-08-19 12:24:25.960][7][info][config] [source/server/configuration_impl.cc:129] loading stats sink configuration
-[2020-08-19 12:24:25.961][7][info][main] [source/server/server.cc:554] starting main dispatch loop
-[2020-08-19 12:24:25.961][7][trace][upstream] [source/common/network/dns_impl.cc:196] Setting DNS resolution timer for 5000 milliseconds
-[2020-08-19 12:24:25.962][7][trace][upstream] [source/common/upstream/strict_dns_cluster.cc:109] async DNS resolution complete for app
-[2020-08-19 12:24:25.962][7][debug][upstream] [source/common/upstream/upstream_impl.cc:275] transport socket match, socket default selected for host with address 192.168.96.2:80
-[2020-08-19 12:24:25.962][7][debug][upstream] [source/common/upstream/strict_dns_cluster.cc:141] DNS hosts have changed for app
-[2020-08-19 12:24:25.962][7][trace][upstream] [source/common/upstream/upstream_impl.cc:1216] Local locality: 
-[2020-08-19 12:24:25.962][7][debug][upstream] [source/common/upstream/strict_dns_cluster.cc:162] DNS refresh rate reset for app, refresh rate 5000 ms
-[2020-08-19 12:24:25.962][7][debug][upstream] [source/common/upstream/upstream_impl.cc:962] initializing Primary cluster service completed
-[2020-08-19 12:24:25.962][7][debug][init] [source/common/init/manager_impl.cc:45] init manager Cluster service contains no targets
-[2020-08-19 12:24:25.962][7][debug][init] [source/common/init/watcher_impl.cc:14] init manager Cluster service initialized, notifying ClusterImplBase
-[2020-08-19 12:24:25.962][7][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:1089] membership update for TLS cluster service added 1 removed 0
-[2020-08-19 12:24:25.962][7][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:106] cm init: init complete: cluster=service primary=0 secondary=0
-[2020-08-19 12:24:25.962][7][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:126] maybe finish initialize state: 1
-[2020-08-19 12:24:25.962][7][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:134] maybe finish initialize primary init clusters empty: true
-[2020-08-19 12:24:25.962][7][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:142] maybe finish initialize secondary init clusters empty: true
-[2020-08-19 12:24:25.962][7][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:165] maybe finish initialize cds api ready: false
-[2020-08-19 12:24:25.962][7][info][upstream] [source/common/upstream/cluster_manager_impl.cc:171] cm init: all clusters initialized
-[2020-08-19 12:24:25.962][7][info][main] [source/server/server.cc:533] all clusters initialized. initializing init manager
-[2020-08-19 12:24:25.962][7][debug][init] [source/common/init/manager_impl.cc:49] init manager Server initializing
-[2020-08-19 12:24:25.962][7][debug][init] [source/common/init/target_impl.cc:15] init manager Server initializing target Listener-init-target b2bcccfe-29ba-456f-ab84-7095d0f89366
-[2020-08-19 12:24:25.962][7][debug][init] [source/common/init/manager_impl.cc:45] init manager Listener-local-init-manager b2bcccfe-29ba-456f-ab84-7095d0f89366 14058426123106024034 contains no targets
-[2020-08-19 12:24:25.962][7][debug][init] [source/common/init/watcher_impl.cc:14] init manager Listener-local-init-manager b2bcccfe-29ba-456f-ab84-7095d0f89366 14058426123106024034 initialized, notifying Listener-local-init-watcher b2bcccfe-29ba-456f-ab84-7095d0f89366
-[2020-08-19 12:24:25.962][7][debug][init] [source/common/init/watcher_impl.cc:14] target Listener-init-target b2bcccfe-29ba-456f-ab84-7095d0f89366 initialized, notifying init manager Server
-[2020-08-19 12:24:25.962][7][debug][init] [source/common/init/watcher_impl.cc:14] init manager Server initialized, notifying RunHelper
-[2020-08-19 12:24:25.962][7][info][config] [source/server/listener_manager_impl.cc:725] all dependencies initialized. starting workers
-[2020-08-19 12:24:25.962][7][debug][config] [source/server/listener_manager_impl.cc:736] starting worker 0
-[2020-08-19 12:24:25.962][7][debug][config] [source/server/listener_manager_impl.cc:736] starting worker 1
-[2020-08-19 12:24:25.963][7][debug][config] [source/server/listener_manager_impl.cc:736] starting worker 2
-[2020-08-19 12:24:25.963][7][debug][config] [source/server/listener_manager_impl.cc:736] starting worker 3
-[2020-08-19 12:24:25.963][16][debug][main] [source/server/worker_impl.cc:103] worker entering dispatch loop
-[2020-08-19 12:24:25.963][16][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:930] adding TLS initial cluster service
-[2020-08-19 12:24:25.963][16][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:1089] membership update for TLS cluster service added 1 removed 0
-[2020-08-19 12:24:25.964][15][debug][main] [source/server/worker_impl.cc:103] worker entering dispatch loop
-[2020-08-19 12:24:25.964][15][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:930] adding TLS initial cluster service
-[2020-08-19 12:24:25.964][15][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:1089] membership update for TLS cluster service added 1 removed 0
-[2020-08-19 12:24:25.964][18][debug][grpc] [source/common/grpc/google_async_client_impl.cc:45] completionThread running
-[2020-08-19 12:24:25.964][14][debug][main] [source/server/worker_impl.cc:103] worker entering dispatch loop
-[2020-08-19 12:24:25.964][14][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:930] adding TLS initial cluster service
-[2020-08-19 12:24:25.964][14][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:1089] membership update for TLS cluster service added 1 removed 0
-[2020-08-19 12:24:25.965][17][debug][grpc] [source/common/grpc/google_async_client_impl.cc:45] completionThread running
-[2020-08-19 12:24:25.965][13][debug][main] [source/server/worker_impl.cc:103] worker entering dispatch loop
-[2020-08-19 12:24:25.965][19][debug][grpc] [source/common/grpc/google_async_client_impl.cc:45] completionThread running
-[2020-08-19 12:24:25.965][13][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:930] adding TLS initial cluster service
-[2020-08-19 12:24:25.965][13][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:1089] membership update for TLS cluster service added 1 removed 0
-[2020-08-19 12:24:25.965][20][debug][grpc] [source/common/grpc/google_async_client_impl.cc:45] completionThread running
-[2020-08-19 12:24:30.962][7][debug][main] [source/server/server.cc:177] flushing stats
-[2020-08-19 12:24:30.962][7][trace][upstream] [source/common/upstream/strict_dns_cluster.cc:101] starting async DNS resolution for app
-[2020-08-19 12:24:30.963][7][trace][upstream] [source/common/network/dns_impl.cc:196] Setting DNS resolution timer for 5000 milliseconds
-[2020-08-19 12:24:30.964][7][trace][upstream] [source/common/network/dns_impl.cc:196] Setting DNS resolution timer for 5000 milliseconds
-[2020-08-19 12:24:30.965][7][trace][upstream] [source/common/upstream/strict_dns_cluster.cc:109] async DNS resolution complete for app
-[2020-08-19 12:24:30.965][7][debug][upstream] [source/common/upstream/upstream_impl.cc:275] transport socket match, socket default selected for host with address 192.168.96.2:80
-[2020-08-19 12:24:30.965][7][debug][upstream] [source/common/upstream/strict_dns_cluster.cc:162] DNS refresh rate reset for app, refresh rate 5000 ms
-[2020-08-19 12:24:32.223][13][debug][conn_handler] [source/server/connection_handler_impl.cc:372] [C0] new connection
-[2020-08-19 12:24:32.224][13][trace][connection] [source/common/network/connection_impl.cc:493] [C0] socket event: 2
-[2020-08-19 12:24:32.224][13][trace][connection] [source/common/network/connection_impl.cc:581] [C0] write ready
-[2020-08-19 12:24:32.224][13][trace][connection] [source/common/network/connection_impl.cc:493] [C0] socket event: 3
-[2020-08-19 12:24:32.224][13][trace][connection] [source/common/network/connection_impl.cc:581] [C0] write ready
-[2020-08-19 12:24:32.224][13][trace][connection] [source/common/network/connection_impl.cc:531] [C0] read ready
-[2020-08-19 12:24:32.224][13][trace][connection] [source/common/network/raw_buffer_socket.cc:25] [C0] read returns: 3173
-[2020-08-19 12:24:32.224][13][trace][connection] [source/common/network/raw_buffer_socket.cc:39] [C0] read error: Resource temporarily unavailable
-[2020-08-19 12:24:32.224][13][trace][http] [source/common/http/http1/codec_impl.cc:470] [C0] parsing 3173 bytes
-[2020-08-19 12:24:32.224][13][trace][http] [source/common/http/http1/codec_impl.cc:672] [C0] message begin
-[2020-08-19 12:24:32.224][13][debug][http] [source/common/http/conn_manager_impl.cc:268] [C0] new stream
-[2020-08-19 12:24:32.224][13][trace][http] [source/common/http/http1/codec_impl.cc:433] [C0] completed header: key=Host value=localhost:8080
-[2020-08-19 12:24:32.225][13][trace][http] [source/common/http/http1/codec_impl.cc:433] [C0] completed header: key=User-Agent value=curl/7.61.0
-[2020-08-19 12:24:32.225][13][trace][http] [source/common/http/http1/codec_impl.cc:433] [C0] completed header: key=Accept value=*/*
-[2020-08-19 12:24:32.225][13][trace][http] [source/common/http/http1/codec_impl.cc:433] [C0] completed header: key=App-Token value=eyJhbGciOiJSUzI1NiIsImtpZCI6IkFQSUdXLVJTMjU2In0.ewogICAgImlzcyI6ICJhcGlnYXRld2F5LmV4YW1wbGUuY29tIiwKICAgICJzdWIiOiAiYXBpZ2F0ZXdheTphcHBfMTIzNDU2IiwKICAgICJhdWQiOiBbICJhcGlnYXRld2F5LmV4YW1wbGUuY29tIiwgInByb3RlY3RlZC1zdHVmZi5leGFtcGxlLmNvbSJdLAogICAgImF6cCI6ICJhcHBfMTIzNDU2IiwKICAgICJjbGllbnRfaWQiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIlhjT3BRZTJ2cVRxMWtueSIsCiAgICAiZ3JhbnQiOiAiY2xpZW50X2NyZWRlbnRpYWxzIiwKICAgICJvd25pbmdMZWdhbEVudGl0eSI6ICJFeGFtcGxlIENvLiIsCiAgICAic2NvcGVzIjogWwogICAgICAicmV3YXJkczpyZWFkIiwKICAgICAgInJld2FyZHM6cmVkZWVtIgogICAgXSwKICAgICJraWQiOiAiQVBJR1ctRVMyNTYiCn0.SvHTr8fGCzMSo4Uktw_WqeJGVv9M_--qRPrBiBTz0eJtc21whf32-TcVRBY9i4DS400iGNkMaaeIP15BEmgZ42olS27ngBXB-j_fw7i7hTRBEPS01snwE2uxBiPX-NLmQd8d5LDfTM69lK_cl3vhgMaM6xHDUeTNAftEnCqhSc1lk5leiOYaMiRFA2IsrF1ebyS7MpRtIszauyPE5Yo6j20YCIseoO5ULZj4X715DB2TeCZNTTLTadm-lRFig3EsgJRxNApIMMdN3wyb7qRPi4LXcwj2S91DHuA5AsOy4yd-dnf-OXsTXCB54lKVnPsynL1sxrgWimUSEFmAwS75sA
-[2020-08-19 12:24:32.225][13][trace][http] [source/common/http/http1/codec_impl.cc:433] [C0] completed header: key=Subject-Token value=eyJhbGciOiJSUzI1NiIsImtpZCI6ImN1c3RJRFAtUlMyNTYifQ.ewogICAgImlzcyI6ICJjdXN0b21lcklkZW50aXR5LmV4YW1wbGUuY29tIiwKICAgICJzdWIiOiAiY3VzdG9tZXJJZGVudGl0eTpEQm00RkJjbFNEMjYxRzIiLAogICAgInByb2ZpbGVSZWZJRCI6ICIzNDk4MzU5OHNma2g5dzg3OTg3OThkIiwKICAgICJjdXN0b21lclJlZklEIjogIkRCbTRGQmNsU0QyNjFHMiIsCiAgICAiY29uc2VudElEIjogIjQzNzhhZmQ0ZiIsCiAgICAiYXVkIjogWyAiYXBpZ2F0ZXdheS5leGFtcGxlLmNvbSIsICJwcm90ZWN0ZWQtc3R1ZmYuZXhhbXBsZS5jb20iXSwKICAgICJhenAiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIm84VDJoeHJhZUZ6SVE2cCIsCiAgICAibm9uY2UiOiAibi0wUzZfV3pBMk1qIiwKICAgICJhY3IiOiAidXJuOm1hY2U6aW5jb21tb246aWFwOnNpbHZlciIsCiAgICAiYW1yIjogWwogICAgICAiZmFjZSIsCiAgICAgICJmcHQiLAogICAgICAiZ2VvIiwKICAgICAgIm1mYSIKICAgIF0sCiAgICAidm90IjogIlAxLkNjLkFjIiwKICAgICJ2dG0iOiAiaHR0cHM6Ly9leGFtcGxlLm9yZy92b3QtdHJ1c3QtZnJhbWV3b3JrIgp9.iwb5jb5umv4dv8FHH7MGfdLCTKUcZg_J4svPY5ejm8rB-QXKLzP2RWE_VcbSfa3hK8fNPSjj9WyFCv3hozYlppw7PAEZeyeYf6Rh2S6LmWJj2FDMHvI8chjCz2ZdE3JQO_CqPDp_Ok1i6EkBE4-OfZycT7c3-CeQMWXagtmEH5FCJTxM2x_m3xuzbn2NhHdUlhMTAdReh3_Cmr-63ECfDOg_ctRqHZAxzIKPnu0EEJTWBBFZdG7w8q1LaaQcn0FNleaBUL5gXlCBI2yoRtVVZQ3CAmLwKdWQ8iXZOOiYFbuszXXJLgscxM23ufr2AcUKFm4DgxjSUy1YptsQlZy3mQ
-[2020-08-19 12:24:32.225][13][trace][http] [source/common/http/http1/codec_impl.cc:573] [C0] onHeadersCompleteBase
-[2020-08-19 12:24:32.225][13][trace][http] [source/common/http/http1/codec_impl.cc:433] [C0] completed header: key=Actor-Token value=eyJhbGciOiJSUzI1NiIsImtpZCI6Indvcmtmb3JjZUlEUC1SUzI1NiJ9.ewogICAgImlzcyI6ICJ3b3JrZm9yY2VJZGVudGl0eS5leGFtcGxlLmNvbSIsCiAgICAic3ViIjogIndvcmtmb3JjZUlkZW50aXR5OjQwNjMxOSIsCiAgICAiYXVkIjogWyAiYXBpZ2F0ZXdheS5leGFtcGxlLmNvbSIsICJwcm90ZWN0ZWQtc3R1ZmYuZXhhbXBsZS5jb20iXSwKICAgICJhenAiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIm1QUGR3SjdKcnIyTVF6UyIKfQ.KH1eJ3QK2uAPuRoWovlEPNJTHlw4FQKn4fAIuBp_AxaQokoqp9XrsaCECFrp_R_MblY6qQnC8WxMdqPpT0u473vKP-3hBXBgC69p3W9CD-U0Nd_X9mFHNtEm9JXGCTvbp6NY8xMRaeyjijw6o43WDlQFvPOv5yW25dxRvbuYHxcmsRssHmGY3-bESQHS18Nbd5eSeviuZ2A84enyJRih1W5ZuyOlpjcxDqZqgKFWbrhcZivRoXQfxxyX2IuAif_AGr2YFXkZQ0-kekJdEmrmQ6rxXdDryMjD4eL61iJj9hqOldAioq2wpvJxLCWDPLLrmpmtYkYr9XzxZiw0Rwwk9A
-[2020-08-19 12:24:32.225][13][trace][http] [source/common/http/http1/codec_impl.cc:771] [C0] Server: onHeadersComplete size=6
-[2020-08-19 12:24:32.225][13][trace][http] [source/common/http/http1/codec_impl.cc:649] [C0] message complete
-[2020-08-19 12:24:32.225][13][debug][http] [source/common/http/conn_manager_impl.cc:781] [C0][S11522192557744057670] request headers complete (end_stream=true):
+[2020-08-19 13:35:42.190][8][warning][misc] [bazel-out/k8-opt/bin/source/extensions/common/_virtual_includes/utility_lib/extensions/common/utility.h:65] Using deprecated extension name 'envoy.router' for 'envoy.filters.http.router'. This name will be removed from Envoy soon. Please see https://www.envoyproxy.io/docs/envoy/latest/intro/deprecated for details.
+[2020-08-19 13:35:42.190][8][debug][config] [source/server/filter_chain_manager_impl.cc:214] new fc_contexts has 1 filter chains, including 1 newly built
+[2020-08-19 13:35:42.191][8][debug][init] [source/common/init/manager_impl.cc:20] added target Listener-init-target faf307d8-ec82-440f-9125-187c04161dda to init manager Server
+[2020-08-19 13:35:42.191][8][debug][config] [source/server/listener_impl.cc:80] Create listen socket for listener faf307d8-ec82-440f-9125-187c04161dda on address 0.0.0.0:80
+[2020-08-19 13:35:42.191][8][debug][config] [source/server/listener_impl.cc:70] Set listener faf307d8-ec82-440f-9125-187c04161dda socket factory local address to 0.0.0.0:80
+[2020-08-19 13:35:42.191][8][debug][config] [source/server/listener_impl.cc:508] add active listener: name=faf307d8-ec82-440f-9125-187c04161dda, hash=14058426123106024034, address=0.0.0.0:80
+[2020-08-19 13:35:42.191][8][info][config] [source/server/configuration_impl.cc:129] loading stats sink configuration
+[2020-08-19 13:35:42.191][8][info][main] [source/server/server.cc:554] starting main dispatch loop
+[2020-08-19 13:35:42.192][8][trace][upstream] [source/common/network/dns_impl.cc:196] Setting DNS resolution timer for 5000 milliseconds
+[2020-08-19 13:35:42.192][8][trace][upstream] [source/common/upstream/strict_dns_cluster.cc:109] async DNS resolution complete for app
+[2020-08-19 13:35:42.192][8][debug][upstream] [source/common/upstream/upstream_impl.cc:275] transport socket match, socket default selected for host with address 192.168.144.2:80
+[2020-08-19 13:35:42.192][8][debug][upstream] [source/common/upstream/strict_dns_cluster.cc:141] DNS hosts have changed for app
+[2020-08-19 13:35:42.192][8][trace][upstream] [source/common/upstream/upstream_impl.cc:1216] Local locality: 
+[2020-08-19 13:35:42.192][8][debug][upstream] [source/common/upstream/strict_dns_cluster.cc:162] DNS refresh rate reset for app, refresh rate 5000 ms
+[2020-08-19 13:35:42.192][8][debug][upstream] [source/common/upstream/upstream_impl.cc:962] initializing Primary cluster service completed
+[2020-08-19 13:35:42.192][8][debug][init] [source/common/init/manager_impl.cc:45] init manager Cluster service contains no targets
+[2020-08-19 13:35:42.193][8][debug][init] [source/common/init/watcher_impl.cc:14] init manager Cluster service initialized, notifying ClusterImplBase
+[2020-08-19 13:35:42.193][8][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:1089] membership update for TLS cluster service added 1 removed 0
+[2020-08-19 13:35:42.193][8][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:106] cm init: init complete: cluster=service primary=0 secondary=0
+[2020-08-19 13:35:42.193][8][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:126] maybe finish initialize state: 1
+[2020-08-19 13:35:42.193][8][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:134] maybe finish initialize primary init clusters empty: true
+[2020-08-19 13:35:42.193][8][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:142] maybe finish initialize secondary init clusters empty: true
+[2020-08-19 13:35:42.193][8][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:165] maybe finish initialize cds api ready: false
+[2020-08-19 13:35:42.193][8][info][upstream] [source/common/upstream/cluster_manager_impl.cc:171] cm init: all clusters initialized
+[2020-08-19 13:35:42.193][8][info][main] [source/server/server.cc:533] all clusters initialized. initializing init manager
+[2020-08-19 13:35:42.193][8][debug][init] [source/common/init/manager_impl.cc:49] init manager Server initializing
+[2020-08-19 13:35:42.193][8][debug][init] [source/common/init/target_impl.cc:15] init manager Server initializing target Listener-init-target faf307d8-ec82-440f-9125-187c04161dda
+[2020-08-19 13:35:42.193][8][debug][init] [source/common/init/manager_impl.cc:45] init manager Listener-local-init-manager faf307d8-ec82-440f-9125-187c04161dda 14058426123106024034 contains no targets
+[2020-08-19 13:35:42.193][8][debug][init] [source/common/init/watcher_impl.cc:14] init manager Listener-local-init-manager faf307d8-ec82-440f-9125-187c04161dda 14058426123106024034 initialized, notifying Listener-local-init-watcher faf307d8-ec82-440f-9125-187c04161dda
+[2020-08-19 13:35:42.194][8][debug][init] [source/common/init/watcher_impl.cc:14] target Listener-init-target faf307d8-ec82-440f-9125-187c04161dda initialized, notifying init manager Server
+[2020-08-19 13:35:42.194][8][debug][init] [source/common/init/watcher_impl.cc:14] init manager Server initialized, notifying RunHelper
+[2020-08-19 13:35:42.194][8][info][config] [source/server/listener_manager_impl.cc:725] all dependencies initialized. starting workers
+[2020-08-19 13:35:42.194][8][debug][config] [source/server/listener_manager_impl.cc:736] starting worker 0
+[2020-08-19 13:35:42.194][8][debug][config] [source/server/listener_manager_impl.cc:736] starting worker 1
+[2020-08-19 13:35:42.194][14][debug][main] [source/server/worker_impl.cc:103] worker entering dispatch loop
+[2020-08-19 13:35:42.195][14][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:930] adding TLS initial cluster service
+[2020-08-19 13:35:42.195][14][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:1089] membership update for TLS cluster service added 1 removed 0
+[2020-08-19 13:35:42.196][15][debug][grpc] [source/common/grpc/google_async_client_impl.cc:45] completionThread running
+[2020-08-19 13:35:42.196][8][debug][config] [source/server/listener_manager_impl.cc:736] starting worker 2
+[2020-08-19 13:35:42.196][8][debug][config] [source/server/listener_manager_impl.cc:736] starting worker 3
+[2020-08-19 13:35:42.196][18][debug][main] [source/server/worker_impl.cc:103] worker entering dispatch loop
+[2020-08-19 13:35:42.197][17][debug][main] [source/server/worker_impl.cc:103] worker entering dispatch loop
+[2020-08-19 13:35:42.198][17][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:930] adding TLS initial cluster service
+[2020-08-19 13:35:42.198][19][debug][grpc] [source/common/grpc/google_async_client_impl.cc:45] completionThread running
+[2020-08-19 13:35:42.199][17][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:1089] membership update for TLS cluster service added 1 removed 0
+[2020-08-19 13:35:42.197][16][debug][main] [source/server/worker_impl.cc:103] worker entering dispatch loop
+[2020-08-19 13:35:42.200][18][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:930] adding TLS initial cluster service
+[2020-08-19 13:35:42.200][20][debug][grpc] [source/common/grpc/google_async_client_impl.cc:45] completionThread running
+[2020-08-19 13:35:42.200][21][debug][grpc] [source/common/grpc/google_async_client_impl.cc:45] completionThread running
+[2020-08-19 13:35:42.200][16][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:930] adding TLS initial cluster service
+[2020-08-19 13:35:42.200][16][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:1089] membership update for TLS cluster service added 1 removed 0
+[2020-08-19 13:35:42.200][18][debug][upstream] [source/common/upstream/cluster_manager_impl.cc:1089] membership update for TLS cluster service added 1 removed 0
+[2020-08-19 13:35:45.690][14][debug][conn_handler] [source/server/connection_handler_impl.cc:372] [C0] new connection
+[2020-08-19 13:35:45.690][14][trace][connection] [source/common/network/connection_impl.cc:493] [C0] socket event: 3
+[2020-08-19 13:35:45.690][14][trace][connection] [source/common/network/connection_impl.cc:581] [C0] write ready
+[2020-08-19 13:35:45.690][14][trace][connection] [source/common/network/connection_impl.cc:531] [C0] read ready
+[2020-08-19 13:35:45.690][14][trace][connection] [source/common/network/raw_buffer_socket.cc:25] [C0] read returns: 3173
+[2020-08-19 13:35:45.690][14][trace][connection] [source/common/network/raw_buffer_socket.cc:39] [C0] read error: Resource temporarily unavailable
+[2020-08-19 13:35:45.690][14][trace][http] [source/common/http/http1/codec_impl.cc:470] [C0] parsing 3173 bytes
+[2020-08-19 13:35:45.690][14][trace][http] [source/common/http/http1/codec_impl.cc:672] [C0] message begin
+[2020-08-19 13:35:45.690][14][debug][http] [source/common/http/conn_manager_impl.cc:268] [C0] new stream
+[2020-08-19 13:35:45.690][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C0] completed header: key=Host value=localhost:8080
+[2020-08-19 13:35:45.691][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C0] completed header: key=User-Agent value=curl/7.61.0
+[2020-08-19 13:35:45.691][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C0] completed header: key=Accept value=*/*
+[2020-08-19 13:35:45.691][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C0] completed header: key=App-Token value=eyJhbGciOiJSUzI1NiIsImtpZCI6IkFQSUdXLVJTMjU2In0.ewogICAgImlzcyI6ICJhcGlnYXRld2F5LmV4YW1wbGUuY29tIiwKICAgICJzdWIiOiAiYXBpZ2F0ZXdheTphcHBfMTIzNDU2IiwKICAgICJhdWQiOiBbICJhcGlnYXRld2F5LmV4YW1wbGUuY29tIiwgInByb3RlY3RlZC1zdHVmZi5leGFtcGxlLmNvbSJdLAogICAgImF6cCI6ICJhcHBfMTIzNDU2IiwKICAgICJjbGllbnRfaWQiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIlhjT3BRZTJ2cVRxMWtueSIsCiAgICAiZ3JhbnQiOiAiY2xpZW50X2NyZWRlbnRpYWxzIiwKICAgICJvd25pbmdMZWdhbEVudGl0eSI6ICJFeGFtcGxlIENvLiIsCiAgICAic2NvcGVzIjogWwogICAgICAicmV3YXJkczpyZWFkIiwKICAgICAgInJld2FyZHM6cmVkZWVtIgogICAgXSwKICAgICJraWQiOiAiQVBJR1ctRVMyNTYiCn0.SvHTr8fGCzMSo4Uktw_WqeJGVv9M_--qRPrBiBTz0eJtc21whf32-TcVRBY9i4DS400iGNkMaaeIP15BEmgZ42olS27ngBXB-j_fw7i7hTRBEPS01snwE2uxBiPX-NLmQd8d5LDfTM69lK_cl3vhgMaM6xHDUeTNAftEnCqhSc1lk5leiOYaMiRFA2IsrF1ebyS7MpRtIszauyPE5Yo6j20YCIseoO5ULZj4X715DB2TeCZNTTLTadm-lRFig3EsgJRxNApIMMdN3wyb7qRPi4LXcwj2S91DHuA5AsOy4yd-dnf-OXsTXCB54lKVnPsynL1sxrgWimUSEFmAwS75sA
+[2020-08-19 13:35:45.691][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C0] completed header: key=Subject-Token value=eyJhbGciOiJSUzI1NiIsImtpZCI6ImN1c3RJRFAtUlMyNTYifQ.ewogICAgImlzcyI6ICJjdXN0b21lcklkZW50aXR5LmV4YW1wbGUuY29tIiwKICAgICJzdWIiOiAiY3VzdG9tZXJJZGVudGl0eTpEQm00RkJjbFNEMjYxRzIiLAogICAgInByb2ZpbGVSZWZJRCI6ICIzNDk4MzU5OHNma2g5dzg3OTg3OThkIiwKICAgICJjdXN0b21lclJlZklEIjogIkRCbTRGQmNsU0QyNjFHMiIsCiAgICAiY29uc2VudElEIjogIjQzNzhhZmQ0ZiIsCiAgICAiYXVkIjogWyAiYXBpZ2F0ZXdheS5leGFtcGxlLmNvbSIsICJwcm90ZWN0ZWQtc3R1ZmYuZXhhbXBsZS5jb20iXSwKICAgICJhenAiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIm84VDJoeHJhZUZ6SVE2cCIsCiAgICAibm9uY2UiOiAibi0wUzZfV3pBMk1qIiwKICAgICJhY3IiOiAidXJuOm1hY2U6aW5jb21tb246aWFwOnNpbHZlciIsCiAgICAiYW1yIjogWwogICAgICAiZmFjZSIsCiAgICAgICJmcHQiLAogICAgICAiZ2VvIiwKICAgICAgIm1mYSIKICAgIF0sCiAgICAidm90IjogIlAxLkNjLkFjIiwKICAgICJ2dG0iOiAiaHR0cHM6Ly9leGFtcGxlLm9yZy92b3QtdHJ1c3QtZnJhbWV3b3JrIgp9.iwb5jb5umv4dv8FHH7MGfdLCTKUcZg_J4svPY5ejm8rB-QXKLzP2RWE_VcbSfa3hK8fNPSjj9WyFCv3hozYlppw7PAEZeyeYf6Rh2S6LmWJj2FDMHvI8chjCz2ZdE3JQO_CqPDp_Ok1i6EkBE4-OfZycT7c3-CeQMWXagtmEH5FCJTxM2x_m3xuzbn2NhHdUlhMTAdReh3_Cmr-63ECfDOg_ctRqHZAxzIKPnu0EEJTWBBFZdG7w8q1LaaQcn0FNleaBUL5gXlCBI2yoRtVVZQ3CAmLwKdWQ8iXZOOiYFbuszXXJLgscxM23ufr2AcUKFm4DgxjSUy1YptsQlZy3mQ
+[2020-08-19 13:35:45.691][14][trace][http] [source/common/http/http1/codec_impl.cc:573] [C0] onHeadersCompleteBase
+[2020-08-19 13:35:45.691][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C0] completed header: key=Actor-Token value=eyJhbGciOiJSUzI1NiIsImtpZCI6Indvcmtmb3JjZUlEUC1SUzI1NiJ9.ewogICAgImlzcyI6ICJ3b3JrZm9yY2VJZGVudGl0eS5leGFtcGxlLmNvbSIsCiAgICAic3ViIjogIndvcmtmb3JjZUlkZW50aXR5OjQwNjMxOSIsCiAgICAiYXVkIjogWyAiYXBpZ2F0ZXdheS5leGFtcGxlLmNvbSIsICJwcm90ZWN0ZWQtc3R1ZmYuZXhhbXBsZS5jb20iXSwKICAgICJhenAiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIm1QUGR3SjdKcnIyTVF6UyIKfQ.KH1eJ3QK2uAPuRoWovlEPNJTHlw4FQKn4fAIuBp_AxaQokoqp9XrsaCECFrp_R_MblY6qQnC8WxMdqPpT0u473vKP-3hBXBgC69p3W9CD-U0Nd_X9mFHNtEm9JXGCTvbp6NY8xMRaeyjijw6o43WDlQFvPOv5yW25dxRvbuYHxcmsRssHmGY3-bESQHS18Nbd5eSeviuZ2A84enyJRih1W5ZuyOlpjcxDqZqgKFWbrhcZivRoXQfxxyX2IuAif_AGr2YFXkZQ0-kekJdEmrmQ6rxXdDryMjD4eL61iJj9hqOldAioq2wpvJxLCWDPLLrmpmtYkYr9XzxZiw0Rwwk9A
+[2020-08-19 13:35:45.691][14][trace][http] [source/common/http/http1/codec_impl.cc:771] [C0] Server: onHeadersComplete size=6
+[2020-08-19 13:35:45.691][14][trace][http] [source/common/http/http1/codec_impl.cc:649] [C0] message complete
+[2020-08-19 13:35:45.691][14][debug][http] [source/common/http/conn_manager_impl.cc:781] [C0][S1324798430558800178] request headers complete (end_stream=true):
 ':authority', 'localhost:8080'
 ':path', '/anything'
 ':method', 'GET'
@@ -208,77 +199,77 @@
 'subject-token', 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImN1c3RJRFAtUlMyNTYifQ.ewogICAgImlzcyI6ICJjdXN0b21lcklkZW50aXR5LmV4YW1wbGUuY29tIiwKICAgICJzdWIiOiAiY3VzdG9tZXJJZGVudGl0eTpEQm00RkJjbFNEMjYxRzIiLAogICAgInByb2ZpbGVSZWZJRCI6ICIzNDk4MzU5OHNma2g5dzg3OTg3OThkIiwKICAgICJjdXN0b21lclJlZklEIjogIkRCbTRGQmNsU0QyNjFHMiIsCiAgICAiY29uc2VudElEIjogIjQzNzhhZmQ0ZiIsCiAgICAiYXVkIjogWyAiYXBpZ2F0ZXdheS5leGFtcGxlLmNvbSIsICJwcm90ZWN0ZWQtc3R1ZmYuZXhhbXBsZS5jb20iXSwKICAgICJhenAiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIm84VDJoeHJhZUZ6SVE2cCIsCiAgICAibm9uY2UiOiAibi0wUzZfV3pBMk1qIiwKICAgICJhY3IiOiAidXJuOm1hY2U6aW5jb21tb246aWFwOnNpbHZlciIsCiAgICAiYW1yIjogWwogICAgICAiZmFjZSIsCiAgICAgICJmcHQiLAogICAgICAiZ2VvIiwKICAgICAgIm1mYSIKICAgIF0sCiAgICAidm90IjogIlAxLkNjLkFjIiwKICAgICJ2dG0iOiAiaHR0cHM6Ly9leGFtcGxlLm9yZy92b3QtdHJ1c3QtZnJhbWV3b3JrIgp9.iwb5jb5umv4dv8FHH7MGfdLCTKUcZg_J4svPY5ejm8rB-QXKLzP2RWE_VcbSfa3hK8fNPSjj9WyFCv3hozYlppw7PAEZeyeYf6Rh2S6LmWJj2FDMHvI8chjCz2ZdE3JQO_CqPDp_Ok1i6EkBE4-OfZycT7c3-CeQMWXagtmEH5FCJTxM2x_m3xuzbn2NhHdUlhMTAdReh3_Cmr-63ECfDOg_ctRqHZAxzIKPnu0EEJTWBBFZdG7w8q1LaaQcn0FNleaBUL5gXlCBI2yoRtVVZQ3CAmLwKdWQ8iXZOOiYFbuszXXJLgscxM23ufr2AcUKFm4DgxjSUy1YptsQlZy3mQ'
 'actor-token', 'eyJhbGciOiJSUzI1NiIsImtpZCI6Indvcmtmb3JjZUlEUC1SUzI1NiJ9.ewogICAgImlzcyI6ICJ3b3JrZm9yY2VJZGVudGl0eS5leGFtcGxlLmNvbSIsCiAgICAic3ViIjogIndvcmtmb3JjZUlkZW50aXR5OjQwNjMxOSIsCiAgICAiYXVkIjogWyAiYXBpZ2F0ZXdheS5leGFtcGxlLmNvbSIsICJwcm90ZWN0ZWQtc3R1ZmYuZXhhbXBsZS5jb20iXSwKICAgICJhenAiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIm1QUGR3SjdKcnIyTVF6UyIKfQ.KH1eJ3QK2uAPuRoWovlEPNJTHlw4FQKn4fAIuBp_AxaQokoqp9XrsaCECFrp_R_MblY6qQnC8WxMdqPpT0u473vKP-3hBXBgC69p3W9CD-U0Nd_X9mFHNtEm9JXGCTvbp6NY8xMRaeyjijw6o43WDlQFvPOv5yW25dxRvbuYHxcmsRssHmGY3-bESQHS18Nbd5eSeviuZ2A84enyJRih1W5ZuyOlpjcxDqZqgKFWbrhcZivRoXQfxxyX2IuAif_AGr2YFXkZQ0-kekJdEmrmQ6rxXdDryMjD4eL61iJj9hqOldAioq2wpvJxLCWDPLLrmpmtYkYr9XzxZiw0Rwwk9A'
 
-[2020-08-19 12:24:32.225][13][debug][http] [source/common/http/conn_manager_impl.cc:1333] [C0][S11522192557744057670] request end stream
-[2020-08-19 12:24:32.226][13][trace][filter] [source/extensions/filters/http/ext_authz/ext_authz.cc:66] [C0][S11522192557744057670] ext_authz filter calling authorization server
-[2020-08-19 12:24:32.226][13][trace][grpc] [source/common/grpc/google_async_client_impl.cc:213] Queued message to write (3422 bytes)
-[2020-08-19 12:24:32.226][13][trace][http] [source/common/http/conn_manager_impl.cc:1042] [C0][S11522192557744057670] decode headers called: filter=0x5588104c8ea0 status=4
-[2020-08-19 12:24:32.226][13][trace][http] [source/common/http/http1/codec_impl.cc:497] [C0] parsed 3173 bytes
-[2020-08-19 12:24:32.226][13][trace][connection] [source/common/network/connection_impl.cc:315] [C0] readDisable: enabled=true disable=true state=0
-[2020-08-19 12:24:32.226][13][trace][connection] [source/common/network/connection_impl.cc:493] [C0] socket event: 2
-[2020-08-19 12:24:32.226][13][trace][connection] [source/common/network/connection_impl.cc:581] [C0] write ready
-[2020-08-19 12:24:32.228][20][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 0 true
-[2020-08-19 12:24:32.228][13][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=0 ok=true inflight=1
-[2020-08-19 12:24:32.228][13][trace][grpc] [source/common/grpc/google_async_client_impl.cc:248] Write op dispatched
-[2020-08-19 12:24:32.232][20][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 4 true
-[2020-08-19 12:24:32.235][20][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 1 true
-[2020-08-19 12:24:32.235][13][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=4 ok=true inflight=2
-[2020-08-19 12:24:32.236][13][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=1 ok=true inflight=1
-[2020-08-19 12:24:32.236][20][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 2 false
-[2020-08-19 12:24:32.236][13][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=2 ok=false inflight=1
-[2020-08-19 12:24:32.236][20][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 5 true
-[2020-08-19 12:24:32.236][13][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=5 ok=true inflight=1
-[2020-08-19 12:24:32.236][13][debug][grpc] [source/common/grpc/google_async_client_impl.cc:340] Finish with grpc-status code 2
-[2020-08-19 12:24:32.236][13][debug][grpc] [source/common/grpc/google_async_client_impl.cc:203] notifyRemoteClose 2 failed to get response headers: type assertion error
-[2020-08-19 12:24:32.236][13][trace][filter] [source/extensions/filters/http/ext_authz/ext_authz.cc:240] [C0][S11522192557744057670] ext_authz filter rejected the request with an error. Response status code: 403
-[2020-08-19 12:24:32.236][13][debug][http] [source/common/http/conn_manager_impl.cc:1475] [C0][S11522192557744057670] Sending local reply with details ext_authz_error
-[2020-08-19 12:24:32.237][13][debug][http] [source/common/http/conn_manager_impl.cc:1706] [C0][S11522192557744057670] encoding headers via codec (end_stream=true):
+[2020-08-19 13:35:45.691][14][debug][http] [source/common/http/conn_manager_impl.cc:1333] [C0][S1324798430558800178] request end stream
+[2020-08-19 13:35:45.692][14][trace][filter] [source/extensions/filters/http/ext_authz/ext_authz.cc:66] [C0][S1324798430558800178] ext_authz filter calling authorization server
+[2020-08-19 13:35:45.692][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:213] Queued message to write (3424 bytes)
+[2020-08-19 13:35:45.692][14][trace][http] [source/common/http/conn_manager_impl.cc:1042] [C0][S1324798430558800178] decode headers called: filter=0x55e1b071a180 status=4
+[2020-08-19 13:35:45.692][14][trace][http] [source/common/http/http1/codec_impl.cc:497] [C0] parsed 3173 bytes
+[2020-08-19 13:35:45.692][14][trace][connection] [source/common/network/connection_impl.cc:315] [C0] readDisable: enabled=true disable=true state=0
+[2020-08-19 13:35:45.692][14][trace][connection] [source/common/network/connection_impl.cc:493] [C0] socket event: 2
+[2020-08-19 13:35:45.692][14][trace][connection] [source/common/network/connection_impl.cc:581] [C0] write ready
+[2020-08-19 13:35:45.693][15][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 0 true
+[2020-08-19 13:35:45.693][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=0 ok=true inflight=1
+[2020-08-19 13:35:45.693][15][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 4 true
+[2020-08-19 13:35:45.696][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:248] Write op dispatched
+[2020-08-19 13:35:45.696][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=4 ok=true inflight=2
+[2020-08-19 13:35:45.698][15][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 1 true
+[2020-08-19 13:35:45.698][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=1 ok=true inflight=1
+[2020-08-19 13:35:45.698][15][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 2 false
+[2020-08-19 13:35:45.698][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=2 ok=false inflight=1
+[2020-08-19 13:35:45.698][15][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 5 true
+[2020-08-19 13:35:45.698][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=5 ok=true inflight=1
+[2020-08-19 13:35:45.698][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:340] Finish with grpc-status code 2
+[2020-08-19 13:35:45.698][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:203] notifyRemoteClose 2 failed to get response headers: type assertion error
+[2020-08-19 13:35:45.698][14][trace][filter] [source/extensions/filters/http/ext_authz/ext_authz.cc:240] [C0][S1324798430558800178] ext_authz filter rejected the request with an error. Response status code: 403
+[2020-08-19 13:35:45.698][14][debug][http] [source/common/http/conn_manager_impl.cc:1475] [C0][S1324798430558800178] Sending local reply with details ext_authz_error
+[2020-08-19 13:35:45.699][14][debug][http] [source/common/http/conn_manager_impl.cc:1706] [C0][S1324798430558800178] encoding headers via codec (end_stream=true):
 ':status', '403'
-'date', 'Wed, 19 Aug 2020 12:24:31 GMT'
+'date', 'Wed, 19 Aug 2020 13:35:45 GMT'
 'server', 'envoy'
 
-[2020-08-19 12:24:32.237][13][trace][connection] [source/common/network/connection_impl.cc:429] [C0] writing 97 bytes, end_stream false
-[2020-08-19 12:24:32.237][13][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=1)
-[2020-08-19 12:24:32.237][13][trace][connection] [source/common/network/connection_impl.cc:315] [C0] readDisable: enabled=false disable=false state=0
-[2020-08-19 12:24:32.237][13][debug][grpc] [source/common/grpc/google_async_client_impl.cc:382] Stream cleanup with 0 in-flight tags
-[2020-08-19 12:24:32.237][13][debug][grpc] [source/common/grpc/google_async_client_impl.cc:371] Deferred delete
-[2020-08-19 12:24:32.237][13][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=2)
-[2020-08-19 12:24:32.237][13][trace][main] [source/common/event/dispatcher_impl.cc:79] clearing deferred deletion list (size=2)
-[2020-08-19 12:24:32.237][13][debug][grpc] [source/common/grpc/google_async_client_impl.cc:95] Client teardown, resetting streams
-[2020-08-19 12:24:32.237][13][debug][grpc] [source/common/grpc/google_async_client_impl.cc:146] GoogleAsyncStreamImpl destruct
-[2020-08-19 12:24:32.238][13][trace][connection] [source/common/network/connection_impl.cc:493] [C0] socket event: 2
-[2020-08-19 12:24:32.238][13][trace][connection] [source/common/network/connection_impl.cc:581] [C0] write ready
-[2020-08-19 12:24:32.238][13][trace][connection] [source/common/network/raw_buffer_socket.cc:68] [C0] write returns: 97
-[2020-08-19 12:24:32.239][13][trace][connection] [source/common/network/connection_impl.cc:493] [C0] socket event: 3
-[2020-08-19 12:24:32.239][13][trace][connection] [source/common/network/connection_impl.cc:581] [C0] write ready
-[2020-08-19 12:24:32.239][13][trace][connection] [source/common/network/connection_impl.cc:531] [C0] read ready
-[2020-08-19 12:24:32.239][13][trace][connection] [source/common/network/raw_buffer_socket.cc:25] [C0] read returns: 0
-[2020-08-19 12:24:32.239][13][debug][connection] [source/common/network/connection_impl.cc:558] [C0] remote close
-[2020-08-19 12:24:32.239][13][debug][connection] [source/common/network/connection_impl.cc:200] [C0] closing socket: 0
-[2020-08-19 12:24:32.239][13][debug][conn_handler] [source/server/connection_handler_impl.cc:86] [C0] adding to cleanup list
-[2020-08-19 12:24:32.240][13][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=1)
-[2020-08-19 12:24:32.240][13][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=2)
-[2020-08-19 12:24:32.240][13][trace][main] [source/common/event/dispatcher_impl.cc:79] clearing deferred deletion list (size=2)
-[2020-08-19 12:24:32.815][14][debug][conn_handler] [source/server/connection_handler_impl.cc:372] [C1] new connection
-[2020-08-19 12:24:32.815][14][trace][connection] [source/common/network/connection_impl.cc:493] [C1] socket event: 2
-[2020-08-19 12:24:32.815][14][trace][connection] [source/common/network/connection_impl.cc:581] [C1] write ready
-[2020-08-19 12:24:32.815][14][trace][connection] [source/common/network/connection_impl.cc:493] [C1] socket event: 3
-[2020-08-19 12:24:32.815][14][trace][connection] [source/common/network/connection_impl.cc:581] [C1] write ready
-[2020-08-19 12:24:32.815][14][trace][connection] [source/common/network/connection_impl.cc:531] [C1] read ready
-[2020-08-19 12:24:32.815][14][trace][connection] [source/common/network/raw_buffer_socket.cc:25] [C1] read returns: 2405
-[2020-08-19 12:24:32.815][14][trace][connection] [source/common/network/raw_buffer_socket.cc:39] [C1] read error: Resource temporarily unavailable
-[2020-08-19 12:24:32.815][14][trace][http] [source/common/http/http1/codec_impl.cc:470] [C1] parsing 2405 bytes
-[2020-08-19 12:24:32.815][14][trace][http] [source/common/http/http1/codec_impl.cc:672] [C1] message begin
-[2020-08-19 12:24:32.815][14][debug][http] [source/common/http/conn_manager_impl.cc:268] [C1] new stream
-[2020-08-19 12:24:32.815][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C1] completed header: key=Host value=localhost:8080
-[2020-08-19 12:24:32.815][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C1] completed header: key=User-Agent value=curl/7.61.0
-[2020-08-19 12:24:32.815][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C1] completed header: key=Accept value=*/*
-[2020-08-19 12:24:32.815][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C1] completed header: key=App-Token value=eyJhbGciOiJFUzI1NiIsImtpZCI6IkFQSUdXLUVTMjU2In0.ewogICAgImlzcyI6ICJhcGlnYXRld2F5LmV4YW1wbGUuY29tIiwKICAgICJzdWIiOiAiYXBpZ2F0ZXdheTphcHBfMTIzNDU2IiwKICAgICJhdWQiOiBbICJhcGlnYXRld2F5LmV4YW1wbGUuY29tIiwgInByb3RlY3RlZC1zdHVmZi5leGFtcGxlLmNvbSJdLAogICAgImF6cCI6ICJhcHBfMTIzNDU2IiwKICAgICJjbGllbnRfaWQiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIlhjT3BRZTJ2cVRxMWtueSIsCiAgICAiZ3JhbnQiOiAiY2xpZW50X2NyZWRlbnRpYWxzIiwKICAgICJvd25pbmdMZWdhbEVudGl0eSI6ICJFeGFtcGxlIENvLiIsCiAgICAic2NvcGVzIjogWwogICAgICAicmV3YXJkczpyZWFkIiwKICAgICAgInJld2FyZHM6cmVkZWVtIgogICAgXSwKICAgICJraWQiOiAiQVBJR1ctRVMyNTYiCn0.c-cimtGQa_o251WyN-5zhoZ-I8USbqNC3nKcDgNSiKubY2gkX8PGqdSQo9Ocwfmqej6dnQGqC_Fxthx0z0rqaA
-[2020-08-19 12:24:32.815][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C1] completed header: key=Subject-Token value=eyJhbGciOiJFUzI1NiIsImtpZCI6ImN1c3RJRFAtRVMyNTYifQ.ewogICAgImlzcyI6ICJjdXN0b21lcklkZW50aXR5LmV4YW1wbGUuY29tIiwKICAgICJzdWIiOiAiY3VzdG9tZXJJZGVudGl0eTpEQm00RkJjbFNEMjYxRzIiLAogICAgInByb2ZpbGVSZWZJRCI6ICIzNDk4MzU5OHNma2g5dzg3OTg3OThkIiwKICAgICJjdXN0b21lclJlZklEIjogIkRCbTRGQmNsU0QyNjFHMiIsCiAgICAiY29uc2VudElEIjogIjQzNzhhZmQ0ZiIsCiAgICAiYXVkIjogWyAiYXBpZ2F0ZXdheS5leGFtcGxlLmNvbSIsICJwcm90ZWN0ZWQtc3R1ZmYuZXhhbXBsZS5jb20iXSwKICAgICJhenAiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIm84VDJoeHJhZUZ6SVE2cCIsCiAgICAibm9uY2UiOiAibi0wUzZfV3pBMk1qIiwKICAgICJhY3IiOiAidXJuOm1hY2U6aW5jb21tb246aWFwOnNpbHZlciIsCiAgICAiYW1yIjogWwogICAgICAiZmFjZSIsCiAgICAgICJmcHQiLAogICAgICAiZ2VvIiwKICAgICAgIm1mYSIKICAgIF0sCiAgICAidm90IjogIlAxLkNjLkFjIiwKICAgICJ2dG0iOiAiaHR0cHM6Ly9leGFtcGxlLm9yZy92b3QtdHJ1c3QtZnJhbWV3b3JrIgp9.iHwIVZ_7MizKNX1g5uM-kk_M9iT-5oQZKhlXBEokHIxhmtjBKyq4f3RdC2tuf9vtwZURQoM_I2ng1Kcs59HSPg
-[2020-08-19 12:24:32.816][14][trace][http] [source/common/http/http1/codec_impl.cc:573] [C1] onHeadersCompleteBase
-[2020-08-19 12:24:32.816][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C1] completed header: key=Actor-Token value=eyJhbGciOiJFUzI1NiIsImtpZCI6Indvcmtmb3JjZUlEUC1FUzI1NiJ9.ewogICAgImlzcyI6ICJ3b3JrZm9yY2VJZGVudGl0eS5leGFtcGxlLmNvbSIsCiAgICAic3ViIjogIndvcmtmb3JjZUlkZW50aXR5OjQwNjMxOSIsCiAgICAiYXVkIjogWyAiYXBpZ2F0ZXdheS5leGFtcGxlLmNvbSIsICJwcm90ZWN0ZWQtc3R1ZmYuZXhhbXBsZS5jb20iXSwKICAgICJhenAiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIm1QUGR3SjdKcnIyTVF6UyIKfQ.RYXZtWlcERiN19RI7KVeZivGE0pc5l59zPf3Uew6TqyxZQYPnq8NGJVATjuHVVXckwY3VM430K-if77L8yHeRA
-[2020-08-19 12:24:32.816][14][trace][http] [source/common/http/http1/codec_impl.cc:771] [C1] Server: onHeadersComplete size=6
-[2020-08-19 12:24:32.816][14][trace][http] [source/common/http/http1/codec_impl.cc:649] [C1] message complete
-[2020-08-19 12:24:32.816][14][debug][http] [source/common/http/conn_manager_impl.cc:781] [C1][S15394303761489840073] request headers complete (end_stream=true):
+[2020-08-19 13:35:45.699][14][trace][connection] [source/common/network/connection_impl.cc:429] [C0] writing 97 bytes, end_stream false
+[2020-08-19 13:35:45.699][14][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=1)
+[2020-08-19 13:35:45.699][14][trace][connection] [source/common/network/connection_impl.cc:315] [C0] readDisable: enabled=false disable=false state=0
+[2020-08-19 13:35:45.699][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:382] Stream cleanup with 0 in-flight tags
+[2020-08-19 13:35:45.699][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:371] Deferred delete
+[2020-08-19 13:35:45.699][14][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=2)
+[2020-08-19 13:35:45.699][14][trace][main] [source/common/event/dispatcher_impl.cc:79] clearing deferred deletion list (size=2)
+[2020-08-19 13:35:45.699][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:95] Client teardown, resetting streams
+[2020-08-19 13:35:45.699][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:146] GoogleAsyncStreamImpl destruct
+[2020-08-19 13:35:45.700][14][trace][connection] [source/common/network/connection_impl.cc:493] [C0] socket event: 2
+[2020-08-19 13:35:45.700][14][trace][connection] [source/common/network/connection_impl.cc:581] [C0] write ready
+[2020-08-19 13:35:45.700][14][trace][connection] [source/common/network/raw_buffer_socket.cc:68] [C0] write returns: 97
+[2020-08-19 13:35:45.701][14][trace][connection] [source/common/network/connection_impl.cc:493] [C0] socket event: 3
+[2020-08-19 13:35:45.701][14][trace][connection] [source/common/network/connection_impl.cc:581] [C0] write ready
+[2020-08-19 13:35:45.701][14][trace][connection] [source/common/network/connection_impl.cc:531] [C0] read ready
+[2020-08-19 13:35:45.701][14][trace][connection] [source/common/network/raw_buffer_socket.cc:25] [C0] read returns: 0
+[2020-08-19 13:35:45.701][14][debug][connection] [source/common/network/connection_impl.cc:558] [C0] remote close
+[2020-08-19 13:35:45.701][14][debug][connection] [source/common/network/connection_impl.cc:200] [C0] closing socket: 0
+[2020-08-19 13:35:45.701][14][debug][conn_handler] [source/server/connection_handler_impl.cc:86] [C0] adding to cleanup list
+[2020-08-19 13:35:45.702][14][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=1)
+[2020-08-19 13:35:45.702][14][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=2)
+[2020-08-19 13:35:45.702][14][trace][main] [source/common/event/dispatcher_impl.cc:79] clearing deferred deletion list (size=2)
+[2020-08-19 13:35:46.230][14][debug][conn_handler] [source/server/connection_handler_impl.cc:372] [C1] new connection
+[2020-08-19 13:35:46.230][14][trace][connection] [source/common/network/connection_impl.cc:493] [C1] socket event: 2
+[2020-08-19 13:35:46.230][14][trace][connection] [source/common/network/connection_impl.cc:581] [C1] write ready
+[2020-08-19 13:35:46.231][14][trace][connection] [source/common/network/connection_impl.cc:493] [C1] socket event: 3
+[2020-08-19 13:35:46.231][14][trace][connection] [source/common/network/connection_impl.cc:581] [C1] write ready
+[2020-08-19 13:35:46.231][14][trace][connection] [source/common/network/connection_impl.cc:531] [C1] read ready
+[2020-08-19 13:35:46.231][14][trace][connection] [source/common/network/raw_buffer_socket.cc:25] [C1] read returns: 2405
+[2020-08-19 13:35:46.231][14][trace][connection] [source/common/network/raw_buffer_socket.cc:39] [C1] read error: Resource temporarily unavailable
+[2020-08-19 13:35:46.231][14][trace][http] [source/common/http/http1/codec_impl.cc:470] [C1] parsing 2405 bytes
+[2020-08-19 13:35:46.231][14][trace][http] [source/common/http/http1/codec_impl.cc:672] [C1] message begin
+[2020-08-19 13:35:46.231][14][debug][http] [source/common/http/conn_manager_impl.cc:268] [C1] new stream
+[2020-08-19 13:35:46.231][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C1] completed header: key=Host value=localhost:8080
+[2020-08-19 13:35:46.231][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C1] completed header: key=User-Agent value=curl/7.61.0
+[2020-08-19 13:35:46.231][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C1] completed header: key=Accept value=*/*
+[2020-08-19 13:35:46.231][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C1] completed header: key=App-Token value=eyJhbGciOiJFUzI1NiIsImtpZCI6IkFQSUdXLUVTMjU2In0.ewogICAgImlzcyI6ICJhcGlnYXRld2F5LmV4YW1wbGUuY29tIiwKICAgICJzdWIiOiAiYXBpZ2F0ZXdheTphcHBfMTIzNDU2IiwKICAgICJhdWQiOiBbICJhcGlnYXRld2F5LmV4YW1wbGUuY29tIiwgInByb3RlY3RlZC1zdHVmZi5leGFtcGxlLmNvbSJdLAogICAgImF6cCI6ICJhcHBfMTIzNDU2IiwKICAgICJjbGllbnRfaWQiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIlhjT3BRZTJ2cVRxMWtueSIsCiAgICAiZ3JhbnQiOiAiY2xpZW50X2NyZWRlbnRpYWxzIiwKICAgICJvd25pbmdMZWdhbEVudGl0eSI6ICJFeGFtcGxlIENvLiIsCiAgICAic2NvcGVzIjogWwogICAgICAicmV3YXJkczpyZWFkIiwKICAgICAgInJld2FyZHM6cmVkZWVtIgogICAgXSwKICAgICJraWQiOiAiQVBJR1ctRVMyNTYiCn0.c-cimtGQa_o251WyN-5zhoZ-I8USbqNC3nKcDgNSiKubY2gkX8PGqdSQo9Ocwfmqej6dnQGqC_Fxthx0z0rqaA
+[2020-08-19 13:35:46.231][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C1] completed header: key=Subject-Token value=eyJhbGciOiJFUzI1NiIsImtpZCI6ImN1c3RJRFAtRVMyNTYifQ.ewogICAgImlzcyI6ICJjdXN0b21lcklkZW50aXR5LmV4YW1wbGUuY29tIiwKICAgICJzdWIiOiAiY3VzdG9tZXJJZGVudGl0eTpEQm00RkJjbFNEMjYxRzIiLAogICAgInByb2ZpbGVSZWZJRCI6ICIzNDk4MzU5OHNma2g5dzg3OTg3OThkIiwKICAgICJjdXN0b21lclJlZklEIjogIkRCbTRGQmNsU0QyNjFHMiIsCiAgICAiY29uc2VudElEIjogIjQzNzhhZmQ0ZiIsCiAgICAiYXVkIjogWyAiYXBpZ2F0ZXdheS5leGFtcGxlLmNvbSIsICJwcm90ZWN0ZWQtc3R1ZmYuZXhhbXBsZS5jb20iXSwKICAgICJhenAiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIm84VDJoeHJhZUZ6SVE2cCIsCiAgICAibm9uY2UiOiAibi0wUzZfV3pBMk1qIiwKICAgICJhY3IiOiAidXJuOm1hY2U6aW5jb21tb246aWFwOnNpbHZlciIsCiAgICAiYW1yIjogWwogICAgICAiZmFjZSIsCiAgICAgICJmcHQiLAogICAgICAiZ2VvIiwKICAgICAgIm1mYSIKICAgIF0sCiAgICAidm90IjogIlAxLkNjLkFjIiwKICAgICJ2dG0iOiAiaHR0cHM6Ly9leGFtcGxlLm9yZy92b3QtdHJ1c3QtZnJhbWV3b3JrIgp9.iHwIVZ_7MizKNX1g5uM-kk_M9iT-5oQZKhlXBEokHIxhmtjBKyq4f3RdC2tuf9vtwZURQoM_I2ng1Kcs59HSPg
+[2020-08-19 13:35:46.231][14][trace][http] [source/common/http/http1/codec_impl.cc:573] [C1] onHeadersCompleteBase
+[2020-08-19 13:35:46.231][14][trace][http] [source/common/http/http1/codec_impl.cc:433] [C1] completed header: key=Actor-Token value=eyJhbGciOiJFUzI1NiIsImtpZCI6Indvcmtmb3JjZUlEUC1FUzI1NiJ9.ewogICAgImlzcyI6ICJ3b3JrZm9yY2VJZGVudGl0eS5leGFtcGxlLmNvbSIsCiAgICAic3ViIjogIndvcmtmb3JjZUlkZW50aXR5OjQwNjMxOSIsCiAgICAiYXVkIjogWyAiYXBpZ2F0ZXdheS5leGFtcGxlLmNvbSIsICJwcm90ZWN0ZWQtc3R1ZmYuZXhhbXBsZS5jb20iXSwKICAgICJhenAiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIm1QUGR3SjdKcnIyTVF6UyIKfQ.RYXZtWlcERiN19RI7KVeZivGE0pc5l59zPf3Uew6TqyxZQYPnq8NGJVATjuHVVXckwY3VM430K-if77L8yHeRA
+[2020-08-19 13:35:46.231][14][trace][http] [source/common/http/http1/codec_impl.cc:771] [C1] Server: onHeadersComplete size=6
+[2020-08-19 13:35:46.231][14][trace][http] [source/common/http/http1/codec_impl.cc:649] [C1] message complete
+[2020-08-19 13:35:46.231][14][debug][http] [source/common/http/conn_manager_impl.cc:781] [C1][S964987012370407194] request headers complete (end_stream=true):
 ':authority', 'localhost:8080'
 ':path', '/anything'
 ':method', 'GET'
@@ -288,53 +279,53 @@
 'subject-token', 'eyJhbGciOiJFUzI1NiIsImtpZCI6ImN1c3RJRFAtRVMyNTYifQ.ewogICAgImlzcyI6ICJjdXN0b21lcklkZW50aXR5LmV4YW1wbGUuY29tIiwKICAgICJzdWIiOiAiY3VzdG9tZXJJZGVudGl0eTpEQm00RkJjbFNEMjYxRzIiLAogICAgInByb2ZpbGVSZWZJRCI6ICIzNDk4MzU5OHNma2g5dzg3OTg3OThkIiwKICAgICJjdXN0b21lclJlZklEIjogIkRCbTRGQmNsU0QyNjFHMiIsCiAgICAiY29uc2VudElEIjogIjQzNzhhZmQ0ZiIsCiAgICAiYXVkIjogWyAiYXBpZ2F0ZXdheS5leGFtcGxlLmNvbSIsICJwcm90ZWN0ZWQtc3R1ZmYuZXhhbXBsZS5jb20iXSwKICAgICJhenAiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIm84VDJoeHJhZUZ6SVE2cCIsCiAgICAibm9uY2UiOiAibi0wUzZfV3pBMk1qIiwKICAgICJhY3IiOiAidXJuOm1hY2U6aW5jb21tb246aWFwOnNpbHZlciIsCiAgICAiYW1yIjogWwogICAgICAiZmFjZSIsCiAgICAgICJmcHQiLAogICAgICAiZ2VvIiwKICAgICAgIm1mYSIKICAgIF0sCiAgICAidm90IjogIlAxLkNjLkFjIiwKICAgICJ2dG0iOiAiaHR0cHM6Ly9leGFtcGxlLm9yZy92b3QtdHJ1c3QtZnJhbWV3b3JrIgp9.iHwIVZ_7MizKNX1g5uM-kk_M9iT-5oQZKhlXBEokHIxhmtjBKyq4f3RdC2tuf9vtwZURQoM_I2ng1Kcs59HSPg'
 'actor-token', 'eyJhbGciOiJFUzI1NiIsImtpZCI6Indvcmtmb3JjZUlEUC1FUzI1NiJ9.ewogICAgImlzcyI6ICJ3b3JrZm9yY2VJZGVudGl0eS5leGFtcGxlLmNvbSIsCiAgICAic3ViIjogIndvcmtmb3JjZUlkZW50aXR5OjQwNjMxOSIsCiAgICAiYXVkIjogWyAiYXBpZ2F0ZXdheS5leGFtcGxlLmNvbSIsICJwcm90ZWN0ZWQtc3R1ZmYuZXhhbXBsZS5jb20iXSwKICAgICJhenAiOiAiYXBwXzEyMzQ1NiIsCiAgICAiZXhwIjogMjczNTY4OTYwMCwKICAgICJpYXQiOiAxNTk3Njc2NzE4LAogICAgImF1dGhfdGltZSI6IDE1OTc2NzY3MTgsCiAgICAianRpIjogIm1QUGR3SjdKcnIyTVF6UyIKfQ.RYXZtWlcERiN19RI7KVeZivGE0pc5l59zPf3Uew6TqyxZQYPnq8NGJVATjuHVVXckwY3VM430K-if77L8yHeRA'
 
-[2020-08-19 12:24:32.816][14][debug][http] [source/common/http/conn_manager_impl.cc:1333] [C1][S15394303761489840073] request end stream
-[2020-08-19 12:24:32.816][14][trace][filter] [source/extensions/filters/http/ext_authz/ext_authz.cc:66] [C1][S15394303761489840073] ext_authz filter calling authorization server
-[2020-08-19 12:24:32.816][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:213] Queued message to write (2655 bytes)
-[2020-08-19 12:24:32.816][14][trace][http] [source/common/http/conn_manager_impl.cc:1042] [C1][S15394303761489840073] decode headers called: filter=0x5588104c9020 status=4
-[2020-08-19 12:24:32.816][14][trace][http] [source/common/http/http1/codec_impl.cc:497] [C1] parsed 2405 bytes
-[2020-08-19 12:24:32.816][14][trace][connection] [source/common/network/connection_impl.cc:315] [C1] readDisable: enabled=true disable=true state=0
-[2020-08-19 12:24:32.817][14][trace][connection] [source/common/network/connection_impl.cc:493] [C1] socket event: 2
-[2020-08-19 12:24:32.817][14][trace][connection] [source/common/network/connection_impl.cc:581] [C1] write ready
-[2020-08-19 12:24:32.820][19][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 0 true
-[2020-08-19 12:24:32.820][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=0 ok=true inflight=1
-[2020-08-19 12:24:32.821][19][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 4 true
-[2020-08-19 12:24:32.821][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:248] Write op dispatched
-[2020-08-19 12:24:32.821][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=4 ok=true inflight=2
-[2020-08-19 12:24:32.830][19][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 1 true
-[2020-08-19 12:24:32.830][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=1 ok=true inflight=1
-[2020-08-19 12:24:32.830][19][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 2 false
-[2020-08-19 12:24:32.830][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=2 ok=false inflight=1
-[2020-08-19 12:24:32.830][19][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 5 true
-[2020-08-19 12:24:32.830][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=5 ok=true inflight=1
-[2020-08-19 12:24:32.830][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:340] Finish with grpc-status code 2
-[2020-08-19 12:24:32.830][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:203] notifyRemoteClose 2 failed to get response headers: type assertion error
-[2020-08-19 12:24:32.830][14][trace][filter] [source/extensions/filters/http/ext_authz/ext_authz.cc:240] [C1][S15394303761489840073] ext_authz filter rejected the request with an error. Response status code: 403
-[2020-08-19 12:24:32.830][14][debug][http] [source/common/http/conn_manager_impl.cc:1475] [C1][S15394303761489840073] Sending local reply with details ext_authz_error
-[2020-08-19 12:24:32.830][14][debug][http] [source/common/http/conn_manager_impl.cc:1706] [C1][S15394303761489840073] encoding headers via codec (end_stream=true):
+[2020-08-19 13:35:46.231][14][debug][http] [source/common/http/conn_manager_impl.cc:1333] [C1][S964987012370407194] request end stream
+[2020-08-19 13:35:46.232][14][trace][filter] [source/extensions/filters/http/ext_authz/ext_authz.cc:66] [C1][S964987012370407194] ext_authz filter calling authorization server
+[2020-08-19 13:35:46.232][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:213] Queued message to write (2654 bytes)
+[2020-08-19 13:35:46.232][14][trace][http] [source/common/http/conn_manager_impl.cc:1042] [C1][S964987012370407194] decode headers called: filter=0x55e1b0a01e60 status=4
+[2020-08-19 13:35:46.232][14][trace][http] [source/common/http/http1/codec_impl.cc:497] [C1] parsed 2405 bytes
+[2020-08-19 13:35:46.232][14][trace][connection] [source/common/network/connection_impl.cc:315] [C1] readDisable: enabled=true disable=true state=0
+[2020-08-19 13:35:46.232][14][trace][connection] [source/common/network/connection_impl.cc:493] [C1] socket event: 2
+[2020-08-19 13:35:46.232][14][trace][connection] [source/common/network/connection_impl.cc:581] [C1] write ready
+[2020-08-19 13:35:46.234][15][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 0 true
+[2020-08-19 13:35:46.234][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=0 ok=true inflight=1
+[2020-08-19 13:35:46.235][15][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 4 true
+[2020-08-19 13:35:46.235][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:248] Write op dispatched
+[2020-08-19 13:35:46.235][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=4 ok=true inflight=2
+[2020-08-19 13:35:46.242][15][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 1 true
+[2020-08-19 13:35:46.242][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=1 ok=true inflight=1
+[2020-08-19 13:35:46.242][15][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 2 false
+[2020-08-19 13:35:46.242][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=2 ok=false inflight=1
+[2020-08-19 13:35:46.242][15][trace][grpc] [source/common/grpc/google_async_client_impl.cc:52] completionThread CQ event 5 true
+[2020-08-19 13:35:46.242][14][trace][grpc] [source/common/grpc/google_async_client_impl.cc:263] handleOpCompletion op=5 ok=true inflight=1
+[2020-08-19 13:35:46.242][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:340] Finish with grpc-status code 2
+[2020-08-19 13:35:46.242][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:203] notifyRemoteClose 2 failed to get response headers: type assertion error
+[2020-08-19 13:35:46.242][14][trace][filter] [source/extensions/filters/http/ext_authz/ext_authz.cc:240] [C1][S964987012370407194] ext_authz filter rejected the request with an error. Response status code: 403
+[2020-08-19 13:35:46.243][14][debug][http] [source/common/http/conn_manager_impl.cc:1475] [C1][S964987012370407194] Sending local reply with details ext_authz_error
+[2020-08-19 13:35:46.243][14][debug][http] [source/common/http/conn_manager_impl.cc:1706] [C1][S964987012370407194] encoding headers via codec (end_stream=true):
 ':status', '403'
-'date', 'Wed, 19 Aug 2020 12:24:32 GMT'
+'date', 'Wed, 19 Aug 2020 13:35:46 GMT'
 'server', 'envoy'
 
-[2020-08-19 12:24:32.830][14][trace][connection] [source/common/network/connection_impl.cc:429] [C1] writing 97 bytes, end_stream false
-[2020-08-19 12:24:32.831][14][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=1)
-[2020-08-19 12:24:32.831][14][trace][connection] [source/common/network/connection_impl.cc:315] [C1] readDisable: enabled=false disable=false state=0
-[2020-08-19 12:24:32.831][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:382] Stream cleanup with 0 in-flight tags
-[2020-08-19 12:24:32.831][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:371] Deferred delete
-[2020-08-19 12:24:32.831][14][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=2)
-[2020-08-19 12:24:32.831][14][trace][main] [source/common/event/dispatcher_impl.cc:79] clearing deferred deletion list (size=2)
-[2020-08-19 12:24:32.831][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:95] Client teardown, resetting streams
-[2020-08-19 12:24:32.831][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:146] GoogleAsyncStreamImpl destruct
-[2020-08-19 12:24:32.831][14][trace][connection] [source/common/network/connection_impl.cc:493] [C1] socket event: 2
-[2020-08-19 12:24:32.831][14][trace][connection] [source/common/network/connection_impl.cc:581] [C1] write ready
-[2020-08-19 12:24:32.831][14][trace][connection] [source/common/network/raw_buffer_socket.cc:68] [C1] write returns: 97
-[2020-08-19 12:24:32.833][14][trace][connection] [source/common/network/connection_impl.cc:493] [C1] socket event: 3
-[2020-08-19 12:24:32.833][14][trace][connection] [source/common/network/connection_impl.cc:581] [C1] write ready
-[2020-08-19 12:24:32.833][14][trace][connection] [source/common/network/connection_impl.cc:531] [C1] read ready
-[2020-08-19 12:24:32.833][14][trace][connection] [source/common/network/raw_buffer_socket.cc:25] [C1] read returns: 0
-[2020-08-19 12:24:32.833][14][debug][connection] [source/common/network/connection_impl.cc:558] [C1] remote close
-[2020-08-19 12:24:32.833][14][debug][connection] [source/common/network/connection_impl.cc:200] [C1] closing socket: 0
-[2020-08-19 12:24:32.833][14][debug][conn_handler] [source/server/connection_handler_impl.cc:86] [C1] adding to cleanup list
-[2020-08-19 12:24:32.833][14][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=1)
-[2020-08-19 12:24:32.833][14][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=2)
-[2020-08-19 12:24:32.833][14][trace][main] [source/common/event/dispatcher_impl.cc:79] clearing deferred deletion list (size=2)
+[2020-08-19 13:35:46.243][14][trace][connection] [source/common/network/connection_impl.cc:429] [C1] writing 97 bytes, end_stream false
+[2020-08-19 13:35:46.243][14][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=1)
+[2020-08-19 13:35:46.243][14][trace][connection] [source/common/network/connection_impl.cc:315] [C1] readDisable: enabled=false disable=false state=0
+[2020-08-19 13:35:46.243][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:382] Stream cleanup with 0 in-flight tags
+[2020-08-19 13:35:46.243][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:371] Deferred delete
+[2020-08-19 13:35:46.243][14][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=2)
+[2020-08-19 13:35:46.243][14][trace][main] [source/common/event/dispatcher_impl.cc:79] clearing deferred deletion list (size=2)
+[2020-08-19 13:35:46.243][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:95] Client teardown, resetting streams
+[2020-08-19 13:35:46.244][14][debug][grpc] [source/common/grpc/google_async_client_impl.cc:146] GoogleAsyncStreamImpl destruct
+[2020-08-19 13:35:46.244][14][trace][connection] [source/common/network/connection_impl.cc:493] [C1] socket event: 2
+[2020-08-19 13:35:46.244][14][trace][connection] [source/common/network/connection_impl.cc:581] [C1] write ready
+[2020-08-19 13:35:46.244][14][trace][connection] [source/common/network/raw_buffer_socket.cc:68] [C1] write returns: 97
+[2020-08-19 13:35:46.246][14][trace][connection] [source/common/network/connection_impl.cc:493] [C1] socket event: 3
+[2020-08-19 13:35:46.246][14][trace][connection] [source/common/network/connection_impl.cc:581] [C1] write ready
+[2020-08-19 13:35:46.246][14][trace][connection] [source/common/network/connection_impl.cc:531] [C1] read ready
+[2020-08-19 13:35:46.246][14][trace][connection] [source/common/network/raw_buffer_socket.cc:25] [C1] read returns: 0
+[2020-08-19 13:35:46.246][14][debug][connection] [source/common/network/connection_impl.cc:558] [C1] remote close
+[2020-08-19 13:35:46.246][14][debug][connection] [source/common/network/connection_impl.cc:200] [C1] closing socket: 0
+[2020-08-19 13:35:46.247][14][debug][conn_handler] [source/server/connection_handler_impl.cc:86] [C1] adding to cleanup list
+[2020-08-19 13:35:46.247][14][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=1)
+[2020-08-19 13:35:46.247][14][trace][main] [source/common/event/dispatcher_impl.cc:163] item added to deferred deletion list (size=2)
+[2020-08-19 13:35:46.247][14][trace][main] [source/common/event/dispatcher_impl.cc:79] clearing deferred deletion list (size=2)
