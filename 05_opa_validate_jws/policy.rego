@@ -5,13 +5,6 @@ import input.attributes.request.http.headers["subject-token"] as subject
 import input.attributes.request.http.headers["actor-token"] as actor
 import input.attributes.request.http.headers["app-token"] as app
 
-default allow = {
-  "allowed": true,
-  "headers": { "validation": "unknown failure", "set-by":"Global_Default" },
-  "body": "OPA Logic failure to reach here",
-  "http_status": 200
-}
-
 jwks = `{
   "keys": [
     {
@@ -68,6 +61,56 @@ jwks = `{
   ]
 }`
 
+default allow = {
+  "allowed": false,
+  "headers": {
+    "Authenticated": "false",
+    "Reason": "General failure"
+  }
+}
+
+allow = response {
+  verify_subject
+  verify_actor
+  verify_app
+
+  response := {
+    "allowed": true,
+    "headers": {
+      "Customer-Authenticated": customerAuthenticated,
+      "Agent-Authenticated": agentAuthenticated,
+      "App-Authenticated": appAuthenticated
+    }
+  }
+} else = {
+  "allowed": false,
+  "headers": {
+    "Customer-Authenticated": customerAuthenticated,
+    "Agent-Authenticated": agentAuthenticated,
+    "App-Authenticated": appAuthenticated
+  }
+}
+
+headers = {}
+
+default customerAuthenticated = "false"
+customerAuthenticated = validated {
+  verify_subject
+  validated := "true"
+}
+
+default agentAuthenticated = "false"
+agentAuthenticated =  validated {
+  verify_actor
+  validated := "true"
+}
+
+default appAuthenticated = "false"
+appAuthenticated =  validated {
+  verify_app
+  validated := "true"
+}
+
 verify_subject {
     io.jwt.verify_es256(subject, jwks)
 }
@@ -91,27 +134,3 @@ verify_app {
 verify_app {
     io.jwt.verify_es256(app, jwks)
 }
-
-successMsg = {
-  "allowed": true,
-  "headers": {
-    "Customer-Authenticated": verify_subject,
-    "Agent-Authenticated": verify_actor,
-    "App-Authenticated": verify_app
-  },
-  "body": "success body",
-  "http_status": 200
-}
-
-debugMsg = {
-  "allowed": true,
-  "headers": { "validation": "unknown failure", "set-by":"Fall through" },
-  "body": "debug body",
-  "http_status": 200
-}
-
-allow = successMsg {
-  verify_subject
-  verify_actor
-  verify_app
-} else = debugMsg 
