@@ -15,42 +15,50 @@ test_valid_ES256_tokens_allowed {
     verify_subject with input as valid_ES256_tokens
     verify_actor with input as valid_ES256_tokens
     verify_app with input as valid_ES256_tokens
-    allow with input as valid_ES256_tokens
+    allow.allowed with input as valid_ES256_tokens
 }
 
 test_valid_RS256_tokens_allowed {
     verify_subject with input as valid_RS256_tokens
     verify_actor with input as valid_RS256_tokens
     verify_app with input as valid_RS256_tokens
-    allow with input as valid_RS256_tokens
+    allow.allowed with input as valid_RS256_tokens
 }
 
 # Tokens in this example the requsts is missing the identity tokens
-# Temporarily changed the policy to force an allow to try to get debug information out.
 test_missing_tokens_blocked {
     not verify_subject with input as missing_tokens
     not verify_actor with input as missing_tokens
     not verify_app with input as missing_tokens
-    allow with input as missing_tokens
-    #not allow with input as missing_tokens
+    not allow.allowed with input as missing_tokens
 }
 
 # Tokens in this example the identity tokens are corrupted
-# Temporarily changed the policy to force an allow to try to get debug information out.
 test_corrupt_ES256_tokens_blocked {
     not verify_subject with input as corrupt_ES256_tokens
     not verify_actor with input as corrupt_ES256_tokens
     not verify_app with input as corrupt_ES256_tokens
-    allow with input as corrupt_ES256_tokens
-    #not allow with input as corrupt_ES256_tokens
+    not allow.allowed with input as corrupt_ES256_tokens
 }
 
 # Tokens in this example the identity tokens are corrupted
-# Temporarily changed the policy to force an allow to try to get debug information out.
 test_corrupt_RS256_tokens_blocked {
     not verify_subject with input as corrupt_RS256_tokens
     not verify_actor with input as corrupt_RS256_tokens
     not verify_app with input as corrupt_RS256_tokens
-    allow with input as corrupt_RS256_tokens
-    #not allow with input as corrupt_RS256_tokens
+    not allow.allowed with input as corrupt_RS256_tokens
+}
+
+test_1_tampered_RS256_token_blocked {
+    verify_subject with input as single_tampered_token
+    not verify_actor with input as single_tampered_token
+    verify_app with input as single_tampered_token
+    not allow.allowed with input as single_tampered_token
+}
+
+test_2_tampered_RS256_tokens_blocked {
+    not verify_subject with input as two_tampered_tokens
+    verify_actor with input as two_tampered_tokens
+    not verify_app with input as two_tampered_tokens
+    not allow.allowed with input as two_tampered_tokens
 }
