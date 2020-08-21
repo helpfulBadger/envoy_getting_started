@@ -7,8 +7,7 @@ printf "        Linux  :    curl -L -o opa https://openpolicyagent.org/downloads
 printf "        Then   :    chmod 755 ./opa\n"
 printf " and make sure OPA is in your path \n\n"
 
-printf "    To run OPA tests just create a rego test file and run opa test . -v \n\n"
+printf "About to run OPA tests ---> run opa test . -v \n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 
 opa test . -v
-opa test . -v > ../bug_report/rego_test_results.txt
