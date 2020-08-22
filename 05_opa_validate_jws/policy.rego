@@ -111,26 +111,27 @@ appAuthenticated =  validated {
   validated := "true"
 }
 
-verify_subject {
-    io.jwt.verify_es256(subject, jwks)
+verify_subject = isValid {
+  [isValid, _, _] := io.jwt.decode_verify( subject, 
+  { 
+      "cert": jwks,
+      "aud": "apigateway.example.com"  # <-- Required since the token contains an `aud` claim in the payload
+  })
 }
 
-verify_subject {
-    io.jwt.verify_rs256(subject, jwks)
+
+verify_actor = isValid {
+  [isValid, _, _] := io.jwt.decode_verify( actor, 
+  { 
+      "cert": jwks,
+      "aud": "apigateway.example.com"  # <-- Required since the token contains an `aud` claim in the payload
+  })
 }
 
-verify_actor {
-    io.jwt.verify_es256(actor, jwks)
-}
-
-verify_actor {
-    io.jwt.verify_rs256(actor, jwks)
-}
-
-verify_app {
-    io.jwt.verify_rs256(app, jwks)
-}
-
-verify_app {
-    io.jwt.verify_es256(app, jwks)
+verify_app = isValid {
+  [isValid, _, _] := io.jwt.decode_verify( app, 
+  { 
+      "cert": jwks,
+      "aud": "apigateway.example.com"  # <-- Required since the token contains an `aud` claim in the payload
+  })
 }
