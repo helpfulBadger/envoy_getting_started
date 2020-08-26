@@ -1,0 +1,21 @@
+Note: Unnecessary use of -X or --request, GET is already inferred.
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 8080 (#0)
+> GET /anything HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.61.0
+> Accept: */*
+> 
+< HTTP/1.1 401 Unauthorized
+< content-length: 14
+< content-type: text/plain
+< date: Wed, 26 Aug 2020 01:47:02 GMT
+< server: envoy
+< 
+* Connection #0 to host localhost left intact
+Note: Unnecessary use of -X or --request, GET is already inferred.
+* Rebuilt URL to: Unauthorized/
+* Could not resolve host: Unauthorized
+* Closing connection 1
+curl: (6) Could not resolve host: Unauthorized

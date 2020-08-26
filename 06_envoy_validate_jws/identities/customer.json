@@ -1,0 +1,23 @@
+{
+    "iss": "customerIdentity.example.com",
+    "sub": "customerIdentity:DBm4FBclSD261G2",
+    "profileRefID": "34983598sfkh9w8798798d",
+    "customerRefID": "DBm4FBclSD261G2",
+    "consentID": "4378afd4f",
+    "aud": [ "apigateway.example.com", "protected-stuff.example.com"],
+    "azp": "app_123456",
+    "exp": 2735689600,
+    "iat": 1597676718,
+    "auth_time": 1597676718,
+    "jti": "o8T2hxraeFzIQ6p",
+    "nonce": "n-0S6_WzA2Mj",
+    "acr": "urn:mace:incommon:iap:silver",
+    "amr": [
+      "face",
+      "fpt",
+      "geo",
+      "mfa"
+    ],
+    "vot": "P1.Cc.Ac",
+    "vtm": "https://example.org/vot-trust-framework"
+}
