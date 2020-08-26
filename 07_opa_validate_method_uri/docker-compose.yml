@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  envoy:
+    build: ./compose/envoy
+    ports:
+      - "8080:80"
+      - "8001:8001"
+    volumes:
+      - ./envoy.yaml:/config/envoy.yaml
+    environment:
+      - DEBUG_LEVEL=debug
+      - SERVICE_NAME=app
+      - SERVICE_PORT=80
+
+  opa:
+    image: openpolicyagent/opa:0.22.0-envoy
+    volumes:
+      - ./policy.rego:/config/policy.rego
+    command:
+      - "run"
+      - "--log-level=debug"
+      - "--server"
+      - "--set=plugins.envoy_ext_authz_grpc.addr=:9191"
+      - "--set=decision_logs.console=true"
+      - "/config/policy.rego"
+
+  app:
+    image: kennethreitz/httpbin:latest
