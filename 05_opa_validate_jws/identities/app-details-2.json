@@ -1,0 +1,18 @@
+{
+    "iss": "apigateway.example.com",
+    "sub": "apigateway:app_000123",
+    "aud": [ "apigateway.example.com", "protected-stuff.example.com"],
+    "azp": "app_000123",
+    "client_id": "app_000123",
+    "exp": 2735689600,
+    "iat": 1597676718,
+    "auth_time": 1597676718,
+    "jti": "XcOpQe2vqTq661k",
+    "grant": "client_credentials",
+    "owningLegalEntity": "Example Co.",
+    "scopes": [
+      "rewards:read",
+      "rewards:redeem"
+    ],
+    "kid": "APIGW-ES256"
+}

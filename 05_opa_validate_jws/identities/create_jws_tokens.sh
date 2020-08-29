@@ -28,4 +28,11 @@ jose-util verify --key ../keys/jwk-sig-APIGW-ES256-pub.json  --in app-details-ES
 
 jose-util sign   --key ../keys/jwk-sig-APIGW-RS256-priv.json --alg RS256 --in app-details.json > app-details-RS256.jws
 jose-util verify --key ../keys/jwk-sig-APIGW-RS256-pub.json  --in app-details-RS256.jws
+
+printf "\n\n    Signing and verifying client application identity token. \n\n"
+jose-util sign   --key ../keys/jwk-sig-APIGW-ES256-priv.json --alg ES256 --in app-details-2.json > app-details-2-ES256.jws
+jose-util verify --key ../keys/jwk-sig-APIGW-ES256-pub.json  --in app-details-2-ES256.jws
+
+jose-util sign   --key ../keys/jwk-sig-APIGW-RS256-priv.json --alg RS256 --in app-details-2.json > app-details-2-RS256.jws
+jose-util verify --key ../keys/jwk-sig-APIGW-RS256-pub.json  --in app-details-2-RS256.jws
 printf "\n\n\n\n"
