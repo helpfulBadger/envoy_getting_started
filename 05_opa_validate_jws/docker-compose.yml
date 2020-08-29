@@ -25,7 +25,6 @@ services:
       - "--server"
       - "--set=plugins.envoy_ext_authz_grpc.addr=:9191"
       - "--set=decision_logs.console=true"
-      - "--set=explain=full"
       - "/config/policy.rego"
 
   app:

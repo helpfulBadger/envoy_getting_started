@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  opa:
+    image: openpolicyagent/opa:0.23.0-envoy # 0.21.1-istio or 0.22.0-envoy
+    ports:
+      - "8181:8181"
+    volumes:
+      - ./policies/policy.rego:/config/policy.rego
+      - ./policies:/policies
+      - ./data:/data
+    command:
+      - "run"
+      - "--log-level=debug"
+      - "--server"
+      - "--set=plugins.envoy_ext_authz_grpc.addr=:9191"
+      - "--set=decision_logs.console=true"
+      - "/config/policy.rego"

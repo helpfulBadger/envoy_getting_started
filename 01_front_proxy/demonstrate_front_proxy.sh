@@ -7,16 +7,16 @@ read -n 1 -r -s -p $'Press enter to continue...\n'
 
 docker-compose up -d --build
 
-printf "\n\n**************    Checking to make sure everything is up    **************\n\n"
+printf "\n\n**************    About to check to make sure everything is up    **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 
 docker ps -a
-printf "\n\n**************    Calling httpbin via envoy front proxy    **************\n\n"
+printf "\n\n**************    About to call httpbin via envoy front proxy    **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 
 curl -v --location --request GET 'http://localhost:8080/anything'
 
-printf "\n\n**************    Cleaning up and removing docker instances    **************\n\n"
+printf "\n\n**************    About to clean up and remove docker instances    **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 
 docker-compose down

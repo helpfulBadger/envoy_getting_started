@@ -8,16 +8,17 @@ read -n 1 -r -s -p $'Press enter to continue...\n'
 
 docker-compose up -d --build
 
-printf "\n\n**************    Checking to make sure everything is started    **************\n\n"
+printf "\n\n**************    About to check to make sure everything is started    **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 docker ps -a
 
-printf "\n\n**************    Waiting 30 seconds for elasticSearch to be ready   **************\n\n"
+printf "\n\n**************    About to wait 30 seconds for elasticSearch to be ready   **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
+printf "\n\n               ...Waiting 30 seconds.....\n\n"
 sleep 30
 curl -v --location --request GET 'http://localhost:9200'
 
-printf "\n\n**************    Opening Kibana and setting up an index   **************\n\n"
+printf "\n\n**************    About to open Kibana for you to setup an index   **************\n\n"
 printf "    If elasticSearch response above says it's ready then open kiban in a web browser and setup an index.\n"
 printf "    If elasticSearch response above indicates that it isn't ready then wait a bit.\n"
 printf "    The command below works on Mac OSX to open kibana in a browser. If it doesn't work on your OS then \n"
@@ -28,19 +29,19 @@ read -n 1 -r -s -p $'Press enter to continue...\n'
 
 open "http://localhost:5601/app/kibana#/management/kibana/index_pattern?_g=()"
 
-printf "\n\n**************    Opening Kibana log search page   **************\n\n"
+printf "\n\n**************    About to open Kibana log search page   **************\n\n"
 printf "    On the search page, you should already see envoy logs streaming in.\n"
 printf "    Explore the envoy logs and come back here when you are ready. \n"
 printf "\n\n    When you are ready for the next step hit enter.\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 open "http://localhost:5601/app/kibana#/discover"
 
-printf "\n\n**************    Calling httpbin via envoy front proxy    **************\n\n"
+printf "\n\n**************    About to call httpbin via envoy front proxy    **************\n\n"
 printf "    The following curl command initiates a request through envoy to httpbin.\n"
 printf "    Explore the logs and come back here when you are ready to clean up. \n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 curl -v --location --request GET 'http://localhost:8080/anything'
 
-printf "\n\n**************    Cleaning up and removing docker instances    **************\n\n"
+printf "\n\n**************    About to clean up and remove docker instances    **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 docker-compose down
