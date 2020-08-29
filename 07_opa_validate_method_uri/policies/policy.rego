@@ -44,11 +44,11 @@ endpointID = epID {
 
 apiPermittedForClient {
   apiPermissions[ app.client_id ][_] == endpointID
-} else = false
+}
 
 userTypeAppropriateForClient {
   idProviderPermissions[ app.client_id ][_] == actor.iss
-} else = false
+}
 
 messages[ msg ]{
   not apiPermittedForClient
@@ -71,7 +71,15 @@ messages[ msg ]{
 decision {
   apiPermittedForClient
   userTypeAppropriateForClient
-} else = false
+}
+
+decision {
+  not apiPermittedForClient
+}
+
+decision {
+  not userTypeAppropriateForClient
+}
 
 allow = response {
   response := {

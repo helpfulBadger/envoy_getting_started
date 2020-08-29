@@ -1,0 +1,572 @@
+[
+    {
+      "id": "001",
+      "method": "GET",
+      "pattern": "/api/customer",
+      "request": "/api/customer",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "002",
+      "method": "POST",
+      "pattern": "/api/customer",
+      "request": "/api/customer",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "003",
+      "method": "DELETE",
+      "pattern": "/api/customer/*",
+      "request": "/api/customer/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "004",
+      "method": "GET",
+      "pattern": "/api/customer/*",
+      "request": "/api/customer/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "005",
+      "method": "POST",
+      "pattern": "/api/customer/*",
+      "request": "/api/customer/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "006",
+      "method": "PUT",
+      "pattern": "/api/customer/*",
+      "request": "/api/customer/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "007",
+      "method": "GET",
+      "pattern": "/api/customer/*/account",
+      "request": "/api/customer/12345/account",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "008",
+      "method": "POST",
+      "pattern": "/api/customer/*/account",
+      "request": "/api/customer/12345/account",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "009",
+      "method": "DELETE",
+      "pattern": "/api/customer/*/account/*",
+      "request": "/api/customer/12345/account/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "010",
+      "method": "GET",
+      "pattern": "/api/customer/*/account/*",
+      "request": "/api/customer/12345/account/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "011",
+      "method": "PUT",
+      "pattern": "/api/customer/*/account/*",
+      "request": "/api/customer/12345/account/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "012",
+      "method": "GET",
+      "pattern": "/api/customer/*/messages",
+      "request": "/api/customer/12345/messages",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "013",
+      "method": "POST",
+      "pattern": "/api/customer/*/messages",
+      "request": "/api/customer/12345/messages",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "014",
+      "method": "DELETE",
+      "pattern": "/api/customer/*/messages/*",
+      "request": "/api/customer/12345/messages/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "015",
+      "method": "GET",
+      "pattern": "/api/customer/*/messages/*",
+      "request": "/api/customer/12345/messages/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "016",
+      "method": "POST",
+      "pattern": "/api/customer/*/messages/*",
+      "request": "/api/customer/12345/messages/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "017",
+      "method": "PUT",
+      "pattern": "/api/customer/*/messages/*",
+      "request": "/api/customer/12345/messages/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "018",
+      "method": "GET",
+      "pattern": "/api/customer/*/order",
+      "request": "/api/customer/12345/order",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "019",
+      "method": "POST",
+      "pattern": "/api/customer/*/order",
+      "request": "/api/customer/12345/order",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "020",
+      "method": "DELETE",
+      "pattern": "/api/customer/*/order/*",
+      "request": "/api/customer/12345/order/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "021",
+      "method": "GET",
+      "pattern": "/api/customer/*/order/*",
+      "request": "/api/customer/12345/order/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "022",
+      "method": "POST",
+      "pattern": "/api/customer/*/order/*",
+      "request": "/api/customer/12345/order/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "023",
+      "method": "PUT",
+      "pattern": "/api/customer/*/order/*",
+      "request": "/api/customer/12345/order/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "024",
+      "method": "GET",
+      "pattern": "/api/customer/*/paymentcard",
+      "request": "/api/customer/12345/paymentcard",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "025",
+      "method": "POST",
+      "pattern": "/api/customer/*/paymentcard",
+      "request": "/api/customer/12345/paymentcard",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "026",
+      "method": "DELETE",
+      "pattern": "/api/customer/*/paymentcard/*",
+      "request": "/api/customer/12345/paymentcard/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "027",
+      "method": "GET",
+      "pattern": "/api/customer/*/paymentcard/*",
+      "request": "/api/customer/12345/paymentcard/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "028",
+      "method": "POST",
+      "pattern": "/api/customer/*/paymentcard/*",
+      "request": "/api/customer/12345/paymentcard/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "029",
+      "method": "PUT",
+      "pattern": "/api/customer/*/paymentcard/*",
+      "request": "/api/customer/12345/paymentcard/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "030",
+      "method": "DELETE",
+      "pattern": "/api/featureFlags",
+      "request": "/api/featureFlags",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "031",
+      "method": "GET",
+      "pattern": "/api/featureFlags",
+      "request": "/api/featureFlags",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "032",
+      "method": "POST",
+      "pattern": "/api/featureFlags",
+      "request": "/api/featureFlags",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "033",
+      "method": "PUT",
+      "pattern": "/api/featureFlags",
+      "request": "/api/featureFlags",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "034",
+      "method": "GET",
+      "pattern": "/api/order",
+      "request": "/api/order",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "035",
+      "method": "POST",
+      "pattern": "/api/order",
+      "request": "/api/order",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "036",
+      "method": "DELETE",
+      "pattern": "/api/order/*",
+      "request": "/api/order/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "037",
+      "method": "GET",
+      "pattern": "/api/order/*",
+      "request": "/api/order/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "038",
+      "method": "POST",
+      "pattern": "/api/order/*",
+      "request": "/api/order/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "039",
+      "method": "PUT",
+      "pattern": "/api/order/*",
+      "request": "/api/order/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "040",
+      "method": "GET",
+      "pattern": "/api/order/*/payment",
+      "request": "/api/order/12345/payment",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "041",
+      "method": "POST",
+      "pattern": "/api/order/*/payment",
+      "request": "/api/order/12345/payment",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "042",
+      "method": "DELETE",
+      "pattern": "/api/order/*/payment/*",
+      "request": "/api/order/12345/payment/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "043",
+      "method": "GET",
+      "pattern": "/api/order/*/payment/*",
+      "request": "/api/order/12345/payment/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "044",
+      "method": "POST",
+      "pattern": "/api/order/*/payment/*",
+      "request": "/api/order/12345/payment/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "045",
+      "method": "PUT",
+      "pattern": "/api/order/*/payment/*",
+      "request": "/api/order/12345/payment/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "046",
+      "method": "GET",
+      "pattern": "/api/product",
+      "request": "/api/product",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "047",
+      "method": "POST",
+      "pattern": "/api/product",
+      "request": "/api/product",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "048",
+      "method": "DELETE",
+      "pattern": "/api/product/*",
+      "request": "/api/product/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "049",
+      "method": "GET",
+      "pattern": "/api/product/*",
+      "request": "/api/product/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "050",
+      "method": "POST",
+      "pattern": "/api/product/*",
+      "request": "/api/product/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "051",
+      "method": "PUT",
+      "pattern": "/api/product/*",
+      "request": "/api/product/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "052",
+      "method": "GET",
+      "pattern": "/api/shipment",
+      "request": "/api/shipment",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "053",
+      "method": "POST",
+      "pattern": "/api/shipment",
+      "request": "/api/shipment",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "054",
+      "method": "DELETE",
+      "pattern": "/api/shipment/*",
+      "request": "/api/shipment/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "055",
+      "method": "GET",
+      "pattern": "/api/shipment/*",
+      "request": "/api/shipment/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "056",
+      "method": "POST",
+      "pattern": "/api/shipment/*",
+      "request": "/api/shipment/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    },
+    {
+      "id": "057",
+      "method": "PUT",
+      "pattern": "/api/shipment/*",
+      "request": "/api/shipment/12345",
+      "expect": {
+        "app_000123": 200,
+        "app_123456": 403
+      }
+    }
+  ]

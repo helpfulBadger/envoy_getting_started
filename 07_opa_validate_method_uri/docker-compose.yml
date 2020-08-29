@@ -10,10 +10,12 @@ services:
     environment:
       - DEBUG_LEVEL=debug
       - SERVICE_NAME=app
-      - SERVICE_PORT=80
+      - SERVICE_PORT=8500
 
   opa:
-    image: openpolicyagent/opa:0.22.0-envoy
+    image: openpolicyagent/opa:0.23.0-envoy # 0.21.1-istio or 0.22.0-envoy
+    ports:
+      - "8181:8181"
     volumes:
       - ./policy.rego:/config/policy.rego
     command:
@@ -25,4 +27,20 @@ services:
       - "/config/policy.rego"
 
   app:
-    image: kennethreitz/httpbin:latest
+    build: ./compose/hoverfly
+    #image: spectolabs/hoverfly:v1.3.0
+    ports:
+      - "8888:8888"
+      - "8500:8500"
+    #volumes:
+    #  - ./hoverfly:/hoverfly
+    command:
+      - "-webserver"
+      - "-logs-output"
+      - "console"
+      - "-import"
+      - "/hoverfly/config.json"
+      - "-logs"
+      - "json"
+      - "-log-level"
+      - "debug"

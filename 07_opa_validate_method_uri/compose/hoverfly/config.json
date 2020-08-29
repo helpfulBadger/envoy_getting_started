@@ -1,0 +1,2535 @@
+{
+	"data": {
+	  "pairs": [
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Customer API to create a customer or get customer information\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"80"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Customer API to create a customer or get customer information\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"80"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Customer Profile Information for Customer # 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"68"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Customer Profile Information for Customer # 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"68"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "PUT"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Customer Profile Information for Customer # 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"68"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "DELETE"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Customer Profile Information for Customer # 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"68"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/account"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create an account for Customer #12345 or get all of Customer #12345's accounts\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"109"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/account"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create an account for Customer #12345 or get all of Customer #12345's accounts\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"109"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/account/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "PUT"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create an account for Customer #12345 or get all of Customer #12345's accounts\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"109"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/account/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "DELETE"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create an account for Customer #12345 or get all of Customer #12345's accounts\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"109"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/messages"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create a servicing message for Customer #12345 or get all of Customer #12345's servicing messages\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"128"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/messages"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create a servicing message for Customer #12345 or get all of Customer #12345's servicing messages\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"128"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/messages/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get Customer #12345's message with message ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"82"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/messages/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get Customer #12345's message with message ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"82"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/messages/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "PUT"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get Customer #12345's message with message ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"82"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/messages/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "DELETE"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get Customer #12345's message with message ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"82"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/order"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create an order for customer #12345 or get all of Customer #12345's orders\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"105"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/order"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create an order for customer #12345 or get all of Customer #12345's orders\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"105"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/order/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get Customer #12345's order with order number 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"82"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/order/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get Customer #12345's order with order number 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"82"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/order/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "PUT"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get Customer #12345's order with order number 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"82"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/order/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "DELETE"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get Customer #12345's order with order number 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"82"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/paymentcard"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create a payment card for Customer #12345 or get Customer #12345's payment cards (debit and credit)\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"130"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/paymentcard"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create a payment card for Customer #12345 or get Customer #12345's payment cards (debit and credit)\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"130"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/paymentcard/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get Customer #12345's payment card with payment card ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"92"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/paymentcard/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get Customer #12345's payment card with payment card ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"92"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/paymentcard/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "PUT"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get Customer #12345's payment card with payment card ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"92"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/customer/12345/paymentcard/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "DELETE"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get Customer #12345's payment card with payment card ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"92"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/featureFlags"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create, get, update or delete feature flags\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"74"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/featureFlags"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create, get, update or delete feature flags\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"74"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/featureFlags"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "PUT"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create, get, update or delete feature flags\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"74"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/featureFlags"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "DELETE"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create, get, update or delete feature flags\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"74"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/order"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create an order or get all available orders for ALL customers\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"92"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/order"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create an order or get all available orders for ALL customers\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"92"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/order/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get order ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"49"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/order/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get order ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"49"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/order/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "PUT"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get order ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"49"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/order/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "DELETE"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get order ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"49"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/order/12345/payment"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create a payment or get all available payments for order 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"93"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/order/12345/payment"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create a payment or get all available payments for order 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"93"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/order/12345/payment/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get payment 12345 for order 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"64"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/order/12345/payment/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get payment 12345 for order 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"64"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/order/12345/payment/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "PUT"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get payment 12345 for order 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"64"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/order/12345/payment/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "DELETE"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get payment 12345 for order 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"64"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/product"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create a product or get all available products\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"77"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/product"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create a product or get all available products\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"77"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/product/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get product ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"51"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/product/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get product ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"51"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/product/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "PUT"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get product ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"51"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/product/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "DELETE"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get product ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"51"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/shipment"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create a shipment or get all available shipments for ALL customers\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"97"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:13 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/shipment"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to create a shipment or get all available shipments for ALL customers\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"97"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:14 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/shipment/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "GET"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get shipment ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"52"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:14 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/shipment/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "POST"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get shipment ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"52"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:14 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/shipment/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "PUT"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get shipment ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"52"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:14 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		},
+		{
+		  "request": {
+			"path": [
+			  {
+				"matcher": "exact",
+				"value": "/api/shipment/12345"
+			  }
+			],
+			"method": [
+			  {
+				"matcher": "exact",
+				"value": "DELETE"
+			  }
+			]
+		  },
+		  "response": {
+			"status": 200,
+			"body": "{\"description\":\"Endpoint to get shipment ID 12345\"}\n",
+			"encodedBody": false,
+			"headers": {
+			  "Access-Control-Allow-Origin": [
+				"*"
+			  ],
+			  "Connection": [
+				"Keep-Alive"
+			  ],
+			  "Content-Length": [
+				"52"
+			  ],
+			  "Content-Type": [
+				"application/json"
+			  ],
+			  "Date": [
+				"Thu, 27 Aug 2020 20:16:14 +0000"
+			  ],
+			  "Hoverfly": [
+				"Was-Here"
+			  ],
+			  "Keep-Alive": [
+				"timeout=5"
+			  ]
+			},
+			"templated": false
+		  }
+		}
+	  ],
+	  "globalActions": {
+		"delays": [],
+		"delaysLogNormal": []
+	  }
+	},
+	"meta": {
+	  "schemaVersion": "v5.1",
+	  "hoverflyVersion": "v1.3.0",
+	  "timeExported": "2020-08-27T16:16:24-04:00"
+	}
+  }
