@@ -8,16 +8,19 @@ read -n 1 -r -s -p $'Press enter to continue...\n'
 
 docker-compose up -d --build
 
+read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "\n\n**************    About to check to make sure everything is started    **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 docker ps -a
 
+read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "\n\n**************    About to wait 30 seconds for elasticSearch to be ready   **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "\n\n               ...Waiting 30 seconds.....\n\n"
 sleep 30
 curl -v --location --request GET 'http://localhost:9200'
 
+read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "\n\n**************    About to open Kibana for you to setup an index   **************\n\n"
 printf "    If elasticSearch response above says it's ready then open kiban in a web browser and setup an index.\n"
 printf "    If elasticSearch response above indicates that it isn't ready then wait a bit.\n"
@@ -29,6 +32,7 @@ read -n 1 -r -s -p $'Press enter to continue...\n'
 
 open "http://localhost:5601/app/kibana#/management/kibana/index_pattern?_g=()"
 
+read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "\n\n**************    About to open Kibana log search page   **************\n\n"
 printf "    On the search page, you should already see envoy logs streaming in.\n"
 printf "    Explore the envoy logs and come back here when you are ready. \n"
@@ -36,12 +40,14 @@ printf "\n\n    When you are ready for the next step hit enter.\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 open "http://localhost:5601/app/kibana#/discover"
 
+read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "\n\n**************    About to call httpbin via envoy front proxy    **************\n\n"
 printf "    The following curl command initiates a request through envoy to httpbin.\n"
 printf "    Explore the logs and come back here when you are ready to clean up. \n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 curl -v --location --request GET 'http://localhost:8080/anything'
 
+read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "\n\n**************    About to clean up and remove docker instances    **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 docker-compose down

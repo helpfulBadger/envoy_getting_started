@@ -1,7 +1,7 @@
 #!/bin/bash
 
-printf "\n\n    This script starts an OPA Server via docker compose and demonstrates the use of JWS authorization policies.\n"
-printf "\n\n**************    About to start opa via docker-compose   **************\n\n"
+printf "\n\n    This script starts an Envoy Server via docker compose and demonstrates the use of JWS authorization policies.\n"
+printf "\n\n**************    About to start envoy via docker-compose   **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 
 export agent_RS256_token=$(<identities/agent-RS256.jws)
@@ -64,35 +64,10 @@ curl -v --location --request GET 'http://localhost:8080/anything' \
 --header "Actor-Token: www"
 
 read -n 1 -r -s -p $'Press enter to continue...\n'
-printf "**************    About to directly call OPA for decisioning requests with RS256 Tokens (SHOULD SUCCEED)   **************\n\n"
-printf "    OPA can also return decisions via a REST API for enforcement in your technology of choice\n"
-printf "    or simply for debugging. The example sends a simulated Envoy input with valid RS256 tokens.\n"
-read -n 1 -r -s -p $'Press enter to continue...\n'
-
-curl --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true' \
---header 'Content-Type: application/json' \
---header 'Accept: application/json' \
---header 'Content-Type: text/plain' \
---data-raw "${direct_opa_call_valid_RS256_tokens}"
-
-read -n 1 -r -s -p $'Press enter to continue...\n'
-printf "**************    About to directly call OPA for decisioning requests with ES256 Tokens (SHOULD SUCCEED)   **************\n\n"
-printf "    OPA can also return decisions via a REST API for enforcement in your technology of choice\n"
-printf "    or simply for debugging. The example sends a simulated Envoy input with valid RS256 tokens.\n"
-read -n 1 -r -s -p $'Press enter to continue...\n'
-
-curl --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true' \
---header 'Content-Type: application/json' \
---header 'Accept: application/json' \
---header 'Content-Type: text/plain' \
---data-raw "${direct_opa_call_valid_ES256_tokens}"
-
-read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "\n\n**************    About to view the decision logs    **************\n\n"
-printf "    Now let's take a look at the opa decision logs.\n"
-printf "    They are in json lines format. If needed, copy an paste to your favorite json viewer to read them more easily.\n"
+printf "    Now let's take a look at the envoy decision logs.\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
-docker logs 05_opa_validate_jws_opa_1
+docker logs 06_envoy_validate_jws_envoy_1
 
 read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "\n\n**************    About to clean up and remove docker instances    **************\n\n"
