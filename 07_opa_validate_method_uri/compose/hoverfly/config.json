@@ -362,6 +362,51 @@
 		  }
 		},
 		{
+			"request": {
+			  "path": [
+				{
+				  "matcher": "exact",
+				  "value": "/api/customer/12345/account/12345"
+				}
+			  ],
+			  "method": [
+				{
+				  "matcher": "exact",
+				  "value": "GET"
+				}
+			  ]
+			},
+			"response": {
+			  "status": 200,
+			  "body": "{\"description\":\"Endpoint to get account 12345 for Customer #12345\"}\n",
+			  "encodedBody": false,
+			  "headers": {
+				"Access-Control-Allow-Origin": [
+				  "*"
+				],
+				"Connection": [
+				  "Keep-Alive"
+				],
+				"Content-Length": [
+				  "109"
+				],
+				"Content-Type": [
+				  "application/json"
+				],
+				"Date": [
+				  "Thu, 27 Aug 2020 20:16:13 +0000"
+				],
+				"Hoverfly": [
+				  "Was-Here"
+				],
+				"Keep-Alive": [
+				  "timeout=5"
+				]
+			  },
+			  "templated": false
+			}
+		  },
+		{
 		  "request": {
 			"path": [
 			  {
