@@ -1,0 +1,116 @@
+{
+    "/api/api_1": { "apiName":"API_1", "path":"/api/api_1", "property_1":"API 1 property 1", "property_2":"API 1 property 2" },
+    "/api/api_2": { "apiName":"API_2", "path":"/api/api_2", "property_1":"API 2 property 1", "property_2":"API 2 property 2" },
+    "/api/person/myname": {
+        "first_name": "skippy",
+        "last_name": "johnson",
+        "address": {
+          "line_1": "c/o someone",
+          "line_2": "1234 main street",
+          "city": "Los Angeles",
+          "state": "CA",
+          "zip": "90210"
+        },
+        "favorites": [
+          "red",
+          "movies",
+          "music"
+        ]
+      },
+      "/anything": {
+        "args": {},
+        "data": "",
+        "files": {},
+        "form": {},
+        "headers": {
+          "Accept": "*/*",
+          "Host": "httpbin.org",
+          "User-Agent": "curl/7.61.0",
+          "X-Amzn-Trace-Id": "Root=1-5f4bbbca-c18b400834c3a068247ceef8"
+        },
+        "json": null,
+        "method": "GET",
+        "origin": "71.206.147.114",
+        "url": "https://httpbin.org/anything"
+      },
+      "/get": {
+        "args": {},
+        "headers": {
+          "Accept": "*/*",
+          "Host": "httpbin.org",
+          "User-Agent": "curl/7.61.0",
+          "X-Amzn-Trace-Id": "Root=1-5f4bbbf7-4e4769930638ce9518fea797"
+        },
+        "origin": "71.206.147.114",
+        "url": "https://httpbin.org/get"
+      },
+      "/post": {
+        "args": {},
+        "data": "",
+        "files": {},
+        "form": {},
+        "headers": {
+          "Accept": "*/*",
+          "Host": "httpbin.org",
+          "User-Agent": "curl/7.61.0",
+          "X-Amzn-Trace-Id": "Root=1-5f4bbc9b-b88776acc5a84372e046f7d2"
+        },
+        "json": null,
+        "origin": "71.206.147.114",
+        "url": "https://httpbin.org/post"
+      },
+      "/put": {
+        "args": {},
+        "data": "",
+        "files": {},
+        "form": {},
+        "headers": {
+          "Accept": "*/*",
+          "Host": "httpbin.org",
+          "User-Agent": "curl/7.61.0",
+          "X-Amzn-Trace-Id": "Root=1-5f4bbcc1-b5df21527f894c1a793f591a"
+        },
+        "json": null,
+        "origin": "71.206.147.114",
+        "url": "https://httpbin.org/put"
+      },
+      "/delete": {
+        "args": {},
+        "data": "",
+        "files": {},
+        "form": {},
+        "headers": {
+          "Accept": "*/*",
+          "Host": "httpbin.org",
+          "User-Agent": "curl/7.61.0",
+          "X-Amzn-Trace-Id": "Root=1-5f4bbcfb-3654a5e00e25dd802a6324e0"
+        },
+        "json": null,
+        "origin": "71.206.147.114",
+        "url": "https://httpbin.org/delete"
+      },
+      "/patch": {
+        "args": {},
+        "data": "",
+        "files": {},
+        "form": {},
+        "headers": {
+          "Accept": "*/*",
+          "Host": "httpbin.org",
+          "User-Agent": "curl/7.61.0",
+          "X-Amzn-Trace-Id": "Root=1-5f4bbd46-c4ac6e145acc2aa00591dba2"
+        },
+        "json": null,
+        "origin": "71.206.147.114",
+        "url": "https://httpbin.org/patch"
+      },
+      "/api/customer": {
+        "description": "Customer API to create a customer or get customer information"
+      },
+      "/api/customer/12345": {
+        "description": "Customer Profile Information for Customer # 12345"
+      },
+      "/api/customer/12345/account/12345": {
+        "description": "Endpoint to get account 12345 for Customer #12345"
+      }
+    }
