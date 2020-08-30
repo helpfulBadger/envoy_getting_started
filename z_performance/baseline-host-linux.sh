@@ -6,7 +6,6 @@ read -n 1 -r -s -p $'Press enter to continue...\n'
 
 cd fastMocks/ && ./fastMocks_linux -cf mock_api_data.json &
 
-
 read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "\n\n******* About to show background jobs  ******* \n\n"
 printf "    The fastMock server is in the background and can be seen with the jobs command.\n"
@@ -29,7 +28,7 @@ printf "    WRK is a very high throughput load testing tool that typically scale
 printf "    as much as other tools. This will run a 30 second benchmark and save the output to results/api-customer-host-baseline-wrk.txt\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "    Running load test.....\n"
-./wrk_linux -t 4 -c100 -d30s --latency http://localhost:8000/api/customer  > results/api-customer-host-baseline-wrk_l.txt
+bin/wrk_linux -t 4 -c100 -d30s --latency http://localhost:8000/api/customer  > results/api-customer-host-baseline-wrk_l.txt
 printf "    Finished!!!!\n"
 
 read -n 1 -r -s -p $'Press enter to continue...\n'
@@ -38,7 +37,7 @@ printf "    WRK2 is a variant of WRK that has a constant throughput option. This
 printf "    This will run a 30 second benchmark and save the output to results/api-customer-host-baseline-wrk2.txt\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "    Running load test.....\n"
-./wrk_linux -t 4 -c100 -d30s --latency http://localhost:8000/api/customer  > results/api-customer-host-baseline-wrk2_l.txt
+bin/wrk2_linux -t 4 -c100 -d30s --latency http://localhost:8000/api/customer  > results/api-customer-host-baseline-wrk2_l.txt
 printf "    Finished!!!!\n"
 
 read -n 1 -r -s -p $'Press enter to continue...\n'
@@ -47,7 +46,7 @@ printf "    Hey is a golang based load testing tool that typically scales better
 printf "    as much as other tools. This will run a 30 second benchmark and save the output to results/api-customer-host-baseline-hey.txt\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "    Running load test.....\n"
-./hey_linux -z 30s -c 75              'http://localhost:8000/api/customer' > results/api-customer-host-baseline-hey_l.txt
+bin/hey_linux -z 30s -c 75              'http://localhost:8000/api/customer' > results/api-customer-host-baseline-hey_l.txt
 printf "    Finished!!!!\n"
 
 read -n 1 -r -s -p $'Press enter to continue...\n'

@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  mock:
+    build: fastMocks
+    ports:
+      - "8000:8000"
+  wrk:
+    build: wrk
+  wrk2:
+    build: wrk2
+  hey:
+    build: hey
