@@ -1,0 +1,14 @@
+Running 30s test @ http://mock:8000/api/customer
+  4 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     5.94ms    7.50ms 185.88ms   91.00%
+    Req/Sec     5.32k     1.03k    8.71k    67.87%
+  Latency Distribution
+     50%    3.82ms
+     75%    7.34ms
+     90%   12.76ms
+     99%   33.56ms
+  635244 requests in 30.01s, 162.96MB read
+  Socket errors: connect 0, read 0, write 0, timeout 99
+Requests/sec:  21168.90
+Transfer/sec:      5.43MB

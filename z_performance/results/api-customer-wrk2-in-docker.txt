@@ -1,0 +1,12 @@
+Running 15s test @ http://mock:8000/api/customer
+  4 threads and 100 connections
+  Thread calibration: mean lat.: 1275.505ms, rate sampling interval: 5251ms
+  Thread calibration: mean lat.: 1456.725ms, rate sampling interval: 5283ms
+  Thread calibration: mean lat.: 1439.226ms, rate sampling interval: 5255ms
+  Thread calibration: mean lat.: 1353.356ms, rate sampling interval: 5595ms
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     3.73s   431.42ms   4.92s    63.38%
+    Req/Sec       -nan      -nan   0.00      0.00%
+  296584 requests in 15.00s, 76.09MB read
+Requests/sec:  19772.81
+Transfer/sec:      5.07MB

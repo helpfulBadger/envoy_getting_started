@@ -7,6 +7,7 @@ services:
   wrk:
     build: wrk
   wrk2:
+#    image: bootjp/wrk2
     build: wrk2
   hey:
     build: hey
