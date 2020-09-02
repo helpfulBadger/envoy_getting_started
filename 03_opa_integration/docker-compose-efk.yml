@@ -20,7 +20,7 @@ services:
         tag: envoy
 
   opa:
-    image: openpolicyagent/opa:0.22.0-envoy
+    image: openpolicyagent/opa:0.23.0-envoy  # opa:0.22.0-envoy
     volumes:
       - ./policy.rego:/config/policy.rego
     command:
