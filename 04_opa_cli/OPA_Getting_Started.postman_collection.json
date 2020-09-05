@@ -1,0 +1,592 @@
+{
+	"info": {
+		"_postman_id": "303fe01e-beb4-47a0-a6e0-10b2a53c19c9",
+		"name": "OPA_Getting_Started",
+		"description": "\n# Getting Started with Open Policy Agent APIs\n\nThis collection shows simple examples of how to use the Open Policy Agent REST APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all OPA Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/v1/data?pretty=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"data"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all OPA Policies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/v1/policies?pretty=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"policies"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload Sample User & Pet data",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_attributes\": {\n        \"alice\": {\n            \"tenure\": 21,\n            \"title\": \"owner\"\n        },\n        \"bob\": {\n            \"tenure\": 15,\n            \"title\": \"employee\"\n        },\n        \"eve\": {\n            \"tenure\": 5,\n            \"title\": \"employee\"\n        },\n        \"dave\": {\n            \"tenure\": 5,\n            \"title\": \"customer\"\n        }\n    },\n    \"pet_attributes\": {\n        \"dog123\": {\n            \"adopted\": true,\n            \"age\": 2,\n            \"breed\": \"terrier\",\n            \"name\": \"toto\"\n        },\n        \"dog456\": {\n            \"adopted\": false,\n            \"age\": 3,\n            \"breed\": \"german-shepherd\",\n            \"name\": \"rintintin\"\n        },\n        \"dog789\": {\n            \"adopted\": false,\n            \"age\": 2,\n            \"breed\": \"collie\",\n            \"name\": \"lassie\"\n        },\n        \"cat123\": {\n            \"adopted\": false,\n            \"age\": 1,\n            \"breed\": \"fictitious\",\n            \"name\": \"cheshire\"\n        }\n    }\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:8181/v1/data/reference?pretty=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"data",
+						"reference"
+					],
+					"query": [
+						{
+							"key": "provenance",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "metrics",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "instrument",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "pretty",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Uploaded Reference Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/v1/data?pretty=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"data"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Example Pet Shop ABAC Policy",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "# Attribute-based Access Control (ABAC)\n# -------------------------------------\n#\n# This example implements ABAC for a Pet Store API. The Pet Store API allows\n# users to look at pets, adopt them, update their stats, and so on. The policy\n# controls which users can perform actions on which resources. The policy implements\n# a Attribute-based Access Control model where users, resources, and actions have\n# attributes and the policy makes decisions based on those attributes.\n#\n# This example shows how to:\n#\n#\t* Implement ABAC using Rego that leverages external data.\n#\t* Define helper rules that provide useful abstractions (e.g., `user_is_senior`).\n#\n# For more information see:\n#\n#\t* Rego comparison to other systems: https://www.openpolicyagent.org/docs/latest/comparison-to-other-systems/\n#\n# Hint: The Coverage feature lets you view the policy statements that were executed\n# when the policy was last evaluated. Try enabling Coverage and running evaluation\n# with different inputs.\n\npackage app.abac\n\n#default allow = {\n#    \"allowed\": false\n#}\n\n\nallow = response {\n\tuser_is_owner\n    response := {\n        \"allowed\": true,\n        \"allowReason\" : \"user_is_owner\"\n    }\n}\n\nallow = response {\n    user_is_employee_and_action_is_read\n    response := {\n        \"allowed\": true,\n        \"allowReason\" : \"user_is_employee and action_is_read\"\n    }\n}\n\nallow = response {\n    user_is_employee_and_senior_and_action_is_update\n    response := {\n        \"allowed\": true,\n        \"allowReason\" : \"user_is_employee and senior and action_is_update\"\n    }\n}\n\nallow  = response {\n    user_is_customer_and_action_is_read_and_pet_is_not_adopted\n    response := {\n        \"allowed\": true,\n        \"allowReason\" : \"user_is_customer and action_is_read and pet_is_not_adopted\"\n    }\n}\n\nallow = response {\n    not user_is_owner\n    not user_is_employee_and_action_is_read\n    not user_is_employee_and_senior_and_action_is_update\n    not user_is_customer_and_action_is_read_and_pet_is_not_adopted\n    response := {\n        \"allowed\": false,\n        \"messages\" : messages\n    }\n}\n\nuser_is_owner {\n\tdata.reference.user_attributes[input.user].title == \"owner\"\n}\n\nuser_is_employee {\n\tdata.reference.user_attributes[input.user].title == \"employee\"\n}\n\nuser_is_customer {\n\tdata.reference.user_attributes[input.user].title == \"customer\"\n}\n\nuser_is_senior {\n\tdata.reference.user_attributes[input.user].tenure > 8\n}\n\naction_is_read {\n\tinput.action == \"read\"\n}\n\naction_is_update {\n\tinput.action == \"update\"\n}\n\npet_is_adopted {\n\tdata.pet_attributes[input.resource].adopted == true\n}\n\nuser_is_employee_and_action_is_read  {\n\tuser_is_employee\n\taction_is_read\n}\n\nuser_is_employee_and_senior_and_action_is_update  {\n\tuser_is_employee\n\tuser_is_senior\n\taction_is_update\n}\n\nuser_is_customer_and_action_is_read_and_pet_is_not_adopted  {\n\tuser_is_customer\n\taction_is_read\n\tnot pet_is_adopted\n}\n\nmessages[ msg ]{\n  not user_is_owner\n  msg := { \"id\"  : \"1\", \"message\" : \"condition not met: user not an owner\" }\n}\n\nmessages[ msg ]{\n  not user_is_employee\n  msg := { \"id\"  : \"2\", \"message\" : \"user not an employee\" }\n}\n\nmessages[ msg ]{\n  not user_is_customer\n  msg := { \"id\"  : \"3\", \"message\" : \"user not a customer\" }\n}\n\nmessages[ msg ]{\n  not user_is_senior\n  msg := { \"id\"  : \"4\", \"message\" : \"user not a senior\" }\n}\n\nmessages[ msg ]{\n  not pet_is_adopted\n  msg := { \"id\"  : \"5\", \"message\" : \"pet is not adopted\" }\n}\n\nmessages[ msg ]{\n  not user_is_employee_and_action_is_read\n  msg := { \"id\"  : \"6\", \"message\" : \"condition not met: user is employee and action is read\" }\n}\n\nmessages[ msg ]{\n  not user_is_employee_and_senior_and_action_is_update\n  msg := { \"id\"  : \"7\", \"message\" : \"condition not met: user is employee and senior and action is update\" }\n}\n\nmessages[ msg ]{\n  not user_is_customer_and_action_is_read_and_pet_is_not_adopted\n  msg := { \"id\"  : \"8\", \"message\" : \"condition not met: user is customer and action is read and pet is not adopted\" }\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/v1/policies/app/abac?pretty=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"policies",
+						"app",
+						"abac"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Uploaded Policy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/v1/policies?pretty=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"policies"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Allow Employees to read pet data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"input\": {\n    \"user\": \"bob\",\n    \"action\": \"read\",\n    \"resource\": \"dog123\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8181/v1/data/app/abac/allow?provenance=true&pretty=true&explain=full&metrics=true&instrument=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"data",
+						"app",
+						"abac",
+						"allow"
+					],
+					"query": [
+						{
+							"key": "provenance",
+							"value": "true"
+						},
+						{
+							"key": "pretty",
+							"value": "true"
+						},
+						{
+							"key": "explain",
+							"value": "full"
+						},
+						{
+							"key": "metrics",
+							"value": "true"
+						},
+						{
+							"key": "instrument",
+							"value": "true"
+						},
+						{
+							"key": "coverage",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Allow Any Owner Action",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"input\": {\n    \"user\": \"alice\",\n    \"action\": \"read\",\n    \"resource\": \"dog123\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8181/v1/data/app/abac/allow?provenance=true&pretty=true&explain=full&metrics=true&instrument=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"data",
+						"app",
+						"abac",
+						"allow"
+					],
+					"query": [
+						{
+							"key": "provenance",
+							"value": "true"
+						},
+						{
+							"key": "pretty",
+							"value": "true"
+						},
+						{
+							"key": "explain",
+							"value": "full"
+						},
+						{
+							"key": "metrics",
+							"value": "true"
+						},
+						{
+							"key": "instrument",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Allow Customers to Read About Pets up for Adoption",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"input\": {\n    \"user\": \"dave\",\n    \"action\": \"read\",\n    \"resource\": \"dog123\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8181/v1/data/app/abac/allow?provenance=true&pretty=true&explain=full&metrics=true&instrument=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"data",
+						"app",
+						"abac",
+						"allow"
+					],
+					"query": [
+						{
+							"key": "provenance",
+							"value": "true"
+						},
+						{
+							"key": "pretty",
+							"value": "true"
+						},
+						{
+							"key": "explain",
+							"value": "full"
+						},
+						{
+							"key": "metrics",
+							"value": "true"
+						},
+						{
+							"key": "instrument",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deny All Actions for Unknown Users",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"input\": {\n    \"user\": \"un-registered user\",\n    \"action\": \"read\",\n    \"resource\": \"dog123\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8181/v1/data/app/abac/allow?provenance=true&pretty=true&explain=full&metrics=true&instrument=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"data",
+						"app",
+						"abac",
+						"allow"
+					],
+					"query": [
+						{
+							"key": "provenance",
+							"value": "true"
+						},
+						{
+							"key": "pretty",
+							"value": "true"
+						},
+						{
+							"key": "explain",
+							"value": "full"
+						},
+						{
+							"key": "metrics",
+							"value": "true"
+						},
+						{
+							"key": "instrument",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Pet Shop Reference data",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8181/v1/data/reference?pretty=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"data",
+						"reference"
+					],
+					"query": [
+						{
+							"key": "provenance",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "metrics",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "instrument",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "pretty",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Emptied Reference Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/v1/data?pretty=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"data"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete the Pet Shop App's ABAC Policy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/v1/policies/app/abac",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"policies",
+						"app",
+						"abac"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Emptied Policy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/v1/policies?pretty=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"v1",
+						"policies"
+					],
+					"query": [
+						{
+							"key": "pretty",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

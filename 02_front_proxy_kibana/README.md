@@ -4,7 +4,7 @@ This is the 2nd blog post in a series of getting started guides for using Envoy 
 
 ## Adding EFK containers
 
-We will be using Fluent Bit in this example because it is lite weight and simpler to deal with than Logstash or full fledged FluentD. Below is a gist with a very basic configuration and no special optimizations. Lines 9 and 30 use the `depend_on` property to cause docker to start elasticSearch first and then the other containers that depend on elasticSearch. 
+We will be using Fluent Bit in this example because it is lite weight and simpler to deal with than Logstash or full fledged FluentD. Below is a Dockerfile with a very basic configuration and no special optimizations. Lines 9 and 30 use the `depend_on` property to cause docker to start elasticSearch first and then the other containers that depend on elasticSearch. 
 
 ``` Dockerfile
   fluentbit:
@@ -42,7 +42,7 @@ We will be using Fluent Bit in this example because it is lite weight and simple
 
 ## Wiring our containers into EFK
 
-With the log aggregation containers added to our docker-compose file, we now need to wire them into the other containers in our environment. The gist below shows a couple of small changes that we needed to make to our compose file from Getting Started Guide #1. We added the property at line 14 below which expresses our dependency on elasticSeach. Additionally, we need to wire standard out and standard error from our containers to fluentBit. This is done through the logging properties on lines 17 and 27. The driver line tells docker which log driver to use and the tag help make it more clear which container is the source of the logs. 
+With the log aggregation containers added to our docker-compose file, we now need to wire them into the other containers in our environment. The Dockerfile below shows a couple of small changes that we needed to make to our compose file from Getting Started Guide #1. We added the property at line 14 below which expresses our dependency on elasticSeach. Additionally, we need to wire standard out and standard error from our containers to fluentBit. This is done through the logging properties on lines 17 and 27. The driver line tells docker which log driver to use and the tag help make it more clear which container is the source of the logs. 
 
 ``` Dockerfile
 version: "3.8"
