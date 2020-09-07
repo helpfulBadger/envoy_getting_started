@@ -2,7 +2,7 @@
 
 printf "\n\n    This script starts an OPA Server via docker compose and demonstrates the use of JWS authorization policies.\n"
 printf "\n\n**************    About to start opa via docker-compose   **************\n\n"
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 
 export agent_RS256_token=$(<identities/agent-RS256.jws)
 export app_RS256_token=$(<identities/app-details-RS256.jws )
@@ -17,84 +17,86 @@ export direct_opa_call_valid_ES256_tokens="{ \"input\": { \"attributes\":{\"dest
 
 docker-compose up -d --build
 
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 printf "\n\n**************    About to check to make sure everything is started    **************\n\n"
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 docker ps -a
 
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 printf "\n******* About to send a request to envoy with valid RS256 jws Tokens (SHOULD SUCCEED) ******* \n\n"
 printf "    The request will go to envoy. Envoy forwards it to Open Policy Agent (OPA). There are 3 identity tokens in this mock.\n"
 printf "    OPA takes tokens out of the headers and validates the signature on each. If the signatures are valid it lets the request through.\n"
 printf "    Envoy uses the decision from OPA to determine if it forwards the request to httpbin or not.\n"
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 
 curl -v --location --request GET 'http://localhost:8080/anything' \
 --header "App-Token: ${app_RS256_token}" \
 --header "Subject-Token: ${sub_RS256_token}" \
 --header "Actor-Token: ${agent_RS256_token}"
 
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 printf "************** About to send call envoy with valid ES256 jws tokens (SHOULD SUCCEED) **************\n\n"
 printf "    This example is the same as the previous one except the tokens are signed with the ES256 algorithm.\n"
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 
 curl -v --location --request GET 'http://localhost:8080/anything' \
 --header "App-Token: ${app_ES256_token}" \
 --header "Subject-Token: ${sub_ES256_token}" \
 --header "Actor-Token: ${agent_ES256_token}"
 
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 printf "**************   About to call envoy with no jws tokens (SHOULD BE BLOCKED)   **************\n\n"
 printf "    In this example the identity tokens are missing. OPA will not be able to validate\n"
 printf "    the tokens and return a blocking decision to Envoy.\n"
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 
 curl -v --location --request GET 'http://localhost:8080/anything'
 
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 printf "**************    About to send call envoy with corrupt jws tokens (SHOULD BE BLOCKED)    **************\n\n"
 printf "    In this example the identity tokens are corrupt. OPA will not be able to validate\n"
 printf "    the tokens and throw an error. OPA errors result in blocking the request.\n"
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 
 curl -v --location --request GET 'http://localhost:8080/anything' \
 --header "App-Token: www" \
 --header "Subject-Token: www" \
 --header "Actor-Token: www"
 
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
+printf "*************************************************************************************************************************\n\n"
+printf "**************            Switching to showing direct calls to the OPA REST API for decisioning            **************\n\n"
+printf "*************************************************************************************************************************\n\n"
+
 printf "**************    About to directly call OPA for decisioning requests with RS256 Tokens (SHOULD SUCCEED)   **************\n\n"
 printf "    OPA can also return decisions via a REST API for enforcement in your technology of choice\n"
 printf "    or simply for debugging. The example sends a simulated Envoy input with valid RS256 tokens.\n"
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 
 curl --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'Content-Type: text/plain' \
 --data-raw "${direct_opa_call_valid_RS256_tokens}"
 
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 printf "**************    About to directly call OPA for decisioning requests with ES256 Tokens (SHOULD SUCCEED)   **************\n\n"
 printf "    OPA can also return decisions via a REST API for enforcement in your technology of choice\n"
 printf "    or simply for debugging. The example sends a simulated Envoy input with valid RS256 tokens.\n"
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 
 curl --location --request POST 'http://localhost:8181/v1/data/envoy/authz/allow?pretty=true' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
---header 'Content-Type: text/plain' \
 --data-raw "${direct_opa_call_valid_ES256_tokens}"
 
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 printf "\n\n**************    About to view the decision logs    **************\n\n"
 printf "    Now let's take a look at the opa decision logs.\n"
 printf "    They are in json lines format. If needed, copy an paste to your favorite json viewer to read them more easily.\n"
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 docker logs 05_opa_validate_jws_opa_1
 
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 printf "\n\n**************    About to clean up and remove docker instances    **************\n\n"
-read -n 1 -r -s -p $'Press enter to continue...\n'
+read -n 1 -r -s -p $'\nPress enter to continue...\n\n'
 docker-compose down
