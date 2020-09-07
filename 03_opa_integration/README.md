@@ -100,17 +100,22 @@ static_resources:
                           target_uri: opa:9191
                           stat_prefix: ext_authz
                         timeout: 0.5s
-                  - name: envoy.router
+                  - name: envoy.filters.http.router
                     typed_config: {}
   clusters:
     - name: service
       connect_timeout: 0.25s
-      type: strict_dns
+      type: STRICT_DNS
       lb_policy: round_robin
-      hosts:
-        socket_address:
-          address: ${SERVICE_NAME}
-          port_value: ${SERVICE_PORT}
+      load_assignment:
+        cluster_name: service
+        endpoints:
+        - lb_endpoints:
+          - endpoint:
+              address:
+                socket_address:
+                  address: ${SERVICE_NAME}
+                  port_value: ${SERVICE_PORT}
 admin:
   access_log_path: "/dev/null"
   address:

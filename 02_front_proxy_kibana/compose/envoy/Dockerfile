@@ -1,4 +1,4 @@
-FROM envoyproxy/envoy:v1.14.2
+FROM envoyproxy/envoy:v1.15-latest
 
 COPY entrypoint.sh /
 RUN chmod 500 /entrypoint.sh

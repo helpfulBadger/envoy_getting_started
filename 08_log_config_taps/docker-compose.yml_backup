@@ -1,0 +1,62 @@
+version: "3.8"
+services:
+  envoy:
+    build: ./compose/envoy
+    ports:
+      - "8080:80"
+      - "8001:8001"
+    volumes:
+      - ./envoy.yaml:/config/envoy.yaml
+    environment:
+      - DEBUG_LEVEL=debug
+      - SERVICE_NAME=app
+      - SERVICE_PORT=80
+    depends_on:
+      - fluentbit
+      - elasticsearch
+    logging:
+      driver: fluentd
+      options:
+        tag: envoy
+
+  app:
+    image: kennethreitz/httpbin:latest
+    depends_on:
+      - fluentbit
+      - elasticsearch
+    logging:
+      driver: fluentd
+      options:
+        tag: httpbin
+
+  fluentbit:
+    image: fluent/fluent-bit:1.5.2 
+    volumes:
+      - ./fluent-bit.conf:/fluent-bit/etc/fluent-bit.conf
+    restart: always
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+    depends_on:
+      - elasticsearch
+
+  # Elasticsearch Docker Images: https://www.docker.elastic.co/
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.2
+    restart: always
+    environment:
+      - "xpack.security.enabled=false"
+      - "discovery.type=single-node"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.4.2
+    restart: always
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
