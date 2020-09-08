@@ -1,6 +1,6 @@
 # Envoy & Open Policy Agent
 
-This is the 3rd Envory & Open Policy Agent Getting Started Guide. Each guide is intended to explore a single feature and walk through a simple implementation. Each guide builds on the concepts explored in the previous guide to build a very powerful authorization services by the end of the series. 
+This is the 3rd Envoy & Open Policy Agent Getting Started Guide. Each guide is intended to explore a single feature and walk through a simple implementation. Each guide builds on the concepts explored in the previous guide to build a very powerful authorization services by the end of the series. 
 
 ## Envoy's External Authorization API
 
