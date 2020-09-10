@@ -22,7 +22,7 @@ static_resources:
                 http_filters:
                   - name: envoy.filters.http.jwt_authn
                     typed_config:
-                      "@type": "type.googleapis.com/envoy.config.filter.http.jwt_authn.v2alpha.JwtAuthentication"
+                      "@type": "type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.JwtAuthentication"
                       providers:
                         workforce_provider:
                           issuer: workforceIdentity.example.com
