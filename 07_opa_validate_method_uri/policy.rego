@@ -13,8 +13,6 @@ app  = p {
   [ _, p, _ ] :=  io.jwt.decode(appToken)	
 }
 
-# default allow = false
-
 endpoints = [{"id":"001","method":"GET","pattern":"/api/customer"},{"id":"002","method":"POST","pattern":"/api/customer"},{"id":"003","method":"DELETE","pattern":"/api/customer/*"},{"id":"004","method":"GET","pattern":"/api/customer/*"},{"id":"005","method":"POST","pattern":"/api/customer/*"},{"id":"006","method":"PUT","pattern":"/api/customer/*"},{"id":"007","method":"GET","pattern":"/api/customer/*/account"},{"id":"008","method":"POST","pattern":"/api/customer/*/account"},{"id":"009","method":"DELETE","pattern":"/api/customer/*/account/*"},{"id":"010","method":"GET","pattern":"/api/customer/*/account/*"},{"id":"011","method":"PUT","pattern":"/api/customer/*/account/*"},{"id":"012","method":"GET","pattern":"/api/customer/*/messages"},{"id":"013","method":"POST","pattern":"/api/customer/*/messages"},{"id":"014","method":"DELETE","pattern":"/api/customer/*/messages/*"},{"id":"015","method":"GET","pattern":"/api/customer/*/messages/*"},{"id":"016","method":"POST","pattern":"/api/customer/*/messages/*"},{"id":"017","method":"PUT","pattern":"/api/customer/*/messages/*"},{"id":"018","method":"GET","pattern":"/api/customer/*/order"},{"id":"019","method":"POST","pattern":"/api/customer/*/order"},{"id":"020","method":"DELETE","pattern":"/api/customer/*/order/*"},{"id":"021","method":"GET","pattern":"/api/customer/*/order/*"},{"id":"022","method":"POST","pattern":"/api/customer/*/order/*"},{"id":"023","method":"PUT","pattern":"/api/customer/*/order/*"},{"id":"024","method":"GET","pattern":"/api/customer/*/paymentcard"},{"id":"025","method":"POST","pattern":"/api/customer/*/paymentcard"},{"id":"026","method":"DELETE","pattern":"/api/customer/*/paymentcard/*"},{"id":"027","method":"GET","pattern":"/api/customer/*/paymentcard/*"},{"id":"028","method":"POST","pattern":"/api/customer/*/paymentcard/*"},{"id":"029","method":"PUT","pattern":"/api/customer/*/paymentcard/*"},{"id":"030","method":"DELETE","pattern":"/api/featureFlags"},{"id":"031","method":"GET","pattern":"/api/featureFlags"},{"id":"032","method":"POST","pattern":"/api/featureFlags"},{"id":"033","method":"PUT","pattern":"/api/featureFlags"},{"id":"034","method":"GET","pattern":"/api/order"},{"id":"035","method":"POST","pattern":"/api/order"},{"id":"036","method":"DELETE","pattern":"/api/order/*"},{"id":"037","method":"GET","pattern":"/api/order/*"},{"id":"038","method":"POST","pattern":"/api/order/*"},{"id":"039","method":"PUT","pattern":"/api/order/*"},{"id":"040","method":"GET","pattern":"/api/order/*/payment"},{"id":"041","method":"POST","pattern":"/api/order/*/payment"},{"id":"042","method":"DELETE","pattern":"/api/order/*/payment/*"},{"id":"043","method":"GET","pattern":"/api/order/*/payment/*"},{"id":"044","method":"POST","pattern":"/api/order/*/payment/*"},{"id":"045","method":"PUT","pattern":"/api/order/*/payment/*"},{"id":"046","method":"GET","pattern":"/api/product"},{"id":"047","method":"POST","pattern":"/api/product"},{"id":"048","method":"DELETE","pattern":"/api/product/*"},{"id":"049","method":"GET","pattern":"/api/product/*"},{"id":"050","method":"POST","pattern":"/api/product/*"},{"id":"051","method":"PUT","pattern":"/api/product/*"},{"id":"052","method":"GET","pattern":"/api/shipment"},{"id":"053","method":"POST","pattern":"/api/shipment"},{"id":"054","method":"DELETE","pattern":"/api/shipment/*"},{"id":"055","method":"GET","pattern":"/api/shipment/*"},{"id":"056","method":"POST","pattern":"/api/shipment/*"},{"id":"057","method":"PUT","pattern":"/api/shipment/*"}]
 
 apiPermissions = {
@@ -40,15 +38,17 @@ endpointID = epID {
   p := trim_right( http_request.path, "/")  #strip trailing slash if present
   glob.match( lower(endpoints[i].pattern), ["/"], lower(p) )
   epID := endpoints[i].id
-}
+} else = "none"
 
+default apiPermittedForClient = false
 apiPermittedForClient {
   apiPermissions[ app.client_id ][_] == endpointID
-} else = false
+}
 
+default userTypeAppropriateForClient = false
 userTypeAppropriateForClient {
   idProviderPermissions[ app.client_id ][_] == actor.iss
-} else = false
+}
 
 messages[ msg ]{
   not apiPermittedForClient
@@ -68,25 +68,28 @@ messages[ msg ]{
   }
 }
 
+default decision = false
 decision {
   apiPermittedForClient
   userTypeAppropriateForClient
-} else = false
+}
 
 allow = response {
   response := {
     "allowed": decision,
     "headers": {
       "X-Authenticated-User": "true", 
-      "X-Authenticated-App": "true"
-    },
-    "body" :{
-      "Authorized-User-Type": userTypeAppropriateForClient,
-      "Authorized-Endpoint": apiPermittedForClient,
-      "Authorization-Failures" : messages,
+      "X-Authenticated-App": "true",
       "Endpoint-ID": endpointID,
-      "Requested-Path": http_request.path,
-      "Requested-Method": http_request.method
-    }
+      "Content-Type": "application/json"
+    },
+    "body" : json.marshal(
+                      {
+                        "Authorized-User-Type": userTypeAppropriateForClient,
+                        "Authorized-Endpoint": apiPermittedForClient,
+                        "Authorization-Failures" : messages,
+                        "Requested-Path": http_request.path,
+                        "Requested-Method": http_request.method
+                      })
   }
 } 
