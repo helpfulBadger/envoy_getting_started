@@ -1824,7 +1824,7 @@
 						"id": "24a17f6a-f338-448e-9921-c874452072da",
 						"type": "text/javascript",
 						"exec": [
-							"console.log(\"Testing Result\");",
+							"//console.log(\"Testing Result\");",
 							"",
 							"pm.test(\"response should be okay\", function () {",
 							"      pm.response.to.be.success;",
@@ -1870,7 +1870,7 @@
 									"console.log(\"GET Test: \" + app + \" \" + testID  + \" \" + method + \" \" + \"http://\" + host + \":\" + port + uri + \" Expect: \" + expect );",
 									"",
 									"pm.test(\"GET response have return status: \" + expect, function () {",
-									"      console.log(\"GET Test: Response Status = \" + responseCode.code);",
+									"      //console.log(\"GET Test: Response Status = \" + responseCode.code);",
 									"      pm.response.to.have.status( Number( expect) )",
 									"});",
 									"",
@@ -1930,7 +1930,7 @@
 									"console.log(\"POST Test: \" + app + \" \" + testID  + \" \" + method + \" \" + \"http://\" + host + \":\" + port + uri + \" Expect: \" + expect );",
 									"",
 									"pm.test(\"POST response have return status: \" + expect, function () {",
-									"      console.log(\"POST Test: Response Status = \" + responseCode.code);",
+									"      //console.log(\"POST Test: Response Status = \" + responseCode.code);",
 									"      pm.response.to.have.status( Number( expect) )",
 									"});",
 									""
@@ -1989,7 +1989,7 @@
 									"console.log(\"PUT Test: \" + app + \" \" + testID  + \" \" + method + \" \" + \"http://\" + host + \":\" + port + uri + \" Expect: \" + expect );",
 									"",
 									"pm.test(\"PUT response have return status: \" + expect, function () {",
-									"      console.log(\"PUT Test: Response Status = \" + responseCode.code);",
+									"      //console.log(\"PUT Test: Response Status = \" + responseCode.code);",
 									"      pm.response.to.have.status( Number( expect) )",
 									"});",
 									""
@@ -2048,7 +2048,7 @@
 									"console.log(\"DELETE Test: \" + app + \" \" + testID  + \" \" + method + \" \" + \"http://\" + host + \":\" + port + uri + \" Expect: \" + expect );",
 									"",
 									"pm.test(\"DELETE response have return status: \" + expect, function () {",
-									"      console.log(\"DELETE Test: Response Status = \" + responseCode.code);",
+									"      //console.log(\"DELETE Test: Response Status = \" + responseCode.code);",
 									"      pm.response.to.have.status( Number( expect) )",
 									"});",
 									""
