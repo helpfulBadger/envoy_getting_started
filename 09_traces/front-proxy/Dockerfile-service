@@ -1,6 +1,9 @@
 FROM envoyproxy/envoy:v1.15-latest
 
-RUN apk update && apk add py3-pip bash curl
+RUN apt-get update
+RUN apt-get -q install apt-utils --assume-yes
+RUN apt-get -q install curl --assume-yes
+RUN apt install python3-pip --assume-yes
 RUN pip3 install -q Flask==0.11.1 requests==2.18.4
 RUN mkdir /code
 ADD ./service.py /code
