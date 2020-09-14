@@ -232,4 +232,4 @@ Note: Unnecessary use of -X or --request, GET is already inferred.
 
 # Congratulations
 
-Congratulations, you have successully stood up your first Envoy instance and configured it to forward traffic! This is the simplest possible Envoy configuration :)  We don't have any security yet or any other features that Envoy is famous for. We will get to that in future articles. Feel free to use [postman](https://www.postman.com/) to explore other request that you can send. Additionally, don't forget to explore Envoy's admin console by pointing your web browser to [http://localhost:8001](http://localhost:8001)
+Congratulations, you have successfully stood up your first Envoy instance and configured it to forward traffic! This is the simplest possible Envoy configuration :)  We don't have any security yet or any other features that Envoy is famous for. We will get to that in future articles. Feel free to use [postman](https://www.postman.com/) to explore other request that you can send. Additionally, don't forget to explore Envoy's admin console by pointing your web browser to [http://localhost:8001](http://localhost:8001)

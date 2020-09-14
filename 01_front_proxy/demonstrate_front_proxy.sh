@@ -5,9 +5,7 @@ printf "    Envoy is configured to forward traffic to an httpbin instance that i
 printf "\n\n**************    Starting envoy & httpbin via docker-compose   **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
 
-docker-compose up -d
-# if you want to force a rebuild of the envoy container use the --build parameter
-# docker-compose up -d --build
+docker-compose up -d --build
 
 read -n 1 -r -s -p $'Press enter to continue...\n'
 printf "\n\n**************    About to check to make sure everything is up    **************\n\n"

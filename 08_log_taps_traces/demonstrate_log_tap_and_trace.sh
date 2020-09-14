@@ -32,21 +32,20 @@ printf "\n\n**************                              CUSTOM LOG FORMAT       
 printf "\n\n*********************************************************************************************************\n\n"
 printf "\n\n**************    About to show the logs for the Front Proxy Envoy in our new custom format   **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
-docker logs 09_traces_front-envoy_1 1>tmp/front_envoy_stdOut.log 2>tmp/front_envoy_stdErr.log
+
+docker logs 08_log_taps_traces_front-envoy_1 1>tmp/front_envoy_stdOut.log 2>tmp/front_envoy_stdErr.log
 cat tmp/front_envoy_stdOut.log | docker run --rm -i imega/jq '.' --sort-keys && printf "\n\n"
-#cat tmp/front_envoy_stdOut.log
 
 read -n 1 -r -s -p $'\n\nPress enter to continue...\n'
 printf "\n\n**************    About to show the logs for service 1's Envoy in our new custom format   **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
-docker logs 09_traces_service1_1 1>tmp/service1_envoy_stdOut.log 2>tmp/service1_envoy_stdErr.log
+docker logs 08_log_taps_traces_service1_1 1>tmp/service1_envoy_stdOut.log 2>tmp/service1_envoy_stdErr.log
 cat tmp/service1_envoy_stdOut.log | docker run --rm -i imega/jq '.' --sort-keys && printf "\n\n"
-#cat tmp/service1_envoy_stdOut.log
 
 read -n 1 -r -s -p $'\n\nPress enter to continue...\n'
 printf "\n\n**************    About to show the logs for service 2's Envoy in our new custom format   **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
-docker logs 09_traces_service2_1 1>tmp/service2_envoy_stdOut.log 2>tmp/service2_envoy_stdErr.log
+docker logs 08_log_taps_traces_service2_1 1>tmp/service2_envoy_stdOut.log 2>tmp/service2_envoy_stdErr.log
 cat tmp/service2_envoy_stdOut.log | docker run --rm -i imega/jq '.' --sort-keys && printf "\n\n"
 
 printf "\n\n*********************************************************************************************************\n\n"
@@ -60,6 +59,7 @@ ls -alGh tmp/front
 read -n 1 -r -s -p $'Press enter to continue...\n'
 
 for file in tmp/front/*; do 
+    printf "\n\n**************    Displaying Tap    **************\n\n"
     printf "\n\n ...File: ${i} \n\n"
     cat $file
     read -n 1 -r -s -p $'Press enter to continue...\n'
@@ -76,6 +76,7 @@ ls -alGh tmp/service1
 read -n 1 -r -s -p $'Press enter to continue...\n'
 
 for file in tmp/service1/*; do 
+    printf "\n\n**************    Displaying Tap    **************\n\n"
     printf "\n\n ...File: ${i} \n\n"
     cat $file
     read -n 1 -r -s -p $'Press enter to continue...\n'
@@ -92,6 +93,7 @@ ls -alGh tmp/service2
 read -n 1 -r -s -p $'Press enter to continue...\n'
 
 for file in tmp/service2/*; do 
+    printf "\n\n**************    Displaying Tap    **************\n\n"
     printf "\n\n ...File: ${i} \n\n"
     cat $file
     read -n 1 -r -s -p $'Press enter to continue...\n'

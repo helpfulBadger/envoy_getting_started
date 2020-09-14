@@ -166,7 +166,7 @@ allow = response {
 
 Now we dive into the details of the input data structure sent from Envoy. 
 * Line 3 is an object that describes the IP address and Port that the request is going to
-* Line 16 is the request object itself. The unmarshalled body is present along with:
+* Line 16 is the request object itself. The un-marshalled body is present along with:
     * request headers
     * hostname where the original request was sent
     * a unique request ID assigned by Envoy
