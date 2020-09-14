@@ -14,7 +14,7 @@ Envoy is just like any other proxy. It receives requests and forwards them to se
 1. Sidecar Proxy - In a sidecar deployment, the Envoy server is located at the same IP address as each service that it protects. The Envoy server when deployed as as sidecar only has a single service instance behind it. The sidecar approach can intercept all inbound traffic and optionally all outbound traffic on behalf of the service instance. [IP Tables](https://en.wikipedia.org/wiki/Iptables) rules are typically used to configure the operating system to capture and redirect this traffic to Envoy. <img class="special-img-class" src="https://helpfulbadger.github.io/img/2020/08/Envoy-front%20proxy-sidecar.svg" /><br>
     The diagram above shows the sidecar approach.
 
-In this article and example project we will start with the simplest possible Envoy deployment. This example just uses docker compose to show how to get Envoy up and running. There will be a number of subsequent articles that expand on this simple approach to demostrate more Envoy capabilies. Open Policy Agent will also be introduced to handle more complex authorization use cases that cannot be handled by Envoy alone. 
+In this article and example project we will start with the simplest possible Envoy deployment. This example just uses docker compose to show how to get Envoy up and running. There will be a number of subsequent articles that expand on this simple approach to demonstrate more Envoy capabilities. Open Policy Agent will also be introduced to handle more complex authorization use cases that cannot be handled by Envoy alone. 
 
 The diagram below shows the environment that we are about to build and deploy locally. 
 
@@ -165,7 +165,6 @@ Move the Dockerfile and enterypoint.sh to a subdirectoy to keep things organzied
 mkdir -p compose/envoy  
 mv Dockerfile compose/envoy
 mv entrypoint.sh compose/envoy
-
 ```  
 
 ## Step 4: Define services in a Compose file
