@@ -21,8 +21,18 @@ The diagram below shows the environment that we are about to build and deploy lo
 <img class="special-img-class" src="https://helpfulbadger.github.io/img/2020/08/Envoy-front%20proxy-envoy_in_docker.svg" />
 
 ## Building an Envoy Front Proxy
+_Note: The [code for the complete working example](https://github.com/helpfulBadger/envoy_getting_started/tree/master/01_front_proxy) can be found on Github._
 
-The [code for the complete working example](https://github.com/helpfulBadger/envoy_getting_started/tree/master/01_front_proxy) can be found on Github. We will start with the Envoy docker images. The Envoy images are located on [Dockerhub](https://hub.docker.com/r/envoyproxy/envoy/tags). We will use `docker-compose` to build some configurability into our Envoy environment. 
+If you don't have docker installed, do it now. You can find details (https://docs.docker.com/get-started/)
+You can validate docker is installed correctly 
+
+```
+$ docker --version 
+Docker version 19.03.12, build 48a66213fe 
+```
+
+### Set Up Dockerfile Using Envoy Image
+Next we will make a dockerfile build on an  Envoy docker image. The Envoy images are located on [Dockerhub](https://hub.docker.com/r/envoyproxy/envoy/tags). We will use `docker-compose` to build some configurability into our Envoy environment. 
 
 ### Dockerfile
 ``` Dockerfile
@@ -34,11 +44,18 @@ RUN chmod 500 /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 ```
 
-The `entrypoint.sh` file is where the magic happens. We will configure environment variables in our docker-compose file to determine which service (`SERVICE_NAME`) Envoy routes to and the port (`SERVICE_PORT`) on that service. Additionally, we specify how much detail is captured in the logs by setting the `DEBUG_LEVEL` environment variable. As you can see from the script below on line 3, we replace those environment variables on the fly in Envoy's configuration file before starting Envoy. 
+
+### Set Up entrypoint.sh file 
+The dockerfile references 'entrypoint.sh', a file we have not created yet. This bash file will configure environment variables in our docker-compose file to determine which service (`SERVICE_NAME`) our Envoy proxy routes to and the port (`SERVICE_PORT`) on that service. (We haven't set up our service yet) 
+
+Additionally, we specify how much detail is captured in the logs by setting the `DEBUG_LEVEL` environment variable. As you can see from the script below on line 3, we replace those environment variables on the fly in Envoy's configuration file before starting Envoy.
+
+Using vscode (you can you whatever editor you like) crete and edit and he entrypoint.sh file
+code  `entrypoint.sh`  
 
 ### entrypoint.sh
 
-``` bash
+```bash 
 #!/bin/sh
 
 sed -e "s/\${SERVICE_NAME}/${SERVICE_NAME}/" -e "s/\${SERVICE_PORT}/${SERVICE_PORT}/" /config/envoy.yaml > /etc/envoy.yaml
@@ -46,18 +63,83 @@ sed -e "s/\${SERVICE_NAME}/${SERVICE_NAME}/" -e "s/\${SERVICE_PORT}/${SERVICE_PO
 /usr/local/bin/envoy -c /etc/envoy.yaml -l ${DEBUG_LEVEL}
 ```
 
+### Set Up Envoy Config (envoy.yaml) file
+The above script references a envoy configuration file 'envoy.yaml'. Lets set that up now. 
 
-Since we don't have a configuration file yet, we will cover that next. Envoy is very flexible and powerful. There is an enormous amount of expressiveness that the Envoy API and configuration files support. With this flexibility and power, Envoy configuration files can become quite complicated with a lot layers in the YAML hierarchy. Additionally, each feature has a lot of configuration parameters. The documentation can only cover so much of that functionality with an open source community of volunteers. 
+Envoy is very flexible and powerful. There is an enormous amount of expressiveness that the Envoy API and configuration files support. With this flexibility and power, Envoy configuration files can become quite complicated with a lot layers in the YAML hierarchy. Additionally, each feature has a lot of configuration parameters. The documentation can only cover so much of that functionality with an open source community of volunteers. 
 
-One of the challenges that I have when reading through the documentation and trying to apply it, is that the documentation has a variety of YAML snippets. There are very few places that these YAML snippets are pulled together into a functioning example. There are a few examples in the source code examples directory but they are far from comprehensive. That leaves a lot of tinkering for engineers to figure out how to compose a functional configuration while interpretting sometimes unclear error messages on their way to the promised land. That is the entire reason that I am writting a series of getting started guides. These articles are intended to give folks a known to work starting point for Envoy authorization features and extensions like Open Policy Agent.
 
-The Envoy configuration starts with defining a listener as we can see starting on line 3. The first property is the address and port to accept traffic on (lines 3 through 6). The next property is a filter chain. Filter chains are very powerful and enable configuration for a wide variety of possible behaviors. This filter chain is as simple as it gets. It simply accepts any HTTP traffic with any URI pattern and routes it to the cluster named `service`.
+---
+**NOTE**
 
-The `http_connection_manager` component does this for us. It's configuration starts on line 9 and extends to line 24. Execution order is determined by the order they are listed in the configuration file. The important part for this discussion begins on line 14 with the `route_config`. This sets up routing requests for any domain (line 18) and any request URI that begins with a slash (line 20) to go to the cluster named `service`. The cluster definitions are in a separate section to make them reusable destination across a variety of rules.
+_One of the challenges that I have when reading through the documentation and trying to apply it, is that the documentation has a variety of YAML snippets. There are very few places that these YAML snippets are pulled together into a functioning example. There are a few examples in the source code examples directory but they are far from comprehensive. That leaves a lot of tinkering for engineers to figure out how to compose a functional configuration while interpreting sometimes unclear error messages on their way to the promised land. That is the entire reason that I am writing a series of getting started guides. These articles are intended to give folks a known to work starting point for Envoy authorization features and extensions like Open Policy Agent._
 
-### Envoy Configuration (envoy.yaml)
+---
 
-``` yaml
+
+**Define Listener**
+The Envoy configuration starts with defining a listener as we can see starting on line 3 below. The first property is the address and port to accept traffic on (lines 3 through 6). The next property is a filter chain. Filter chains are very powerful and enable configuration for a wide variety of possible behaviors.
+```yaml 
+static_resources:
+  listeners:
+  ...
+      filter_chains:
+      ...
+  ```
+
+ This filter chain is as simple as it gets. It simply accepts any HTTP traffic with any URI pattern and routes it to the cluster named `service`. The `http_connection_manager` component starts on line 9 and extends to line 24. Execution order is determined by the order they are listed in the configuration file. The important part for this discussion begins on line 14 with the `route_config`. This sets up routing requests for any domain (line 18) and any request URI that begins with a slash (line 20) to go to the cluster named `service`. 
+
+### full envoy.yaml file
+```yaml
+ filter_chains:
+          - filters:
+            - name: envoy.filters.network.http_connection_manager
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                codec_type: auto
+                stat_prefix: ingress_http
+                route_config:
+                  name: local_route
+                  virtual_hosts:
+                    - name: backend
+                      domains: ["*"]
+                      routes:
+                        - match: { prefix: "/" }
+                          route: { cluster: service }
+                http_filters:
+                  - name: envoy.filters.http.router
+                    typed_config: {}
+```
+
+ The cluster definitions are in a separate section to make them reusable destination across a variety of rules. The definitions begin on line 25. We can see that there is only a single cluster defined. It has the name `service`, uses DNS to find server instances and uses round robin to direct traffic across multiple instances. The hostname is on line 32 and the port is on line 33. As we can see these are the environment variables that we will swap out with the entry.sh script. 
+
+```yaml
+ clusters:
+    - name: service
+      connect_timeout: 0.25s
+      type: STRICT_DNS
+      lb_policy: round_robin
+      load_assignment:
+        cluster_name: service
+        endpoints:
+        - lb_endpoints:
+          - endpoint:
+              address:
+                socket_address:
+                  address: ${SERVICE_NAME}
+                  port_value: ${SERVICE_PORT}
+```
+
+
+The last section of the configuration file tells Envoy where to listen for admin traffic. The admin gui is a handy little tool that we will not cover in this guide but is definitely worth poking around in to observe what is going on inside an individual Envoy instance. 
+
+
+
+
+
+### Full Envoy Configuration (envoy.yaml)
+
+```yaml 
 static_resources:
   listeners:
     - address:
@@ -104,9 +186,6 @@ admin:
       port_value: 8001
 ```
 
-The cluster definitions begin on line 25. We can see that there is only a single cluster defined. It has the name `service`, uses DNS to find server instances and uses round robin to direct traffic across multiple instances. The hostname is on line 32 and the port is on line 33. As we can see these are the environment variables that we will swap out with the entry.sh script. 
-
-The last section of the configuration file tells Envoy where to listen for admin traffic. The admin gui is a handy little tool that we will not cover in this guide but is definitely worth poking around in to observe what is going on inside an individual Envoy instance. 
 
 
 ### Docker Compose Configuration
