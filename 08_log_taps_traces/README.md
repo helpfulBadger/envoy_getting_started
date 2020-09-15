@@ -35,7 +35,7 @@ Elastic common schema was introduced to make it easier to analyze logs across ap
 
 Below is the abbreviation envoy.yaml configuration that shows how to specify our logging configuration. The explanation of the configuration follows. 
 
-``` yaml {linenos=inline,hl_lines=[15,18,19,20,22,24,31,40],linenostart=1}
+``` diff
 static_resources:
   listeners:
   ...
@@ -50,23 +50,23 @@ static_resources:
           route_config:
           http_filters:
           ...
->          access_log:
++          access_log:
           - name: envoy.access_loggers.file
             typed_config:
->              "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
->              path: "/dev/stdout"
->              typed_json_format: 
++              "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
++              path: "/dev/stdout"
++              typed_json_format: 
                 "@timestamp": "%START_TIME%"
->                client.address: "%DOWNSTREAM_REMOTE_ADDRESS%"
++                client.address: "%DOWNSTREAM_REMOTE_ADDRESS%"
                 client.local.address: "%DOWNSTREAM_LOCAL_ADDRESS%"
->                envoy.route.name: "%ROUTE_NAME%"
++                envoy.route.name: "%ROUTE_NAME%"
                 envoy.upstream.cluster: "%UPSTREAM_CLUSTER%"
                 host.hostname: "%HOSTNAME%"
                 http.request.body.bytes: "%BYTES_RECEIVED%"
                 http.request.duration: "%DURATION%"
                 http.request.headers.accept: "%REQ(ACCEPT)%"
                 http.request.headers.authority: "%REQ(:AUTHORITY)%"
->                http.request.headers.id: "%REQ(X-REQUEST-ID)%"
++                http.request.headers.id: "%REQ(X-REQUEST-ID)%"
                 http.request.headers.x_forwarded_for: "%REQ(X-FORWARDED-FOR)%"
                 http.request.headers.x_forwarded_proto: "%REQ(X-FORWARDED-PROTO)%"
                 http.request.headers.x_b3_traceid: "%REQ(X-B3-TRACEID)%"
@@ -75,7 +75,7 @@ static_resources:
                 http.request.headers.x_b3_sampled: "%REQ(X-B3-SAMPLED)%"
                 http.request.method: "%REQ(:METHOD)%"
                 http.response.body.bytes: "%BYTES_SENT%"
->                service.name: "envoy"
++                service.name: "envoy"
                 service.version: "1.16"
                 ...
   clusters:
@@ -100,7 +100,7 @@ Below is abbreviated structure of our Envoy.yaml config file. The highlighted se
 * We have match configuration that allows us to selectively target what we tap and what we don't. 
 * The output configuration section is where we specify where the taps should be sent. For the `file_per_tap` sink, remember to add the trailing slash to the path otherwise no files will be written. Additionally, the file path can't be set to standard out due to the expectation that new files will be opened under the subdirectory that is specified. 
 
-``` yaml {linenos=inline,hl_lines=["12-22"],linenostart=1}
+``` diff 
 static_resources:
   listeners:
   ...
@@ -112,17 +112,17 @@ static_resources:
           "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
           route_config:
           http_filters:
->          - name: envoy.filters.http.tap
->            typed_config:
->              "@type": type.googleapis.com/envoy.extensions.filters.http.tap.v3.Tap
->              common_config:
->                static_config:
->                  match_config:
->                    any_match: true
->                  output_config:
->                    sinks:
->                      - file_per_tap:
->                          path_prefix: /tmp/any/
++          - name: envoy.filters.http.tap
++            typed_config:
++              "@type": type.googleapis.com/envoy.extensions.filters.http.tap.v3.Tap
++              common_config:
++                static_config:
++                  match_config:
++                    any_match: true
++                  output_config:
++                    sinks:
++                      - file_per_tap:
++                          path_prefix: /tmp/any/
           - name: envoy.filters.http.router
             typed_config: {}
           access_log:
@@ -153,7 +153,7 @@ In lines 11 -19 below, the tracing configuration is standard part of the version
 * Our trace configuration refers to a cluster that we have named jaeger. So, we need to add a cluster configuration for it in the clusters section of the configuration file. Lines 28 through 40 points Envoy to our all-in-one jaeger container and port 9411 on that container. 
 
 
-``` yaml {linenos=inline,hl_lines=["11-19","28-40"],linenostart=1}
+``` diff
 static_resources:
   listeners:
   - address:
@@ -164,15 +164,15 @@ static_resources:
         typed_config:
           "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
           generate_request_id: true
->          tracing:
->            provider:
->              name: envoy.tracers.zipkin
->              typed_config:
->                "@type": type.googleapis.com/envoy.config.trace.v2.ZipkinConfig
->                collector_cluster: jaeger
->                collector_endpoint: "/api/v2/spans"
->                shared_span_context: false
->                collector_endpoint_version: HTTP_JSON
++          tracing:
++            provider:
++              name: envoy.tracers.zipkin
++              typed_config:
++                "@type": type.googleapis.com/envoy.config.trace.v2.ZipkinConfig
++                collector_cluster: jaeger
++                collector_endpoint: "/api/v2/spans"
++                shared_span_context: false
++                collector_endpoint_version: HTTP_JSON
           codec_type: auto
           route_config:
             ...
@@ -181,19 +181,19 @@ static_resources:
   clusters:
   - name: service1
     ...
->  - name: jaeger
->    connect_timeout: 1s
->    type: strict_dns
->    lb_policy: round_robin
->    load_assignment:
->      cluster_name: jaeger
->      endpoints:
->      - lb_endpoints:
->        - endpoint:
->            address:
->              socket_address:
->                address: jaeger
->                port_value: 9411
+!  - name: jaeger
+!    connect_timeout: 1s
+!    type: strict_dns
+!    lb_policy: round_robin
+!    load_assignment:
+!      cluster_name: jaeger
+!      endpoints:
+!      - lb_endpoints:
+!        - endpoint:
+!            address:
+!              socket_address:
+!                address: jaeger
+!                port_value: 9411
 admin:
   ...
 ```

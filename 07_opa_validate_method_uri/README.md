@@ -17,17 +17,18 @@ There are a lot of other rules that we will eventually be interested in implemen
 
 Here are Example.com's published APIs.
 
-<pre><code>/<span style="color:brown"><strong>api</strong></span>/<span style="color:blue"><strong>customer</strong></span>/*
-/<span style="color:brown"><strong>api</strong></span>/<span style="color:blue"><strong>customer</strong></span>/*/account/*
-/<span style="color:brown"><strong>api</strong></span>/<span style="color:blue"><strong>customer</strong></span>/*/messages/*
-/<span style="color:brown"><strong>api</strong></span>/<span style="color:blue"><strong>customer</strong></span>/*/order/*
-/<span style="color:brown"><strong>api</strong></span>/<span style="color:blue"><strong>customer</strong></span>/*/paymentcard/*
-/<span style="color:brown"><strong>api</strong></span>/featureFlags
-/<span style="color:brown"><strong>api</strong></span>/<span style="color:green"><strong>order</strong></span>/*
-/<span style="color:brown"><strong>api</strong></span>/<span style="color:green"><strong>order</strong></span>/*/payment/*
-/<span style="color:brown"><strong>api</strong></span>/product/*
-/<span style="color:brown"><strong>api</strong></span>/shipment/*
-</code></pre>
+``` yaml
+/api/customer/*
+/api/customer/*/account/*
+/api/customer/*/messages/*
+/api/customer/*/order/*
+/api/customer/*/paymentcard/*
+/api/featureFlags
+/api/order/*
+/api/order/*/payment/*
+/api/product/*
+/api/shipment/*
+```
 
 * The customer API, `/api/customer/*`, allows users manage customer profiles in our customer system of record. 
 * The accounts API, `/api/customer/*/account/*`, allows users to manage accounts for a specific customer in the system of record for accounts. 
