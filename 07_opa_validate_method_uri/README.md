@@ -137,7 +137,7 @@ The configuration snippet below is how we express this logic:
 
 We can pass the validated JWS token body to Open Policy Agent by adding a couple of tags to Envoy's configuration. In the token definition section, we add the `payload_in_metadata` property and give the token a name. In the example below we've given the token the name `actor_token`. See below for the configuration snippet.
 
-``` javascript
+``` yaml
                         workforce_provider:
                           issuer: workforceIdentity.example.com
                           audiences:
@@ -146,14 +146,14 @@ We can pass the validated JWS token body to Open Policy Agent by adding a couple
                           - name: "actor-token"
                             value_prefix: ""
                           forward: true
-                          payload_in_metadata: "actor_token"
+>                          payload_in_metadata: "actor_token"
                           local_jwks:
                             inline_string: "{\"keys\":[...]}" 
 ```
 
 To pass this data to Open Policy Agent, in the `envoy.filters.http.ext_authz` section, add the array named `metadata_context_namespaces`. This array specifies the names of the Envoy dynamic metadata namespaces to forward to the OPA Authorization Service. See the configuration change highlighted in blue below.
 
-``` yaml {linenos=inline,hl_lines=[11,12],linenostart=1}
+``` yaml 
                   - name: envoy.filters.http.ext_authz
                     typed_config:
                       "@type": type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.ExtAuthz
@@ -319,9 +319,9 @@ Whether rejection reasons are returned to the user or not depends on the circums
 * The same is true for the second messages rule block. 
 * This section will result in a messages array that has either 0, 1 or 2 elements. 
 
-``` javascript
+``` diff
 messages[ msg ]{
->  not apiPermittedForClient
++  not apiPermittedForClient
   msg := {
     "id"  : "1",
     "priority"  : "5",
@@ -330,7 +330,7 @@ messages[ msg ]{
 }
 
 messages[ msg ]{
->  not userTypeAppropriateForClient
++  not userTypeAppropriateForClient
   msg := {
     "id"  : "2",
     "priority"  : "5",
@@ -348,17 +348,17 @@ Envoy is looking for results of the `allow` rule. The structure of our response 
 * The body value must also be a string. So, we can't return any of the other mock data that we have here as an object. So first we declare it as an anonymous object then immediately pass it to the json marshaller. This will return a string. The json marshaller should be able to handle any numeric, null or undefined values for us and always return a string. 
 * With these guarantees, we can be confident that this block will always return a defined result to Envoy
 
-``` go {linenos=inline,hl_lines=[3,10],linenostart=1}
+``` diff
 allow = response {
   response := {
-    "allowed": decision,
++    "allowed": decision,
     "headers": {
       "X-Authenticated-User": "true", 
       "X-Authenticated-App": "true",
-      "Endpoint-ID": endpointID,
++      "Endpoint-ID": endpointID,
       "Content-Type": "application/json"
     },
-    "body" : json.marshal(
++    "body" : json.marshal(
                       {
                         "Authorized-User-Type": userTypeAppropriateForClient,
                         "Authorized-Endpoint": apiPermittedForClient,
