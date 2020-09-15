@@ -62,7 +62,7 @@ As the basis for our security policies we need a data structure that contains al
 
 The next piece of data that we need to build our example authorization solution is a mapping between each client application and the endponts that it is allowed to access. The data structure below holds that information. The unique ID for each application is a `key` in this data structure and the value is an array of all of the endpoint IDs that the application has access to. 
 
-``` yaml
+``` yaml {linenos=inline,hl_lines=[1,2],linenostart=1}
 apiPermissions = {
   "app_123456": [ 
       "001","004","007","010","012","015","018","021","024","027","031","034","037","040","043","046","049","052","055" 
