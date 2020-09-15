@@ -43,36 +43,40 @@ Here are Example.com's published APIs.
 ### API Endpoint Definition
 
 As the basis for our security policies we need a data structure that contains all of possible actions that a user and client application can take. For this example, we define a URI pattern and a method being attempted on that URI as an `endpoint`. The `id` field uniquely identifies each endpoint and will be used in the process of actually specifying what endpoints an application has access to.  
-<pre><code>[
-    {<span style="color:blue"><strong>"id"</strong></span>:"001",<span style="color:blue"><strong>"method"</strong></span>:"GET",   <span style="color:blue"><strong>"pattern"</strong></span>:"/api/customer"},
-    {<span style="color:blue"><strong>"id"</strong></span>:"002",<span style="color:blue"><strong>"method"</strong></span>:"POST",  <span style="color:blue"><strong>"pattern"</strong></span>:"/api/customer"},
-    {<span style="color:blue"><strong>"id"</strong></span>:"003",<span style="color:blue"><strong>"method"</strong></span>:"DELETE",<span style="color:blue"><strong>"pattern"</strong></span>:"/api/customer/*"},
-    {<span style="color:blue"><strong>"id"</strong></span>:"004",<span style="color:blue"><strong>"method"</strong></span>:"GET",   <span style="color:blue"><strong>"pattern"</strong></span>:"/api/customer/*"},
-    {<span style="color:blue"><strong>"id"</strong></span>:"005",<span style="color:blue"><strong>"method"</strong></span>:"POST",  <span style="color:blue"><strong>"pattern"</strong></span>:"/api/customer/*"},
-    {<span style="color:blue"><strong>"id"</strong></span>:"006",<span style="color:blue"><strong>"method"</strong></span>:"PUT",   <span style="color:blue"><strong>"pattern"</strong></span>:"/api/customer/*"},
-    {<span style="color:blue"><strong>"id"</strong></span>:"007",<span style="color:blue"><strong>"method"</strong></span>:"GET",   <span style="color:blue"><strong>"pattern"</strong></span>:"/api/customer/*/account"},
-    {<span style="color:blue"><strong>"id"</strong></span>:"008",<span style="color:blue"><strong>"method"</strong></span>:"POST",  <span style="color:blue"><strong>"pattern"</strong></span>:"/api/customer/*/account"},
+
+``` json
+[
+    {"id":"001","method":"GET",   "pattern":"/api/customer"},
+    {"id":"002","method":"POST",  "pattern":"/api/customer"},
+    {"id":"003","method":"DELETE","pattern":"/api/customer/*"},
+    {"id":"004","method":"GET",   "pattern":"/api/customer/*"},
+    {"id":"005","method":"POST",  "pattern":"/api/customer/*"},
+    {"id":"006","method":"PUT",   "pattern":"/api/customer/*"},
+    {"id":"007","method":"GET",   "pattern":"/api/customer/*/account"},
+    {"id":"008","method":"POST",  "pattern":"/api/customer/*/account"},
 ...
 ]
-</code></pre>
+```
 
 ### Client Application API Contracts
 
 The next piece of data that we need to build our example authorization solution is a mapping between each client application and the endponts that it is allowed to access. The data structure below holds that information. The unique ID for each application is a `key` in this data structure and the value is an array of all of the endpoint IDs that the application has access to. 
-<pre><code>apiPermissions = {
-  <span style="color:blue"><strong>"app_123456"</strong></span>: [ <span style="color:green"><strong>
-      "001","004","007","010","012","015","018","021","024","027","031","034","037","040","043","046","049","052","055" </strong></span>
+
+``` rego
+apiPermissions = {
+  "app_123456": [ 
+      "001","004","007","010","012","015","018","021","024","027","031","034","037","040","043","046","049","052","055" 
       ],
-  <span style="color:blue"><strong>"app_000123"</strong></span>:[ <span style="color:green"><strong>
+  "app_000123":[ 
     "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", 
     "011", "012", "013", "014", "015", "016", "017", "018", "019", "020",
     "021", "022", "023", "024", "025", "026", "027", "028", "029", "030",
     "031", "032", "033", "034", "035", "036", "037", "038", "039", "040",
     "041", "042", "043", "044", "045", "046", "047", "048", "049", "050",
-    "051", "052", "053", "054", "055", "056", "057" </strong></span>
+    "051", "052", "053", "054", "055", "056", "057" 
   ]
 }
-</code></pre>
+```
 
 ### Authorized End User Identity Providers / JWS Issuers for each Client Application
 
