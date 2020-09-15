@@ -1,6 +1,19 @@
 # Adding Log Aggregation to our Envoy Example
 
-This is the 2nd blog post in a series of getting started guides for using Envoy and Open Policy Agent to authorize API requests. Later on as we start to develop authorization rules it may be handy to have all of the logs aggregated and displayed in one place for your development and troubleshooting activies. In this article we will walk through how to setup the EFK stack to pull your logs together from all of the docker containers in your local development environment. All of the [source code for this getting started example](https://github.com/helpfulBadger/envoy_getting_started/tree/master/02_front_proxy_kibana) is located on github.
+This is the 2nd in a series of getting started guides for using Envoy and Open Policy Agent to authorize API requests. Later on as we start to develop authorization rules it may be handy to have all of the logs aggregated and displayed in one place for your development and troubleshooting activies. In this article we will walk through how to setup the EFK stack to pull your logs together from all of the docker containers in your local development environment. 
+
+Here is a list of the Getting Started Guides that are currently available.
+
+## Getting Started Guides
+
+1. [Using Envoy as a Front Proxy](../01_front_proxy/README.md) --- Learn how to set up Envoy as a front proxy with docker
+1. [Adding Observability Tools](../02_front_proxy_kibana/README.md) --- Learn how to add ElasticSearch and Kibana to your Envoy front proxy environment
+1. [Plugging Open Policy Agent into Envoy](../03_opa_integration/README.md) --- Learn how to use Open Policy Agent with Envoy for more powerful authorization rules
+1. [Using the Open Policy Agent CLI](../04_opa_cli/README.md) --- Learn how to use Open Policy Agent Command Line Interface
+1. [JWS Signature Validation with OPA](../05_opa_validate_jws/README.md) --- Learn how to validate JWS signatures with Open Policy Agent
+1. [JWS Signature Validation with Envoy](../06_envoy_validate_jws/README.md) --- Learn how to validate JWS signatures natively with Envoy
+1. [Putting It All Together with Composite Authorization](../07_opa_validate_method_uri/README.md) --- Learn how to Implement Application Specific Authorization Rules
+1. [Configuring Envoy Logs Taps and Traces](../08_log_taps_traces/README.md) --- Learn how to configure Envoy's access logs taps for capturing full requests & responses and traces
 
 ## Adding EFK containers
 
