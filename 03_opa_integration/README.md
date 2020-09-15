@@ -1,4 +1,5 @@
-# Envoy & Open Policy Agent
+# Getting Started with Envoy & Open Policy Agent --- 03 ---
+# Integrating Open Policy Agent with Envoy
 
 This is the 3rd Envoy & Open Policy Agent Getting Started Guides. Each guide is intended to explore a single feature and walk through a simple implementation. Each guide builds on the concepts explored in the previous guide to build a very powerful authorization services by the end of the series. 
 

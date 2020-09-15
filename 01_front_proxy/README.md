@@ -1,3 +1,4 @@
+# Getting Started with Envoy & Open Policy Agent --- 01 ---
 # Using Envoy as a Front Proxy
 
 This is the 1st in a series of getting started guides for using Envoy and Open Policy Agent to authorize API requests. Later on as we start to develop authorization rules it may be handy to have all of the logs aggregated and displayed in one place for your development and troubleshooting activies. In this article we will walk through how to setup the EFK stack to pull your logs together from all of the docker containers in your local development environment. All of the source code for this getting started example is located on github.
