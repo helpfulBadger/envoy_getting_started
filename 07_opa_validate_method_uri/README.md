@@ -17,7 +17,7 @@ There are a lot of other rules that we will eventually be interested in implemen
 
 Here are Example.com's published APIs.
 
-``` yaml
+``` javascript
 /api/customer/*
 /api/customer/*/account/*
 /api/customer/*/messages/*
@@ -45,7 +45,7 @@ Here are Example.com's published APIs.
 
 As the basis for our security policies we need a data structure that contains all of possible actions that a user and client application can take. For this example, we define a URI pattern and a method being attempted on that URI as an `endpoint`. The `id` field uniquely identifies each endpoint and will be used in the process of actually specifying what endpoints an application has access to.  
 
-``` yaml
+``` javascript
 [
     {"id":"001","method":"GET",   "pattern":"/api/customer"},
     {"id":"002","method":"POST",  "pattern":"/api/customer"},
@@ -63,7 +63,7 @@ As the basis for our security policies we need a data structure that contains al
 
 The next piece of data that we need to build our example authorization solution is a mapping between each client application and the endponts that it is allowed to access. The data structure below holds that information. The unique ID for each application is a `key` in this data structure and the value is an array of all of the endpoint IDs that the application has access to. 
 
-``` yaml {linenos=inline,hl_lines=[1,2],linenostart=1}
+``` javascript
 apiPermissions = {
   "app_123456": [ 
       "001","004","007","010","012","015","018","021","024","027","031","034","037","040","043","046","049","052","055" 
@@ -83,17 +83,19 @@ apiPermissions = {
 
 Just for fun and simplicity we want to make sure that a hacker has not found a way to use or simulate using an application that is intended for another type of user. So, the data structure below lists the identity providers that are permitted for each application. So, the data structure below means that `app_123456` is only allowed to be used by external customers. `app_000123` is intended only for use by employees and contractors of example.com (i.e. the workforce). This is a more powerful application that can take action on behalf of the company and on behalf of any of the company's customer. This is very coarse grained security. In a real application we would also put in a lot of user specific rights and access controls. In a later getting started guide we will show how we can start to layer OPA Policies, getting volatile data from external sources and other techniques to implement more realistic security policies. 
 
-<pre><code>idProviderPermissions = {
-  <span style="color:blue"><strong>"app_123456"</strong></span>:["customerIdentity.example.com"],
-  <span style="color:blue"><strong>"app_000123"</strong></span>:["workforceIdentity.example.com"]
+
+``` javascript
+idProviderPermissions = {
+  "app_123456":["customerIdentity.example.com"],
+  "app_000123":["workforceIdentity.example.com"]
 }
-</code></pre>
+```
 
 ## Our Environment
 
-In this example we have replaced our HTTPBin container as our ultimate destination with Hoverfly. <span style="color:blue">[Hoverfly](https://hoverfly.io/)</span> is a light-weight, super fast API mocking server that is API driven and highly extensible. This is used to simulate all of the APIs that we defined above. The API Mocks are defined in the <span style="color:blue">[config.json](https://github.com/helpfulBadger/envoy_getting_started/blob/master/07_opa_validate_method_uri/compose/hoverfly/config.json)</span> file in the `compose\hoverfly` directory.
+In this example we have replaced our HTTPBin container as our ultimate destination with Hoverfly. [Hoverfly](https://hoverfly.io/) is a light-weight, super fast API mocking server that is API driven and highly extensible. This is used to simulate all of the APIs that we defined above. The API Mocks are defined in the [config.json](https://github.com/helpfulBadger/envoy_getting_started/blob/master/07_opa_validate_method_uri/compose/hoverfly/config.json) file in the `compose\hoverfly` directory.
 
-The other change that we have made is a much more sophisticated and comprehensive set of tests using Newman. <span style="color:blue">[Newman](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/)</span> is a command line driven postman collection runner. Postman has a testing capability. This feature runs tests that are expressed in Javascript and uses a built in library of test functions. The <span style="color:blue">[Postman collection for Getting Started #7](https://github.com/helpfulBadger/envoy_getting_started/blob/master/07_opa_validate_method_uri/data/Envoy_OPA.postman_collection.json)</span> with tests is included in this example in the data directory that 
+The other change that we have made is a much more sophisticated and comprehensive set of tests using Newman. [Newman](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/) is a command line driven postman collection runner. Postman has a testing capability. This feature runs tests that are expressed in Javascript and uses a built in library of test functions. The [Postman collection for Getting Started #7](https://github.com/helpfulBadger/envoy_getting_started/blob/master/07_opa_validate_method_uri/data/Envoy_OPA.postman_collection.json) with tests is included in this example in the data directory that 
 
 <img class="special-img-class" src="https://helpfulbadger.github.io/img/2020/09/Envoy-front%20proxy-Hoverfly.svg" /><br>
 
@@ -105,26 +107,27 @@ User and system identity information is communicated as follows:
 * The API gateway, the client application itself or another system (out of scope of this article), has securely authenticated the client application and given it a JWS token to assert information in a tamper proof way about our client application. 
 
 ### Stage 1 - Envoy validates JWS Tokens
-These JWS tokens are validated by Envoy before they are ever sent to OPA. Envoy and OPA Getting Started Guide #5 showed us how to do this. Our Envoy.yaml file for this example has made one small change to the <span style="color:blue">[JWT provider configurations](https://github.com/helpfulBadger/envoy_getting_started/blob/master/07_opa_validate_method_uri/envoy.yaml#L26-L56)</span>. In this example we need to be able to support a variety of different types of users. Since we have 2 different user types / token issuers, we create to different JWT Provider configurations (one for each identity provider). Both of them use the `from_headers:` parameter to specify the token source as the `Actor-Token` header. 
+These JWS tokens are validated by Envoy before they are ever sent to OPA. Envoy and OPA Getting Started Guide #5 showed us how to do this. Our Envoy.yaml file for this example has made one small change to the [JWT provider configurations](https://github.com/helpfulBadger/envoy_getting_started/blob/master/07_opa_validate_method_uri/envoy.yaml#L26-L56). In this example we need to be able to support a variety of different types of users. Since we have 2 different user types / token issuers, we create to different JWT Provider configurations (one for each identity provider). Both of them use the `from_headers:` parameter to specify the token source as the `Actor-Token` header. 
 
 Because of this variability we had to change our logic for token validation and enforcement:
 
 The configuration snippet below is how we express this logic:
 * The `match` object specifies that any URI must meet the requirements in the `requires` object
-* The `requires` object specifies that a request must have:  <pre><code>(<span style="color:red"><u>a Gateway issued system identity token</u></span>) <strong>AND a user with</strong> ( <span style="color:blue"><u>a workforce Identity token</u></span> <strong>OR</strong> <span style="color:blue"><u>a Consumer Identity Token</u></span> ))</code></pre> NOTE: Scroll right as needed. The color coding above matches the translation to YAML configuration below.
+* The `requires` object specifies that a request must have:  <pre><code>(a Gateway issued system identity token) AND a user with ( a workforce Identity token OR a Consumer Identity Token ))</code></pre> NOTE: Scroll right as needed. The color coding above matches the translation to YAML configuration below.
 
-<pre><code>                      rules:
+``` javascript
+                      rules:
                         - match:
                             prefix: /
                           requires:
-                            <span style="color:red"><strong>requires_all</strong></span>:
+                            requires_all:
                               requirements:
-                                - <span style="color:red"><strong>provider_name</strong></span>: gateway_provider
-                                - <span style="color:blue"><strong>requires_any</strong></span>:
+                                - provider_name: gateway_provider
+                                - requires_any:
                                     requirements:
-                                      - <span style="color:blue"><strong>provider_name</strong></span>: workforce_provider
-                                      - <span style="color:blue"><strong>provider_name</strong></span>: consumer_provider
-</code></pre>
+                                      - provider_name: workforce_provider
+                                      - provider_name: consumer_provider
+```
 
 * The `requires_all` object specifies that all of the requirements in the `requirements` array must be true to pass.
 * The `requirements` array contains a `provider_name` and a `requires_any` clause. If there were 3 or 4 elements in the array then all of the requirements would need to be true to pass. In this example we only have 2 requirements and one of those has sub-requirements.
@@ -134,7 +137,8 @@ The configuration snippet below is how we express this logic:
 
 We can pass the validated JWS token body to Open Policy Agent by adding a couple of tags to Envoy's configuration. In the token definition section, we add the `payload_in_metadata` property and give the token a name. In the example below we've given the token the name `actor_token`. See below for the configuration snippet.
 
-<pre><code>                        workforce_provider:
+``` javascript
+                        workforce_provider:
                           issuer: workforceIdentity.example.com
                           audiences:
                           - apigateway.example.com
@@ -142,10 +146,10 @@ We can pass the validated JWS token body to Open Policy Agent by adding a couple
                           - name: "actor-token"
                             value_prefix: ""
                           forward: true
-                          <span style="color:blue"><strong>payload_in_metadata: "actor_token"</strong></span>
+                          payload_in_metadata: "actor_token"
                           local_jwks:
                             inline_string: "{\"keys\":[...]}" 
-</code></pre>
+```
 
 To pass this data to Open Policy Agent, in the `envoy.filters.http.ext_authz` section, add the array named `metadata_context_namespaces`. This array specifies the names of the Envoy dynamic metadata namespaces to forward to the OPA Authorization Service. See the configuration change highlighted in blue below.
 
@@ -229,17 +233,18 @@ Since we also have the configuration setting `forward: true`, we can simply use 
 
 See below for the REGO code. 
 
-<pre><code>import input.attributes.request.http.headers["actor-token"] as <span style="color:blue"><strong>actorToken</strong></span>
-import input.attributes.request.http.headers["app-token"] as <span style="color:red"><strong>appToken</strong></span>
+``` javascript
+import input.attributes.request.http.headers["actor-token"] as actorToken
+import input.attributes.request.http.headers["app-token"] as appToken
 
-<span style="color:blue"><strong>actor</strong></span> = p {
-  [ _, p, _ ] := io.jwt.decode(<span style="color:blue"><strong>actorToken</strong></span>)	
+actor = p {
+  [ _, p, _ ] := io.jwt.decode(actorToken)	
 }
 
-<span style="color:red"><strong>app</strong></span>  = p {
-  [ _, p, _ ] :=  io.jwt.decode(<span style="color:red"><strong>appToken</strong></span>)
+app  = p {
+  [ _, p, _ ] :=  io.jwt.decode(appToken)
 }
-</code></pre>
+```
 
 #### Making the Authorization Decision
 
@@ -248,12 +253,13 @@ Next, we will move over to the punchline, the REGO rule that makes our authoriza
 * AND the type of user is appropriate for the client app
 * THEN set the decision to `true` a.k.a. `allow` the request to flow through.
 
-<pre><code>default decision = false
+``` javascript
+default decision = false
 decision {
-  <span style="color:blue"><strong>apiPermittedForClient</strong></span>
-  <span style="color:red"><strong>userTypeAppropriateForClient</strong></span>
+  apiPermittedForClient
+  userTypeAppropriateForClient
 }
-</code></pre>
+```
 
 #### How do we determine if the API is Permitted for the Client Application?
 
@@ -275,19 +281,20 @@ Determining our endpoint with our endpoint rule is a little more complicated:
 
 See the REGO code below for how this section fits together. 
 
-<pre><code>default <span style="color:blue"><strong>apiPermittedForClient</strong></span> = false
-<span style="color:blue"><strong>apiPermittedForClient</strong></span> {
-  apiPermissions[ app.client_id ][_] == <span style="color:blue"><strong>endpointID</strong></span>
+``` javascript
+default apiPermittedForClient = false
+apiPermittedForClient {
+  apiPermissions[ app.client_id ][_] == endpointID
 }
 
-<span style="color:blue"><strong>endpointID</strong></span> = epID {
+endpointID = epID {
   some i
   endpoints[i].method == http_request.method
   p := trim_right( http_request.path, "/")  #strip trailing slash if present
   glob.match( lower(endpoints[i].pattern), ["/"], lower(p) )
   epID := endpoints[i].id
 } else = "none"
-</code></pre>
+```
 
 #### How do we determine if the Type of User is Permitted for the Client Application?
 
@@ -296,11 +303,12 @@ Now, let's look at how `userTypeAppropriateForClient` is defined. Its default va
 * By using the client ID from the app token, `app.client_id`, it narrows down the dataset search
 * The `[_]` fragment says: for any element in the array, see if one of the equals the issuer that we have in the actor token `actor.iss`.
 
-<pre><code>default <span style="color:red"><strong>userTypeAppropriateForClient</strong></span> = false
-<span style="color:red"><strong>userTypeAppropriateForClient</strong></span> {
+``` javascript
+default userTypeAppropriateForClient = false
+userTypeAppropriateForClient {
   idProviderPermissions[ app.client_id ][_] == actor.iss
 }
-</code></pre>
+```
 
 #### If we don't have a match, how do we communicate reject reasons?
 
@@ -362,19 +370,19 @@ allow = response {
 } 
 ```
 
-With that explanation behind us, you can <span style="color:blue">[read through the entire policy in context on github](https://github.com/helpfulBadger/envoy_getting_started/blob/master/07_opa_validate_method_uri/policy.rego)</span>.
+With that explanation behind us, you can [read through the entire policy in context on github](https://github.com/helpfulBadger/envoy_getting_started/blob/master/07_opa_validate_method_uri/policy.rego).
 
 
 ## Running our Example Through Its Paces
 
 We use Postman and Newman to setup the tests for this getting started guide. There are some great tutorials on the Postman site that describe how to write test scripts.
-1. <span style="color:blue">[Writing Pre-request Scripts](https://learning.postman.com/docs/writing-scripts/pre-request-scripts/)</span>
-1. <span style="color:blue">[Writing Test Scripts](https://learning.postman.com/docs/writing-scripts/test-scripts/)</span>
-1. <span style="color:blue">[Test Script Examples](https://learning.postman.com/docs/writing-scripts/script-references/test-examples/)</span>
-1. <span style="color:blue">[Working with Data Files](https://learning.postman.com/docs/running-collections/working-with-data-files/)</span>
-1. <span style="color:blue">[Running test from the command line with Newman](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/)</span>
+1. [Writing Pre-request Scripts](https://learning.postman.com/docs/writing-scripts/pre-request-scripts/)
+1. [Writing Test Scripts](https://learning.postman.com/docs/writing-scripts/test-scripts/)
+1. [Test Script Examples](https://learning.postman.com/docs/writing-scripts/script-references/test-examples/)
+1. [Working with Data Files](https://learning.postman.com/docs/running-collections/working-with-data-files/)
+1. [Running test from the command line with Newman](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/)
 
-This example is a lot more powerful than the others we have tackled in this series of getting started guides. As such it requires a lot more tests to see if it is functioning correctly. We have a <span style="color:blue">[postman collection](https://github.com/helpfulBadger/envoy_getting_started/blob/master/07_opa_validate_method_uri/data/Envoy_OPA.postman_collection.json)</span> with 2 types of tests:
+This example is a lot more powerful than the others we have tackled in this series of getting started guides. As such it requires a lot more tests to see if it is functioning correctly. We have a [postman collection](https://github.com/helpfulBadger/envoy_getting_started/blob/master/07_opa_validate_method_uri/data/Envoy_OPA.postman_collection.json) with 2 types of tests:
 * Statically defined tests in the folder named `Static-Test-Cases`
 * Tests that use iteration data in all of the other folders
 
@@ -387,7 +395,7 @@ We have created folder level scripts to set up data for our templates.
 
 The pre-request script simply sets the templated values for the request port and JWS tokens for the User and application. These statically defined values use the "super app" that has permission for all endpoints. The postman library provides the `pm.environment.set` command to set values in our template.
 
-``` javascript {linenos=inline,linenostart=1}
+``` javascript
 pm.environment.set("port", "8080");
 pm.environment.set("ActorToken", "...")
 pm.environment.set("AppToken", "...");
@@ -397,7 +405,7 @@ pm.environment.set("AppToken", "...");
 
 The test script simply checks for a successful response.
 
-``` javascript {linenos=inline,linenostart=1}
+``` javascript
 pm.test("response should be okay", function () {
       pm.response.to.be.success;
       pm.response.to.not.be.error;
@@ -420,7 +428,7 @@ Postman / Newman loads each record in the array in our test data file into the t
 
 An example is shown below. 
 
-``` json {linenos=inline,linenostart=1}
+``` javascript
 {
   "id": "001",
   "App": "app_000123",
@@ -437,7 +445,7 @@ An example is shown below.
 
 The post execution test only needs one piece of data from the record for our completion test. That is the `expect` value from the record. We get that using the `pm.iterationData.get` command. 
 
-``` javascript {linenos=inline,linenostart=1}
+``` javascript
 var expect = pm.iterationData.get("expect")
 
 pm.test("GET response have return status: " + expect, function () {

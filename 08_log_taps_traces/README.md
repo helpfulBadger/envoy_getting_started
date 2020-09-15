@@ -148,9 +148,9 @@ The <span style="color:blue">[overview documentation for Envoy's Tracing feature
 
 Tracing options are exploding and as such expect a lot of new capabilities to be added to Envoy. There are a great deal of configuration options already. We are demonstrating the simplest possible tracing solution. Therefore, configuration below leverages the built in support for Zipkin compatible backends (jaegar). 
 
-In lines 11 -19 below, the tracing configuration is standard part of the version 3 connection manager. The tracing property contains a provider. 
+In lines 11 -19 below (+ with green highlight), the tracing configuration is standard part of the version 3 connection manager. The tracing property contains a provider. 
 * We have set up zipkin as the output format with jaegar as the configured destination. HTTP and gRPC are both supported. The example uses HTTP protocol for transmitting the traces. 
-* Our trace configuration refers to a cluster that we have named jaeger. So, we need to add a cluster configuration for it in the clusters section of the configuration file. Lines 28 through 40 points Envoy to our all-in-one jaeger container and port 9411 on that container. 
+* Our trace configuration refers to a cluster that we have named jaeger. So, we need to add a cluster configuration for it in the clusters section of the configuration file. Lines 28 through 40 (! with orange highlights) points Envoy to our all-in-one jaeger container and port 9411 on that container. 
 
 
 ``` diff
