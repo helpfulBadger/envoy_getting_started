@@ -319,9 +319,9 @@ Whether rejection reasons are returned to the user or not depends on the circums
 * The same is true for the second messages rule block. 
 * This section will result in a messages array that has either 0, 1 or 2 elements. 
 
-``` yaml {linenos=inline,hl_lines=[2,11],linenostart=1}
+``` yaml
 messages[ msg ]{
-  not apiPermittedForClient
+>  not apiPermittedForClient
   msg := {
     "id"  : "1",
     "priority"  : "5",
@@ -330,7 +330,7 @@ messages[ msg ]{
 }
 
 messages[ msg ]{
-  not userTypeAppropriateForClient
+>  not userTypeAppropriateForClient
   msg := {
     "id"  : "2",
     "priority"  : "5",
