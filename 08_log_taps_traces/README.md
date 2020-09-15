@@ -113,17 +113,17 @@ static_resources:
           "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
           route_config:
           http_filters:
-          - name: envoy.filters.http.tap
-            typed_config:
-              "@type": type.googleapis.com/envoy.extensions.filters.http.tap.v3.Tap
-              common_config:
-                static_config:
-                  match_config:
-                    any_match: true
-                  output_config:
-                    sinks:
-                      - file_per_tap:
-                          path_prefix: /tmp/any/
+>          - name: envoy.filters.http.tap
+>            typed_config:
+>              "@type": type.googleapis.com/envoy.extensions.filters.http.tap.v3.Tap
+>              common_config:
+>                static_config:
+>                  match_config:
+>                    any_match: true
+>                  output_config:
+>                    sinks:
+>                      - file_per_tap:
+>                          path_prefix: /tmp/any/
           - name: envoy.filters.http.router
             typed_config: {}
           access_log:
@@ -166,14 +166,14 @@ static_resources:
           "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
           generate_request_id: true
 >          tracing:
-            provider:
-              name: envoy.tracers.zipkin
-              typed_config:
-                "@type": type.googleapis.com/envoy.config.trace.v2.ZipkinConfig
-                collector_cluster: jaeger
-                collector_endpoint: "/api/v2/spans"
-                shared_span_context: false
-                collector_endpoint_version: HTTP_JSON
+>            provider:
+>              name: envoy.tracers.zipkin
+>              typed_config:
+>                "@type": type.googleapis.com/envoy.config.trace.v2.ZipkinConfig
+>                collector_cluster: jaeger
+>                collector_endpoint: "/api/v2/spans"
+>                shared_span_context: false
+>                collector_endpoint_version: HTTP_JSON
           codec_type: auto
           route_config:
             ...
@@ -183,18 +183,18 @@ static_resources:
   - name: service1
     ...
 >  - name: jaeger
-    connect_timeout: 1s
-    type: strict_dns
-    lb_policy: round_robin
-    load_assignment:
-      cluster_name: jaeger
-      endpoints:
-      - lb_endpoints:
-        - endpoint:
-            address:
-              socket_address:
-                address: jaeger
-                port_value: 9411
+>    connect_timeout: 1s
+>    type: strict_dns
+>    lb_policy: round_robin
+>    load_assignment:
+>      cluster_name: jaeger
+>      endpoints:
+>      - lb_endpoints:
+>        - endpoint:
+>            address:
+>              socket_address:
+>                address: jaeger
+>                port_value: 9411
 admin:
   ...
 ```
