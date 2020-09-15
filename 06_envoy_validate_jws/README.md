@@ -13,7 +13,7 @@ One of the HTTP filters available is the JSON Web Token filter. It is lines 14 -
 
 The configuration below shows the properties we just described on lines 22, 25 and 26.
 
-``` yaml {linenos=inline,hl_lines=["14-27"],linenostart=1}
+``` yaml
 static_resources:
   listeners:
     - address:
@@ -49,7 +49,7 @@ The section highlighted below is the rules section. It defines under what condit
 
 <br>
 
-``` yaml {linenos=inline,hl_lines=["5-13"],linenostart=28}
+``` yaml
                         consumer_provider:
                           ...
                         gateway_provider:
