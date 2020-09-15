@@ -17,17 +17,17 @@ There are a lot of other rules that we will eventually be interested in implemen
 
 Here are Example.com's published APIs.
 
-``` javascript
-/api/customer/*
-/api/customer/*/account/*
-/api/customer/*/messages/*
-/api/customer/*/order/*
-/api/customer/*/paymentcard/*
-/api/featureFlags
-/api/order/*
-/api/order/*/payment/*
-/api/product/*
-/api/shipment/*
+``` yaml
+>   /api/customer/*
+>   /api/customer/*/account/*
+>   /api/customer/*/messages/*
+>   /api/customer/*/order/*
+>   /api/customer/*/paymentcard/*
+>   /api/featureFlags
+>   /api/order/*
+>   /api/order/*/payment/*
+>   /api/product/*
+>   /api/shipment/*
 ```
 
 * The customer API, `/api/customer/*`, allows users manage customer profiles in our customer system of record. 
@@ -45,9 +45,9 @@ Here are Example.com's published APIs.
 
 As the basis for our security policies we need a data structure that contains all of possible actions that a user and client application can take. For this example, we define a URI pattern and a method being attempted on that URI as an `endpoint`. The `id` field uniquely identifies each endpoint and will be used in the process of actually specifying what endpoints an application has access to.  
 
-``` javascript
+``` yaml
 [
-    {"id":"001","method":"GET",   "pattern":"/api/customer"},
+>    {"id":"001","method":"GET",   "pattern":"/api/customer"},
     {"id":"002","method":"POST",  "pattern":"/api/customer"},
     {"id":"003","method":"DELETE","pattern":"/api/customer/*"},
     {"id":"004","method":"GET",   "pattern":"/api/customer/*"},
@@ -63,10 +63,10 @@ As the basis for our security policies we need a data structure that contains al
 
 The next piece of data that we need to build our example authorization solution is a mapping between each client application and the endponts that it is allowed to access. The data structure below holds that information. The unique ID for each application is a `key` in this data structure and the value is an array of all of the endpoint IDs that the application has access to. 
 
-``` javascript
+``` yaml
 apiPermissions = {
   "app_123456": [ 
-      "001","004","007","010","012","015","018","021","024","027","031","034","037","040","043","046","049","052","055" 
+>      "001","004","007","010","012","015","018","021","024","027","031","034","037","040","043","046","049","052","055" 
       ],
   "app_000123":[ 
     "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", 
@@ -121,14 +121,14 @@ The configuration snippet below is how we express this logic:
                       rules:
 +                        - match:
                             prefix: /
-+                          requires:
-                            requires_all:
+                          requires:
++                            requires_all:
                               requirements:
 !                                - provider_name: gateway_provider
 !                                - requires_any:
                                     requirements:
- @                                     - provider_name: workforce_provider
- @                                     - provider_name: consumer_provider
+@                                      - provider_name: workforce_provider
+@                                      - provider_name: consumer_provider
 ```
 
 * The `requires_all` object specifies that all of the requirements in the `requirements` array must be true to pass.
