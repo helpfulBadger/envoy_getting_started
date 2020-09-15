@@ -319,7 +319,7 @@ Whether rejection reasons are returned to the user or not depends on the circums
 * The same is true for the second messages rule block. 
 * This section will result in a messages array that has either 0, 1 or 2 elements. 
 
-``` yaml
+``` javascript
 messages[ msg ]{
 >  not apiPermittedForClient
   msg := {
