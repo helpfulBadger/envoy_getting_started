@@ -44,7 +44,7 @@ Here are Example.com's published APIs.
 
 As the basis for our security policies we need a data structure that contains all of possible actions that a user and client application can take. For this example, we define a URI pattern and a method being attempted on that URI as an `endpoint`. The `id` field uniquely identifies each endpoint and will be used in the process of actually specifying what endpoints an application has access to.  
 
-``` json
+``` yaml
 [
     {"id":"001","method":"GET",   "pattern":"/api/customer"},
     {"id":"002","method":"POST",  "pattern":"/api/customer"},
@@ -54,7 +54,7 @@ As the basis for our security policies we need a data structure that contains al
     {"id":"006","method":"PUT",   "pattern":"/api/customer/*"},
     {"id":"007","method":"GET",   "pattern":"/api/customer/*/account"},
     {"id":"008","method":"POST",  "pattern":"/api/customer/*/account"},
-...
+#...
 ]
 ```
 
@@ -62,7 +62,7 @@ As the basis for our security policies we need a data structure that contains al
 
 The next piece of data that we need to build our example authorization solution is a mapping between each client application and the endponts that it is allowed to access. The data structure below holds that information. The unique ID for each application is a `key` in this data structure and the value is an array of all of the endpoint IDs that the application has access to. 
 
-``` rego
+``` yaml
 apiPermissions = {
   "app_123456": [ 
       "001","004","007","010","012","015","018","021","024","027","031","034","037","040","043","046","049","052","055" 
