@@ -127,8 +127,8 @@ The configuration snippet below is how we express this logic:
 !                                - provider_name: gateway_provider
 !                                - requires_any:
                                     requirements:
-@                                      - provider_name: workforce_provider
-@                                      - provider_name: consumer_provider
+@@                                      - provider_name: workforce_provider
+@@                                      - provider_name: consumer_provider
 ```
 
 * The `requires_all` object specifies that all of the requirements in the `requirements` array must be true to pass.
