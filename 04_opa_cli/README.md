@@ -93,23 +93,28 @@ As you can see we simply drop in Envoy's JSON input that we are testing and the 
 OPA policy agent also supports running as a service and accessing it via REST APIs. [Detailed API information](https://www.openpolicyagent.org/docs/latest/rest-api/) can be found on the Open Policy Agent web site. Here is a summary of the APIs. 
 
 **Policy API for Creating, Updating or Deleting Policies**
+
 ``` markdown
 * GET    /v1/policies      #--- List Policies  
 * GET    /v1/policies/&ltid&gt #--- Get a specific Policy  
 * PUT    /v1/policies/&ltid&gt #--- Create or Update a Policy  
 * DELETE /v1/policies/&ltid&gt #--- Delete a policy  
 ```
+
 **Data API for Creating, Updating or Deleting Data and Getting Decisions**
+
+``` markdown
 * GET    /v1/data/{path:.+} #---  Get a Document  
 * POST   /v1/data/{path:.+} #---  Get a Document (with Input e.g. get a decision). The input document `{ "input": ... }` is passed in the request body 
 * PUT    /v1/data/{path:.+} #---  Create or Overwrite a Document  
 * PATCH  /v1/data/{path:.+} #---  Patch a Document  
 * DELETE /v1/data/{path:.+} #---  Delete a Document  
+```
 
 **Tips when using the API**
 * It is important to understand how the OPA document model works. The [document model](https://www.openpolicyagent.org/docs/latest/philosophy/#how-does-opa-work) is described on the Open Policy Agent web site. 
 * Attempting to delete everything by supplying the root path for the policy or data endpoint doesn't delete everything. This makes sense after thinking about it. It would be very easy to accidentally clear out an entire OPA engine and un-intentionally cause an outage if that was done in production.
-* Even though all of the policies are visiable in the data endpoint when queried, they can't be created, deleted or modified using that endpoint. It is mearly a way of invoking the policy and getting a decision. (see the policy in the highlighted section below) <img class="special-img-class" src="/img/2020/08/04_get_all_data_ref.png" /><br> 
+* Even though all of the policies are visiable in the data endpoint when queried, they can't be created, deleted or modified using that endpoint. It is mearly a way of invoking the policy and getting a decision. (see the policy in the highlighted section below) <img class="special-img-class" src="http://localhost:1313/img/2020/08/04_get_all_data_ref.png" /><br> 
 * Even though data and policies can be loaded in the same data document tree, it is confusing and not recommended (e.g. I deleted that data why is it still there? Oh, that's because it is a policy and can't be deleted by the data API):
     * `/v1/data/{packagename}/{data document name}` 
     * `/v1/data/{packagename}/{policy rule name}`
@@ -125,23 +130,23 @@ Sometimes it is desirable for debugging or for audit or regulatory purposes to c
 
 The example below is modified to provide approval reasons and other messages in the case of a denial to help understand why access was denied. Logical OR conditions are expressed by creating multiple rules with the same name. The first 4 allow rules below are various reasons to approve the access request. If any of these rules is true the response is set to a static object with the approval decision and the reason code. The 5th allow rule is intended fire only when all of the approval rules fail. It is intended to give us insight into why the access request was denied. So this rule tests to see if all of the other rules fail. 
 
-<img class="special-img-class" src="/img/2020/08/04_setting_approval_reason_code.png" /><br> 
+<img class="special-img-class" src="https://helpfulbadger.github.io/img/2020/08/04_setting_approval_reason_code.png" /><br> 
 
 To make sure the approval rules and deny rule don't get out of sync, they both point to named approval rules below.
 
-<img class="special-img-class" src="/img/2020/08/04_named_approval_rules.png" /><br> 
+<img class="special-img-class" src="https://helpfulbadger.github.io/img/2020/08/04_named_approval_rules.png" /><br> 
 
 The messaging section is similar to the logical OR approval rules above. However they are structured a little bit differently. The square brackets enable these rules to return an array / collection of results. Unlike other data types where an undefined value will cause the rule to fail, it will return an empty array if none of the rules triggers the population of a message.
 
-<img class="special-img-class" src="/img/2020/08/04_setting_other_messages.png" /><br> 
+<img class="special-img-class" src="https://helpfulbadger.github.io/img/2020/08/04_setting_other_messages.png" /><br> 
 
 With these changes we now have insight into the output of the rules. In the example below, we send in a request with an un-registered user. If more insight is needed there is also the option to add the `explain = full` parameter to see a trace of the rule execution. The response field shows the results with provenance, explanation, metrics, and the messages that indicate which rules failed. 
 
-<img class="special-img-class" src="/img/2020/08/04_deny_unregistered_users.png" /><br> 
+<img class="special-img-class" src="https://helpfulbadger.github.io/img/2020/08/04_deny_unregistered_users.png" /><br> 
 
 The images below zoom in on the explaination returned. The highlighted sections shows the step by step rule execution and where the rule failures occurred. On the left hand side is a reference to the exact line number in the rego file where the rule failure occurred. Any rule that results in an 'undefined' state is considered a failure.
 
-<img class="special-img-class" src="/img/2020/08/04_explain_and_decision_reasons_1.png" /><br> 
+<img class="special-img-class" src="https://helpfulbadger.github.io/img/2020/08/04_explain_and_decision_reasons_1.png" /><br> 
 
 #### Exploring the OPA API with a sample Postman collection 
 
@@ -149,17 +154,17 @@ To make it easier to explore the OPA APIs, [a postman collection pre-populated w
 
 **Uploading the Pet Store App ABAC Policy via Postman**
 
-<img class="special-img-class" src="/img/2020/08/04_create_pet_store_app_policy.png" /><br> 
+<img class="special-img-class" src="https://helpfulbadger.github.io/img/2020/08/04_create_pet_store_app_policy.png" /><br> 
 
 **Uploading the Pet Store App Reference Data**
 
-<img class="special-img-class" src="/img/2020/08/04_create_reference_data_in_OPA.png" /><br> 
+<img class="special-img-class" src="https://helpfulbadger.github.io/img/2020/08/04_create_reference_data_in_OPA.png" /><br> 
 
 #### Exploring the OPA API with a sample bash script
 
 If you don't already use Postman, another option to explore the OPA APIs that does not require a large install is to [use the included bash script](https://github.com/helpfulBadger/envoy_getting_started/blob/master/04_opa_cli/demonstrate_opa_api_in_docker.sh). Simply run `demonstrate_opa_api_in_docker.sh`
 
-<img class="special-img-class" src="/img/2020/08/04_command_line_example.png" /><br> 
+<img class="special-img-class" src="https://helpfulbadger.github.io/img/2020/08/04_command_line_example.png" /><br> 
 
 # Congratulations!
 
