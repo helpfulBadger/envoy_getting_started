@@ -35,7 +35,7 @@ Elastic common schema was introduced to make it easier to analyze logs across ap
 
 Below is the abbreviation envoy.yaml configuration that shows how to specify our logging configuration. The explanation of the configuration follows. 
 
-``` yaml {linenos=inline,hl_lines=[15,18,19,20,22,24,31,40],linenostart=1}
+{% highlight yaml linenos %}
 static_resources:
   listeners:
   ...
@@ -80,7 +80,7 @@ static_resources:
                 ...
   clusters:
 admin:
-```
+{% endhighlight %}
 
 The `access_log` configuration section is part of the HTTP Connection Manager Configuration and at the same nesting level as the `route_config` and `http_filters` sections. 
 * We use a typed config `type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog` in version 3 of the configuration API
