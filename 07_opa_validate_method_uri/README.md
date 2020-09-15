@@ -113,20 +113,22 @@ Because of this variability we had to change our logic for token validation and 
 
 The configuration snippet below is how we express this logic:
 * The `match` object specifies that any URI must meet the requirements in the `requires` object
-* The `requires` object specifies that a request must have:  <pre><code>(a Gateway issued system identity token) AND a user with ( a workforce Identity token OR a Consumer Identity Token ))</code></pre> NOTE: Scroll right as needed. The color coding above matches the translation to YAML configuration below.
+* The `requires` object specifies that a request must have:  `(a Gateway issued system identity token) AND a user with ( a workforce Identity token OR a Consumer Identity Token ))`
 
-``` javascript
+<br>
+
+``` diff
                       rules:
-                        - match:
++                        - match:
                             prefix: /
-                          requires:
++                          requires:
                             requires_all:
                               requirements:
-                                - provider_name: gateway_provider
-                                - requires_any:
+!                                - provider_name: gateway_provider
+!                                - requires_any:
                                     requirements:
-                                      - provider_name: workforce_provider
-                                      - provider_name: consumer_provider
+ @                                     - provider_name: workforce_provider
+ @                                     - provider_name: consumer_provider
 ```
 
 * The `requires_all` object specifies that all of the requirements in the `requirements` array must be true to pass.
@@ -174,7 +176,7 @@ These changes add some data to the `metadata_context`. For each dynamic metadata
 
 See the resultant `metadata_context` below for an example.
 
-``` yaml {linenos=inline,hl_lines=["5-28"],linenostart=1}
+``` yaml 
   "input": {
     "attributes": {
       "destination": { "...":"..." },
