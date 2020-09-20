@@ -71,7 +71,7 @@ verified_digest = v {
   }
 }
 
-criticalHeaders = verified_digest.payload.criticalHeaders
+criticalHeaders = verified_digest.payload.headers
 filteredHeaders = object.filter( http_request.headers, criticalHeaders )	
 headerString = json.marshal( filteredHeaders )
 headerHash = crypto.sha256( headerString )
@@ -105,19 +105,109 @@ pathesMatch {
 requestDuration = time.now_ns() - verified_digest.payload.created
 
 withinRecencyWindow {
-  requestDuration < 1000000
+  requestDuration < 34159642955430000
+}
+
+
+messages[ msg ]{
+	not verified_digest.isValid
+  msg := {
+    "id"  : "1",
+    "priority"  : "1",
+    "message" : "Request SIGNATURE IS NOT VALID"
+  }
+}
+
+messages[ msg ]{
+	not withinRecencyWindow
+  verified_digest.isValid
+  msg := {
+    "id"  : "2",
+    "priority"  : "5",
+    "message" : "Request is not within the recency window"
+  }
+}
+
+messages[ msg ]{
+	not pathesMatch
+  verified_digest.isValid
+  msg := {
+    "id"  : "3",
+    "priority"  : "5",
+    "message" : "Request path does not match signature"
+  }
+}
+
+messages[ msg ]{
+	not methodsMatch
+  verified_digest.isValid
+  msg := {
+    "id"  : "4",
+    "priority"  : "5",
+    "message" : "Request method does not match signature"
+  }
+}
+
+messages[ msg ]{
+	not hostsMatch
+  verified_digest.isValid
+  msg := {
+    "id"  : "5",
+    "priority"  : "5",
+    "message" : "Request host does not match signature"
+  }
+}
+
+messages[ msg ]{
+	not bodiesMatch
+  verified_digest.isValid
+  msg := {
+    "id"  : "6",
+    "priority"  : "5",
+    "message" : "Request body does not match signature"
+  }
+}
+
+messages[ msg ]{
+	not headersMatch
+  verified_digest.isValid
+  msg := {
+    "id"  : "7",
+    "priority"  : "5",
+    "message" : "Critical request headers do not match signature"
+  }
+}
+
+messages[ msg ]{
+	not headersMatch
+  verified_digest.isValid
+  msg := {
+    "id"  : "8",
+    "priority"  : "5",
+    "message" : "Request is outside the recency window"
+  }
+}
+
+default decision = false
+decision {
+  methodsMatch
+  pathesMatch
+  hostsMatch
+  headersMatch
+  bodiesMatch
+  withinRecencyWindow
+}
+
+default headerValue = "false"
+headerValue = h {
+  decision
+  h := "true"
 }
 
 allow = {
-  "allowed": true, # Outbound requests are always allowed. This policy simply signs the request
+  "allowed": decision,
   "headers": {
-    "headersMatch": headersMatch,
-    "verified_digest": verified_digest,
-    "bodiesMatch": bodiesMatch,
-    "hostsMatch": hostsMatch,
-    "methodsMatch": methodsMatch,
-    "pathesMatch": pathesMatch,
-    "requestDuration": requestDuration,
-    "withinRecencyWindow": withinRecencyWindow
-  }
+    "Valid-Request": headerValue
+  },
+  "body" : json.marshal({ "Authorization-Failures": messages })
 }
