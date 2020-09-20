@@ -1,9 +1,7 @@
 package envoy.authz
 
 import input.attributes.request.http as http_request
-import input.attributes.request.http.headers["subject-token"] as subject
-import input.attributes.request.http.headers["actor-token"] as actor
-import input.attributes.request.http.headers["app-token"] as app
+import input.attributes.request.http.headers["digest"] as digest
 
 jwks = `{
   "keys": [
@@ -61,35 +59,65 @@ jwks = `{
   ]
 }`
 
-signingKey = {"use":"sig","kty":"RSA","kid":"APIGW-RS256","alg":"RS256","n":"thiAsWa8crD-RhGbAewoYjyWpgZpaFKHWqzqAM2iCJ94eQnSwFJJcFayOklSfKK8tUUYulG7FQijpdBLVzbilPtpYK8HjHoLZBLrvNPbEvwlMCVMDX5ttyn1lJV-6momFwuV6EJFnPMXJQU3KTX_QeFejiamxmYQsakyWxxDtTWJ1XAlvtIX3k0osQbFrLbF5SGIwAk9UBFlm2B_3M0lbqu6w8eOxgSc3z-Owd6maYu2Q43MZv-opjObHNfcc60o90iOO9pY5_qSkJt7Slf2cuKU6eOUjsoSCOgValKngogup_itt7LJkrt-ugFiwUITEt6V6MY1MHEw1RgM75N_iQ","e":"AQAB","d":"h10jnbyvbdrgypmfzwgM5SoBGx49EU34TJGpyjsSrrJNTjzdLBZ_fUEVcHq9FOWsvlvFDAxhtDsd289Bkm28dd-G8FZsmCLJgPUHxPEAM9a4llfDd2x6huRsKK4REJUkB5GXOHa7ZPbYR67e2IXJYOH19loJNAb_dfI--rfCJVuLibNngOpa3y5vRH8dmEdUpFbqXiWO-Ri8jPYvCuflPXzELFDFjVKIM7HwpbwfmpNPT2FNPr-8Ufyi1PZ79OgJQ87NZetKbR0eHJEi1YRUTNWxM0hHaM2R4eCRx9N8D0-e8HVUsoZ5290aCr8OyGxkJRy3xBWbZRvlSdYVUxwhGQ","p":"5sdc-Z_hgal72a54H9CF5q5tOGv-S5uqMkOET-jvmmLHyS4PdbYnCw35ZJKkN74MrUmHsp8JLfaTnlrzKWNnI7mWiOijhIhjf1Mb0sIgdCo4HGB_ZrgzJUeFe1u1OMfoUEEpJeSeigUkGvmJahVimazpRH9EKcXGouISn0PpAac","q":"yf8avkuYYcbsfodlEm0RymVr1jlJOlUIAfipWl-ikDMHEW7vKw29_bzqoCT3iwVQ2LldzIPorLkZdj-3W1gjI3-hpAZQFP50HT80hNFIc32s-M9gZwvLN2Ag0ynWnXiNnM0WW7eR1ZWa48oW60DmxnovOHVdr0Fjh4o5YY6xu08","dp":"MaeRrLAm4DQsTsEIXagLN4AuReaOl4wNybTXQi5XZ3t7iyDa-LPRoMJH98jJhqjgp2RbyyYG3pngV0EwcqZNqdUju596l2iVJ-8k3GsienwfCJQGtX5KmunRoaIw0t_Ib4Qlq16Ochn7E8a_N1EUnwYiRrevXeGNBLzpztTYzJ8","dq":"A6u-Ka0oBMbfr2D4hkAzLZFwR0FdQlEfRyHkuf647pPu0fNJJ2glhsHzJZvmX8Fl-bpMqRXQmar3en2n8GIGqXN9VYTD2c3SAGIQq0U-YtLq3M6v-s9tDwGRNyUwgEYblLjpahtI7C--09rtVbMlPoAj8Yu4eyHeFC1_43T7Z-M","qi":"HcOr0HMJQYfAJrCeONGGhM7cKJnvRmHTNXA8d_i79iDmEvAYi-EwiRoJSuT-6a9dARwAILUhFL77clOxNav3APO6dOOD7TkbD9QqRsbP8eUNEg_TMbP_GgM63l4PzDnkwhN-aWqfhBbmwFtv3_yXIw-t2sJnUW04HoDvw1ixrzo"}
-criticalHeaders = ["actor-token", "app-token", "subject-token", "session-id", "request-id"]
+verified_digest = v {
+  [isValid, _, payload ] := io.jwt.decode_verify( digest, 
+  { 
+      "cert": jwks,
+      "aud": "apigateway.example.com"  # <-- Required since the token contains an `aud` claim in the payload
+  })
+  v := {
+    "isValid": isValid,
+    "payload": payload
+  }
+}
+
+criticalHeaders = verified_digest.payload.criticalHeaders
 filteredHeaders = object.filter( http_request.headers, criticalHeaders )	
 headerString = json.marshal( filteredHeaders )
 headerHash = crypto.sha256( headerString )
+
+headersMatch {
+  headerHash == verified_digest.payload.headerDigest
+}
 
 default body = ""
 body = b {
   b := http_request.body
 }
-
 bodyHash = crypto.sha256( body )
 
-# jws Request Signature Token
-requestDigest = {
-  "method": http_request.method,
-  "path": http_request.path,
-  "host": http_request.host,
-  "created": time.now_ns(),
-  "headers": criticalHeaders,
-  "headerDigest": headerHash,
-  "bodyDigest": bodyHash
+bodiesMatch {
+  bodyHash == verified_digest.payload.bodyDigest
 }
 
-digestHeader = io.jwt.encode_sign({ "typ": "JWT", "alg": "RS256" }, requestDigest, signingKey )
+hostsMatch {
+  http_request.host == verified_digest.payload.host
+}
+
+methodsMatch {
+  http_request.method == verified_digest.payload.method
+}
+
+pathesMatch {
+  http_request.path == verified_digest.payload.path
+}
+
+requestDuration = time.now_ns() - verified_digest.payload.created
+
+withinRecencyWindow {
+  requestDuration < 1000000
+}
 
 allow = {
   "allowed": true, # Outbound requests are always allowed. This policy simply signs the request
   "headers": {
-    "Digest": digestHeader
+    "headersMatch": headersMatch,
+    "verified_digest": verified_digest,
+    "bodiesMatch": bodiesMatch,
+    "hostsMatch": hostsMatch,
+    "methodsMatch": methodsMatch,
+    "pathesMatch": pathesMatch,
+    "requestDuration": requestDuration,
+    "withinRecencyWindow": withinRecencyWindow
   }
 }

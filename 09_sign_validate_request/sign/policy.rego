@@ -74,6 +74,8 @@ bodyHash = crypto.sha256( body )
 # jws Request Signature Token
 requestDigest = {
   "method": http_request.method,
+  "iss": "apigateway.example.com",
+  "aud": [ "apigateway.example.com", "protected-api.example.com"],
   "path": http_request.path,
   "host": http_request.host,
   "created": time.now_ns(),
