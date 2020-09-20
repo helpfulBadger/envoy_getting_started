@@ -1,0 +1,12 @@
+FROM envoyproxy/envoy:v1.15-latest
+
+RUN apt-get update
+RUN apt-get -q install apt-utils --assume-yes
+RUN apt-get -q install curl --assume-yes
+RUN apt install python3-pip --assume-yes
+RUN pip3 install -q Flask==0.11.1 requests==2.18.4
+RUN mkdir /code
+ADD ./service.py /code
+ADD ./start_service.sh /usr/local/bin/start_service.sh
+RUN chmod u+x /usr/local/bin/start_service.sh
+ENTRYPOINT /usr/local/bin/start_service.sh
