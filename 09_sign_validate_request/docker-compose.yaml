@@ -23,7 +23,6 @@ services:
       context: ./service1
       dockerfile: Dockerfile
     volumes:
-#      - ./service1/service1-envoy-jaeger.yaml:/etc/envoy/envoy.yaml
       - ./tmp/service1:/tmp/any
     networks:
       envoymesh:
