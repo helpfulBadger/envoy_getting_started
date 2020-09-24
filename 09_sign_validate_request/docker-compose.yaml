@@ -3,12 +3,14 @@ services:
 
   front-envoy:
     build:
-      context: .
-      dockerfile: Dockerfile-frontenvoy
+      context: ./front-proxy
+      dockerfile: Dockerfile
     volumes:
       - ./tmp/front:/tmp/any
     networks:
-      - envoymesh
+      envoymesh:
+        aliases:
+          - front-envoy
     expose:
       - "8000"
       - "8001"
@@ -18,10 +20,10 @@ services:
 
   service1:
     build:
-      context: ./front-proxy
-      dockerfile: Dockerfile-service
+      context: ./service1
+      dockerfile: Dockerfile
     volumes:
-      - ./service1-envoy-jaeger.yaml:/etc/service-envoy.yaml
+#      - ./service1/service1-envoy-jaeger.yaml:/etc/envoy/envoy.yaml
       - ./tmp/service1:/tmp/any
     networks:
       envoymesh:
@@ -31,6 +33,17 @@ services:
       - SERVICE_NAME=1
     expose:
       - "8000"
+    ports:
+      - "8184:8000"
+
+  app:
+    image: kennethreitz/httpbin:latest
+    networks:
+      envoymesh:
+        aliases:
+          - app
+    ports:
+      - "8183:80"
 
   sign:
     build:
@@ -52,14 +65,14 @@ services:
 
   verify:
     build:
-      context: ./sign
+      context: ./verify
       dockerfile: Dockerfile
     networks:
       envoymesh:
         aliases:
           - verify
     ports:
-      - "8181:8181"
+      - "8182:8181"
     command:
       - "run"
       - "--log-level=debug"
