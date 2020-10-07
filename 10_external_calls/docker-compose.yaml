@@ -1,0 +1,99 @@
+version: "3.7"
+services:
+
+  front-envoy:
+    build:
+      context: ./front-proxy
+      dockerfile: Dockerfile
+    volumes:
+      - ./tmp/front:/tmp/any
+    networks:
+      envoymesh:
+        aliases:
+          - front-envoy
+    expose:
+      - "8000"
+      - "8001"
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+
+  service1:
+    build:
+      context: ./service1
+      dockerfile: Dockerfile
+    volumes:
+      - ./tmp/service1:/tmp/any
+    networks:
+      envoymesh:
+        aliases:
+          - service1
+    environment:
+      - SERVICE_NAME=1
+    expose:
+      - "8000"
+    ports:
+      - "8184:8000"
+
+  app:
+    image: kennethreitz/httpbin:latest
+    networks:
+      envoymesh:
+        aliases:
+          - app
+    ports:
+      - "8183:80"
+
+  sign:
+    build:
+      context: ./sign
+      dockerfile: Dockerfile
+    networks:
+      envoymesh:
+        aliases:
+          - sign
+    ports:
+      - "8181:8181"
+    command:
+      - "run"
+      - "--log-level=debug"
+      - "--server"
+      - "--set=plugins.envoy_ext_authz_grpc.addr=:9191"
+      - "--set=decision_logs.console=true"
+      - "/config/policy.rego"
+
+  verify:
+    build:
+      context: ./verify
+      dockerfile: Dockerfile
+    networks:
+      envoymesh:
+        aliases:
+          - verify
+    ports:
+      - "8182:8181"
+    command:
+      - "run"
+      - "--log-level=debug"
+      - "--server"
+      - "--set=plugins.envoy_ext_authz_grpc.addr=:9191"
+      - "--set=decision_logs.console=true"
+      - "/config/policy.rego"
+          
+  jaeger:
+    image: jaegertracing/all-in-one
+    environment:
+      - COLLECTOR_ZIPKIN_HTTP_PORT=9411
+    networks:
+      envoymesh:
+        aliases:
+          - jaeger
+    expose:
+      - "9411"
+      - "16686"
+    ports:
+      - "9411:9411"
+      - "16686:16686"
+
+networks:
+  envoymesh: {}

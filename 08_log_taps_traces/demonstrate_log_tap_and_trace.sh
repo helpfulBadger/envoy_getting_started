@@ -24,7 +24,9 @@ docker ps -a
 read -n 1 -r -s -p $'\n\nPress enter to continue...\n'
 printf "\n\n**************    About to call service 1 via Envoy to start a trace   **************\n\n"
 read -n 1 -r -s -p $'Press enter to continue...\n'
-curl --location --request GET 'localhost:8000/trace/1' 
+curl --location --request GET 'localhost:8000/trace/1' \
+        --header 'Session-Id: 0001' \
+        --header 'Correlation-Id: 0002' \
 
 read -n 1 -r -s -p $'\n\nPress enter to continue...\n'
 printf "\n\n*********************************************************************************************************\n\n"

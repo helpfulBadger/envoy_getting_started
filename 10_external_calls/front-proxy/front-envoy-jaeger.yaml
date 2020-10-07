@@ -12,16 +12,6 @@ static_resources:
           "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
           generate_request_id: true
           tracing:
-            verbose: true
-            custom_tags:
-            - tag: session-id
-              request_header:
-                name: "session-id"
-                default_value: "missing"
-            - tag: correlation-id
-              request_header: 
-                name: "correlation-id"
-                default_value: "missing"
             provider:
               name: envoy.tracers.zipkin
               typed_config:
@@ -57,6 +47,19 @@ static_resources:
                     sinks:
                       - file_per_tap:
                           path_prefix: /tmp/any/
+          - name: envoy.filters.http.ext_authz
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3.ExtAuthz
+              failure_mode_allow: false
+              grpc_service:
+                google_grpc:
+                  target_uri: sign:9191
+                  stat_prefix: ext_authz
+                timeout: 0.5s
+              include_peer_certificate: true
+              metadata_context_namespaces:
+              - envoy
+              - envoy.common
           - name: envoy.filters.http.router
             typed_config: {}
           use_remote_address: true
@@ -106,6 +109,11 @@ static_resources:
                 http.request.headers.x_b3_parentspanid: "%REQ(X-B3-PARENTSPANID)%"
                 http.request.headers.x_b3_spanid: "%REQ(X-B3-SPANID)%"
                 http.request.headers.x_b3_sampled: "%REQ(X-B3-SAMPLED)%"
+                http.request.headers.actor_token: "%REQ(ACTOR-TOKEN)%"
+                http.request.headers.app_token: "%REQ(APP-TOKEN)%"
+                http.request.headers.subject_token: "%REQ(SUBJECT-TOKEN)%"
+                http.request.headers.session_id: "%REQ(SESSION-ID)%"
+                http.request.headers.request_id: "%REQ(REQUEST-ID)%"
                 http.request.method: "%REQ(:METHOD)%"
                 http.response.body.bytes: "%BYTES_SENT%"
                 http.response.duration_resp: "%RESPONSE_DURATION%"
@@ -119,7 +127,7 @@ static_resources:
                 http.response.status_code: "%RESPONSE_CODE%"
                 http.resposee.status_code_details: "%RESPONSE_CODE_DETAILS%"
                 http.version: "%PROTOCOL%"
-                log.level: "info"  # default envoy log level
+                log.level: "debug"  # default envoy log level is info
                 network.direction: "inbound"
                 server.address: "%UPSTREAM_HOST%"
                 service.name: "envoy"

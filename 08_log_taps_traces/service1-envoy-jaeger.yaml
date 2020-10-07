@@ -11,6 +11,16 @@ static_resources:
         typed_config:
           "@type": type.googleapis.com/envoy.config.filter.network.http_connection_manager.v2.HttpConnectionManager
           tracing:
+            verbose: true
+            custom_tags:
+            - tag: session-id
+              request_header:
+                name: "session-id"
+                default_value: "missing"
+            - tag: correlation-id
+              request_header: 
+                name: "correlation-id"
+                default_value: "missing"
             provider:
               name: envoy.tracers.zipkin
               typed_config:

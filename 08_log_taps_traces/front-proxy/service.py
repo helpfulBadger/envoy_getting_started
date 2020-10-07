@@ -19,7 +19,11 @@ TRACE_HEADERS_TO_PROPAGATE = [
     'X-B3-Flags',
 
     # Jaeger header (for native client)
-    "uber-trace-id"
+    "uber-trace-id",
+
+    # Custom Headers
+    "Session-Id",
+    "Correlation-Id"
 ]
 
 
