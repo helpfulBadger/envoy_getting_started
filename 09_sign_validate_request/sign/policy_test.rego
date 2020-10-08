@@ -82,7 +82,7 @@ test_missing_Body_And_Headers_req_bodyHash_matches {
     bodyHash   == missingBodyAndHeadersJws.bodyDigest   with input as missingBodyAndHeaders
 }
 
-test_missing_Body_And_Headerss_req_headerHash_matches {
+test_missing_Body_And_Headers_req_headerHash_matches {
     headerHash == missingBodyAndHeadersJws.headerDigest with input as missingBodyAndHeaders
 }
 

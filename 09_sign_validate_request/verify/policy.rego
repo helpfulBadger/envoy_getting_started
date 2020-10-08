@@ -98,7 +98,7 @@ methodsMatch {
   http_request.method == verified_digest.payload.method
 }
 
-pathesMatch {
+pathsMatch {
   http_request.path == verified_digest.payload.path
 }
 
@@ -129,7 +129,7 @@ messages[ msg ]{
 }
 
 messages[ msg ]{
-	not pathesMatch
+	not pathsMatch
   verified_digest.isValid
   msg := {
     "id"  : "3",
@@ -191,7 +191,7 @@ messages[ msg ]{
 default decision = false
 decision {
   methodsMatch
-  pathesMatch
+  pathsMatch
   hostsMatch
   headersMatch
   bodiesMatch

@@ -41,7 +41,7 @@ test_altered_path_not_allowed {
     headersMatch with input as alteredPath
     hostsMatch  with input as alteredPath
     methodsMatch  with input as alteredPath
-    not pathesMatch  with input as alteredPath
+    not pathsMatch  with input as alteredPath
     # We would also write tests for "messages": [], if this was for production use
     # we would also test withinRecencyWindow if this was production
 }
@@ -54,7 +54,7 @@ test_altered_method_not_allowed {
     headersMatch with input as alteredMethod
     hostsMatch with input as alteredMethod
     not methodsMatch with input as alteredMethod
-    pathesMatch with input as alteredMethod
+    pathsMatch with input as alteredMethod
     # We would also write tests for "messages": [], if this was for production use
     # we would also test withinRecencyWindow if this was production    
 }
@@ -67,7 +67,7 @@ test_altered_host_not_allowed {
     headersMatch with input as alteredHost
     not hostsMatch with input as alteredHost
     methodsMatch with input as alteredHost
-    pathesMatch with input as alteredHost
+    pathsMatch with input as alteredHost
     # We would also write tests for "messages": [], if this was for production use
     # we would also test withinRecencyWindow if this was production        
 }
@@ -80,7 +80,7 @@ test_altered_headers_not_allowed {
     not headersMatch with input as alteredHeaders
     hostsMatch with input as alteredHeaders
     methodsMatch with input as alteredHeaders
-    pathesMatch with input as alteredHeaders
+    pathsMatch with input as alteredHeaders
     # We would also write tests for "messages": [], if this was for production use
     # we would also test withinRecencyWindow if this was production        
 }
@@ -93,7 +93,7 @@ test_altered_bodies_not_allowed {
     headersMatch with input as alteredBody
     hostsMatch with input as alteredBody
     methodsMatch with input as alteredBody
-    pathesMatch with input as alteredBody
+    pathsMatch with input as alteredBody
     # We would also write tests for "messages": [], if this was for production use
     # we would also test withinRecencyWindow if this was production        
 }
