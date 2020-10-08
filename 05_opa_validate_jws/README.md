@@ -15,7 +15,7 @@ Here is a list of the Getting Started Guides that are currently available.
 1. [JWS Signature Validation with Envoy](../06_envoy_validate_jws/README.md) --- Learn how to validate JWS signatures natively with Envoy
 1. [Putting It All Together with Composite Authorization](../07_opa_validate_method_uri/README.md) --- Learn how to Implement Application Specific Authorization Rules
 1. [Configuring Envoy Logs Taps and Traces](../08_log_taps_traces/README.md) --- Learn how to configure Envoy's access logs taps for capturing full requests & responses and traces
-1. [Sign / Verify HTTP Requests](../envoy_opa_9_sign_verify.md") --- Learn how to use Envoy & OPA to sign and validate HTTP Requests
+1. [Sign / Verify HTTP Requests](../envoy_opa_9_sign_verify.md) --- Learn how to use Envoy & OPA to sign and validate HTTP Requests
 
 ## Introduction
 
