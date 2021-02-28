@@ -160,7 +160,7 @@ In your project directory, create a file named Dockerfile and paste the followin
 
 ### Dockerfile
 ``` Dockerfile
-FROM envoyproxy/envoy:v1.15-latest
+FROM envoyproxy/envoy:v1.16-latest
 
 COPY entrypoint.sh /
 RUN chmod 500 /entrypoint.sh
